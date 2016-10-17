@@ -11,19 +11,52 @@
 |
 */
 
-Route::get('/', function () {
-  return view('welcome');
-
-});
-Route::get('postulaciones/{id?}',[
-	'uses' => 'prueba@prueba'
-
-	]);
-
+/**Route::get('/', function () {
+    return view('usuario.inicio');
+});**/
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+Route::get('/', 'InicioController@indexInicio');
+
+/**administrador**/
+Route::get('home', 'HomeController@index');
+
+Route::get('apartamentos', 'ApartamentosController@indexApartamentos');
+
+Route::get('casas','CasasController@indexCasas');
+
+Route::get('apartaestudios', 'ApartaestudioController@indexApartaestudio');
+
+Route::get('lotes', 'LotesController@indexLotes');
+
+/**usuario**/
+Route::get('arriendos', 'ArriendosController@indexArriendos');
+
+Route::get('ventas','VentasController@indexVentas');
+
+Route::get('servicios', 'ServiciosController@indexServicios');
+
+Route::get('acercaDe', 'InicioController@acercaDe');
+
+Route::get('contacto', 'InicioController@contacto');
+
+/**resultados**/
+Route::get('arriendoCasa','ResultadoController@arriendoCasa');
+
+Route::get('arriendoApartamen','ResultadoController@arriendoApartamen');
+
+Route::get('arriendoApartaes','ResultadoController@arriendoApartaes');
+
+Route::get('arriendoLocal','ResultadoController@arriendoLocal');
+
+Route::get('ventaCasa','ResultadoController@ventaCasa');
+
+Route::get('ventaApartamen','ResultadoController@ventaApartamen');
+
+Route::get('ventaApartaes','ResultadoController@ventaApartaes');
+
+Route::get('ventaLote','ResultadoController@ventaLote');
 
 Route::get('error',function(){
 	abort(404);

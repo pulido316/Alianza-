@@ -53,7 +53,7 @@
                         <li id="inicio"><a href="/">Inicio</a></li>
                         <li id="arriendo"><a href="arriendos">Arriendos</a></li>
                         <li id="venta"><a href="ventas">Ventas</a></li>
-                         <li id="servicio"><a href="servicios">Servicios</a></li>
+                         <li id="servicio"><a href="servicios">Servicios Adicionales</a></li>
                         <li id="acerca"><a href="acercaDe">Acerca de nosotros</a></li>
                         <li id="contacto"><a href="contacto">Contacto</a></li>
                     </ul>
@@ -66,5 +66,20 @@
 </div>
 
  @yield('content')
+
+ <footer>
+      
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="copyright" align="center">
+                        <p>
+                            <span>&copy; Alianza Constructora Inmobiliaria </span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+    </div>
+    </footer>
 </body>
 </html>

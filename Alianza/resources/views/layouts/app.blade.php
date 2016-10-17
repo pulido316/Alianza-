@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Alianza') }}</title>
+    <title>Alianza inmobiliaria</title>
 
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
@@ -20,8 +20,8 @@
         ]); ?>
     </script>
 </head>
-<body>
-    <nav class="navbar navbar-default navbar-static-top">
+<body >
+    <nav class="navbar navbar-default navbar-static-top" style="height:100px">
         <div class="container">
             <div class="navbar-header">
 
@@ -33,10 +33,7 @@
                     <span class="icon-bar"></span>
                 </button>
 
-                <!-- Branding Image -->
-                <a class="navbar-brand" href="{{ url('/home') }}">
-                   Alianza 
-                </a>
+                <a class="navbar-brand" href="{{ url('/') }}"><img class="logo" src="img/logo.png" alt="logo"/></a>
             </div>
 
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
@@ -51,8 +48,10 @@
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Authentication Links -->
                     @if (Auth::guest())
-                        <li><a href="{{ url('/login') }}">Login</a></li>
-                        <li><a href="{{ url('/register') }}">Register</a></li>
+                    <!--
+                        <li><a href="{{ url('/login') }}">Iniciar Sesion</a></li>
+                        <li><a href="{{ url('/register') }}">Registrarse</a></li>
+                        -->
                     @else
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -79,7 +78,12 @@
         </div>
     </nav>
 
+    <center>
+    <h1 class="aligncenter">Bienvenido a Alianza Inmobiliaria</h1>
+    </center>
+
     @yield('content')
+
 
     <!-- Scripts -->
     <script src="/js/app.js"></script>
