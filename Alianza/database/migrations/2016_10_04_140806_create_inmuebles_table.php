@@ -20,8 +20,8 @@ class CreateInmueblesTable extends Migration
                 ->references('id')
                 ->on('personas')
                 ->onDelete('cascade');
-            $table->integer('ubicacion_id')->unsigned();
-            $table->foreign('ubicacion_id')
+            $table->integer('lugar_id')->unsigned();
+            $table->foreign('lugar_id')
                 ->references('id')
                 ->on('lugares')
                 ->onDelete('cascade');

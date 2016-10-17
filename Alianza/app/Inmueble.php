@@ -14,7 +14,7 @@ class Inmueble extends Model
      */
     protected $table = 'inmuebles';
     protected $fillable = [
-        'persona_id','ubicacion_id','tipo_id','area_total','area_construccion','observacion',
+        'persona_id','lugar_id','tipo_id','area_total','area_construccion','observacion',
     ];
      public function dotaciones(){
         return $this->hasMany('App\Dotacion');
@@ -27,6 +27,9 @@ class Inmueble extends Model
     }
      public function persona(){
         return $this->belongsTo('App\Persona');
+    }
+   public function lugar(){
+        return $this->belongsTo('App\Lugar');
     }
       public function tipo(){
         return $this->belongsTo('App\Tipo');

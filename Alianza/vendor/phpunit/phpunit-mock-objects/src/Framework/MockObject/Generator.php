@@ -1179,17 +1179,12 @@ class PHPUnit_Framework_MockObject_Generator
                 }
             }
 
-            $nullable        = '';
             $default         = '';
             $reference       = '';
             $typeDeclaration = '';
 
             if (!$forCall) {
                 if ($this->hasType($parameter) && (string) $parameter->getType() !== 'self') {
-                    if (version_compare(PHP_VERSION, '7.1', '>=') && $parameter->allowsNull() && !$parameter->isVariadic()) {
-                        $nullable = '?';
-                    }
-
                     $typeDeclaration = (string) $parameter->getType() . ' ';
                 } elseif ($parameter->isArray()) {
                     $typeDeclaration = 'array ';
@@ -1230,7 +1225,7 @@ class PHPUnit_Framework_MockObject_Generator
                 $reference = '&';
             }
 
-            $parameters[] = $nullable . $typeDeclaration . $reference . $name . $default;
+            $parameters[] = $typeDeclaration . $reference . $name . $default;
         }
 
         return implode(', ', $parameters);

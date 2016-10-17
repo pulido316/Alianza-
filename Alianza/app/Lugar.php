@@ -14,12 +14,15 @@ class Lugar extends Model
      */
     protected $table = 'lugares';
     protected $fillable = [
-        'ubicacion_id','nombre','tipo',
+        'nombre','tipo','ubicacion_id',
     ];
-     public function lugares(){
+    public function inmuebles(){
+        return $this->hasMany('App\Inmueble');
+    }
+   /*  public function lugares(){
         return $this->hasMany('App\Lugar');
     }
      public function lugar(){
         return $this->belongsTo('App\Lugar');
-    }
+    }*/
 }
