@@ -112,31 +112,15 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <li id="home">
-                    <a href="home"><i class="fa fa-fw fa-dashboard"></i> Home</a>
+                    <a href="home"><i class="glyphicon glyphicon-th-large"></i> Home</a>
                     </li>
-                    <li id="casa"> 
-                        <a href="casas"><i class="fa fa-fw fa-bar-chart-o"></i> Casas</a>
+                    <li id="inmueble"> 
+                        <a href="inmueble"><i class="glyphicon glyphicon-home "></i> Inmuenbles</a>
                     </li>
-                    <li id="apartaestudio">
-                        <a href="apartaestudios"><i class="fa fa-fw fa-table"></i> Apartaestudios</a>
+                    <li id="parametro">
+                        <a href="parametro"><i class="glyphicon glyphicon-cog"></i> Parámetros</a>
                     </li>
-                    <li id="apartamento">
-                        <a href="apartamentos"><i class="fa fa-fw fa-edit"></i> Apartamentos</a>
-                    </li >
-                    <li id="lote">
-                        <a href="lotes"><i class="fa fa-fw fa-desktop"></i> Lotes</a>
-                    </li>
-                    <li>
-                        <a href="bootstrap-grid.html"><i class="fa fa-fw fa-wrench"></i> Bootstrap Grid</a>
-                    </li>
-                    
-                    <li>
-                        <a href="blank-page.html"><i class="fa fa-fw fa-file"></i> Blank Page</a>
-                    </li>
-                    <li>
-                        <a href="index-rtl.html"><i class="fa fa-fw fa-dashboard"></i> RTL Dashboard</a>
-                    </li>
-                     </ul>
+                 </ul>
                
             </div>
             <!-- /.navbar-collapse -->

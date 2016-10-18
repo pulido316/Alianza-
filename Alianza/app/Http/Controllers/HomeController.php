@@ -24,5 +24,6 @@ class HomeController extends Controller
     public function index()
     {
         return view('administrador.home');
+       // return view('admin.template.main');
     }
 }

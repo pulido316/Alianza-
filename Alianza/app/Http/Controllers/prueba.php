@@ -9,6 +9,8 @@ use App\Http\Requests;
 use App\Inmueble;
 class prueba extends Controller
 {
+
+  
     public  function prueba($id){
     	$prueba = Inmueble::find($id);
     	    $prueba->lugar;

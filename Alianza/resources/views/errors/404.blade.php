@@ -70,7 +70,7 @@
             <div class="title m-b-md">
              Pagina no encontrada
              <div class="links">
-                <a href="{{ url('/home') }}">REGRESAR AL INICIO</a>
+                <a href="{{ url('/') }}">REGRESAR AL INICIO</a>
             </div>
 
         </div>
