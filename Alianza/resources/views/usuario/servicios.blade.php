@@ -23,7 +23,7 @@
             <div class="col-md-4">
                 <img class="img-responsive" src="img/service2.jpg" alt="">            
                 <h2>Diseño y Licencias de construcción</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores quae porro consequatur aliquam, incidunt eius magni provident, doloribus omnis minus temporibus perferendis nesciunt quam repellendus nulla nemo ipsum odit corrupti consequuntur possimus</p>        
+                <p>Realizamos el diseño del hogar o local que desee y asi mismo generamos la licencia de construcción que necesite</p>        
             </div>
             <div class="col-md-4 md-margin-bottom-40">
               <img class="img-responsive" src="img/service3.jpg" alt="">  
@@ -38,7 +38,7 @@
             <div class="col-md-4 md-margin-bottom-40">
                <img class="img-responsive" src="img/service1.jpg" alt="">   
                 <h2>Remodelaciones</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores quae porro consequatur aliquam, incidunt eius magni provident, doloribus omnis minus temporibus perferendis nesciunt quam repellendus nulla nemo ipsum odit corrupti consequuntur possimus</p>        
+                <p>Realizamos todas las remodelaciones que usted necesite a su gusto</p>        
             </div>
             <div class="col-md-4">
                 <img class="img-responsive" src="img/service2.jpg" alt="">            
