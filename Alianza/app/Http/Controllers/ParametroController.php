@@ -42,15 +42,15 @@ class ParametroController extends Controller
     public function store(Request $request)
     {
 
-       // dd($request->tipo);
-        $this->validate($request,[
+      // dd($request->tipo);
+       $this->validate($request,[
             'tipo'=> 'required'
             ]);
 
            $tipo= new Tipo();
            $tipo->nombre= $request->tipo;
            $tipo->save();
-           dd("datos almacenados");
+           return view('administrador.parametro');
         
     }
 

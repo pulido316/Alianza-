@@ -27,11 +27,14 @@ Route::get('/', 'InicioController@indexInicio');
 Route::get('home', 'HomeController@index');
 //Route::get('apartamentos', 'ApartamentosController@indexApartamentos');
 //rutas parametros
-//Route::resource('/parametros','ParametroController');
+
+Route::resource('/parametro','ParametroController');
+Route::resource('/persona','PersonaController');
+Route::resource('/inmueble','InmuebleController');
 //Route::get('inmueble','InmuebleController@indexInmueble');
 
-Route::get('parametro','ParametroController@index');
-Route::get('inmueble','InmuebleController@index');
+//Route::get('parametro','ParametroController@index');
+Route::get('/inmueble','InmuebleController@index');
 //Route::get('apartaestudios', 'ApartaestudioController@indexApartaestudio');
 
 //Route::get('lotes', 'LotesController@indexLotes');
