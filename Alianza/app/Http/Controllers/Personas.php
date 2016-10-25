@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use DB;
 use App\Http\Requests;
 
 class Personas extends Controller
@@ -15,7 +15,13 @@ class Personas extends Controller
      */
     public function index()
     {
-        return view('administrador.personas');
+        $persona=DB::select("SELECT id,documento_id CC, nombre nombres, apellido apellidos, email correo, telefono telefono, observacion observacion FROM  personas");
+        $data=array(
+            'personas'=>$persona,
+            );
+        
+
+        return view('administrador.personas',$data);
     }
 
     /**

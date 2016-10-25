@@ -26,7 +26,7 @@
 							</div>
 						</div>
 						<a href="#">
-							<div id="listar-lugar" class="panel-footer">
+							<div id="listar" class="panel-footer">
 								<span class="pull-left">Listar</span>
 								<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
 								<div class="clearfix"></div>
@@ -59,101 +59,44 @@
 			</div>
 			<div class="row">
 				<div class="col-lg-12">
-					<div class="table-responsive table">
-						<table id="example" style="display: none;" class="table table-hover table-striped table table-striped table-borderedSeen" >
-							<thead>
-								<tr>
-									<th>Identificacion</th>
-									<th>Nombre</th>
-									<th>Tipo</th>
-									<th>Zona</th>
+					<div id="tabla-lista" class="table-responsive">
+						<table id="example" style="display: none;" class="table table-hover table-striped tabla-lista table-striped table-borderedSeen" >
+									<th>CC</th>
+									<th>Nombres</th>
+									<th>Apellidos</th>
+									<th>Correo</th>
+									<th>Telefono</th>
+									<th>Observación</th>
 									<th>Editar</th>                                      
 								</tr>
 							</thead>
 							<tbody>
-								@foreach($barrios as $barrio)
-								<tr>
-									<td>
-										{!! $barrio->id !!}
-									</td>
-									<td>
-										{!! $barrio->nombre !!}
-									</td>
-									<td>
-										{!! $barrio->tipo !!}
-									</td>
-									<td>
-										{!! $barrio->zona !!}
-									</td>
-									<td>
-										<button class="btn btn-primary editar-boton" id="{!! $barrio->id !!}">editar</button>
-									</td>
-								</tr>
-
-
-								@endforeach
-
+							 @foreach($personas as $persona)
+							 <tr>
+							 	<td>{!! $persona->CC!!}</td>
+							 	<td>{!! $persona->nombres!!}</td>
+							 	<td>{!! $persona->apellidos!!}</td>
+							 	<td>{!! $persona->correo!!}</td>
+							 	<td>{!! $persona->telefono!!}</td>
+							 	<td>{!! $persona->observacion!!}</td>
+							 	<td>
+									<button class="btn btn-primary editar-boton" id="{!! $persona->id !!}">editar</button>
+								</td>
+							 </tr>
+							 @endforeach
 							</tbody>
 						</table>
 					</div>
 
 					<div id="add-barrio" class="col-lg-6" style="display: none;">
 						<center>
-							<h1>Agregar barrio</h1>
-
-							<form role="form" method="POST" action="{{url('lugares')}}">
-								{{csrf_field()}}
-								<div class="form-group has-success">
-									<label class="control-label" for="inputSuccess">Nombre del barrio</label>
-									<input type="text" class="form-control" id="nombre" name="nombre" required>
-									<label class="control-label" for="inputSuccess">Seleccione zona</label>
-									<select name="zona" class="form-control" id="zona">
-
-										@foreach($zonas as $zona)
-
-										<option value="{{ $zona->id }}">{{ $zona->nombre }}</option>
-
-										@endforeach
-
-									</select>
-									<br>
-									<button type="submit" class="btn btn-primary">Submit Button</button>
-									<button id="cancelar" type="reset" class="btn btn-warning">Reset Button</button>
-								</div>
-
-							</form>
+							
 
 						</center>
 					</div>
 
 					<div id="editar-barrio" class="col-lg-6" style="display: none;">
-						<center>
-							<h1>Editar barrio</h1>
-
-							<form role="form" id="editar_barrios" method="POST">
-								{{csrf_field()}}
-								<div class="form-group has-success">
-									<label class="control-label" for="inputSuccess">Nombre del barrio</label>
-									<input type="text" class="form-control" id="nombre_edi" name="nombre_edi" required>
-									<label class="control-label" for="inputSuccess">Seleccione zona</label>
-									<select name="zona_edi" class="form-control" id="zona_edi">
-
-										@foreach($zonas as $zona)
-
-										<option value="{{ $zona->id }}">{{ $zona->nombre }}</option>
-
-										@endforeach
-
-									</select>
-									<br>
-									<button type="submit" id="button_update" class="btn btn-primary modify-course">Salvar</button>
-									<button id="cancelar_editar" type="reset" class="btn btn-warning">Cancelar</button>
-								</div>
-
-							</form>
-
-						</center>
-					</div>
+											</div>
 
 				</div>
 
@@ -161,4 +104,11 @@
 		</div>
 	</div>
 </div>
+<script type="text/javascript">
+$("#listar").click(function(){
+		$(".tabla-lista").show()
+		//$("#editar-barrio").hide()
+		//$("#add-barrio").hide()
+	});
+</script>
 @stop
