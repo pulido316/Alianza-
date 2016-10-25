@@ -103,8 +103,7 @@
 					</div>
 
 					<div id="add-barrio" class="col-lg-6" style="display: none;">
-						<center>
-							<h1>Agregar barrio</h1>
+						<h3>Agregar barrio</h3>
 
 							<form role="form" method="POST" action="{{url('lugares')}}">
 								{{csrf_field()}}
@@ -122,13 +121,13 @@
 
 									</select>
 									<br>
-									<button type="submit" class="btn btn-primary">Submit Button</button>
-									<button id="cancelar" type="reset" class="btn btn-warning">Reset Button</button>
+									<center>
+										<button type="submit" class="btn btn-primary">Guardar</button>
+										<button id="cancelar" type="reset" class="btn btn-warning">Cancelar</button>
+									</center>
 								</div>
 
 							</form>
-
-						</center>
 					</div>
 
 					<div id="editar-barrio" class="col-lg-6" style="display: none;">

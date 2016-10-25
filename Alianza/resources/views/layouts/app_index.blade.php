@@ -120,7 +120,7 @@
                         <a href="inmueble"><i class="glyphicon glyphicon-home "></i> Inmuenbles</a>
                     </li>
                     <li id="parametro">
-                        <a href="javascript:;" data-toggle="collapse" data-target="#demo" class="collapsed" aria-expanded="false"><i class="glyphicon glyphicon-cog"></i> Parámetros <i class="fa fa-fw fa-caret-down"></i></a>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo" class="collapsed" aria-expanded="false"><i class=" fa fa-cog fa-spin"></i> Parámetros <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo" class="collapse" aria-expanded="false" style="height: 0px;">
                             <li>
                                 <a href="/personas">Personas</a>
