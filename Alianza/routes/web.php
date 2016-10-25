@@ -13,23 +13,26 @@
 
 /**Route::get('/', function () {
     return view('usuario.inicio');
-});
+});*/
 Route::get('postulaciones/{id?}',[
 	'uses' => 'prueba@prueba'
 
-	]);**/
+	]);
 
 Auth::routes();
 
 Route::get('/', 'InicioController@indexInicio');
 
+Route::get('buscar/{id}', 'lugares@buscar');
+Route::post('actualizar/{id}', 'lugares@actualizar');
 /**administrador**/
 Route::get('home', 'HomeController@index');
 //Route::get('apartamentos', 'ApartamentosController@indexApartamentos');
 //rutas parametros
-
-Route::resource('/parametro','ParametroController');
-Route::resource('/persona','PersonaController');
+Route::resource('/lugares','lugares');
+Route::resource('/personas','personas');
+//Route::resource('/parametro','ParametroController');
+//Route::resource('/persona','PersonaController');
 Route::resource('/inmueble','InmuebleController');
 //Route::get('inmueble','InmuebleController@indexInmueble');
 

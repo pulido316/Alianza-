@@ -111,6 +111,8 @@
 
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
+
+
                     <li id="home">
                     <a href="home"><i class="glyphicon glyphicon-th-large"></i> Home</a>
                     </li>
@@ -118,8 +120,30 @@
                         <a href="inmueble"><i class="glyphicon glyphicon-home "></i> Inmuenbles</a>
                     </li>
                     <li id="parametro">
-                        <a href="parametro"><i class="glyphicon glyphicon-cog"></i> Parámetros</a>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo" class="collapsed" aria-expanded="false"><i class="glyphicon glyphicon-cog"></i> Parámetros <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="demo" class="collapse" aria-expanded="false" style="height: 0px;">
+                            <li>
+                                <a href="/personas">Personas</a>
+                            </li>
+                            <li>
+                                <a href="/lugares">Lugares</a>
+                            </li>
+                                <li>
+                                <a href="#">Tipos inmueble</a>
+                            </li>
+                                <li>
+                                <a href="#">Operaciones</a>
+                            </li>
+                                <li>
+                                <a href="#">Servicios</a>
+                            </li>
+                            </li>
+                                <li>
+                                <a href="#">Detalles de inmuebles</a>
+                            </li>
+                        </ul>
                     </li>
+
                  </ul>
                
             </div>

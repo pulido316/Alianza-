@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-10-2016 a las 01:04:01
+-- Tiempo de generación: 24-10-2016 a las 23:41:24
 -- Versión del servidor: 10.0.17-MariaDB
 -- Versión de PHP: 5.6.14
 
@@ -136,8 +136,9 @@ CREATE TABLE `inmuebles` (
   `persona_id` int(10) UNSIGNED NOT NULL,
   `lugar_id` int(10) UNSIGNED NOT NULL,
   `tipo_id` int(10) UNSIGNED NOT NULL,
-  `area_total` float(8,2) NOT NULL,
-  `area_constrccion` float NOT NULL,
+  `direccion` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `area_total` double(8,2) NOT NULL,
+  `area_construccion` double(8,2) NOT NULL,
   `observacion` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -147,10 +148,10 @@ CREATE TABLE `inmuebles` (
 -- Volcado de datos para la tabla `inmuebles`
 --
 
-INSERT INTO `inmuebles` (`id`, `persona_id`, `lugar_id`, `tipo_id`, `area_total`, `area_constrccion`, `observacion`, `created_at`, `updated_at`) VALUES
-(1, 1, 15, 2, 70.50, 60.125, 'n/a', NULL, NULL),
-(7, 1, 22, 1, 50.15, 49.6, 'n/a', NULL, NULL),
-(8, 1, 30, 5, 50.00, 50, 'feo', NULL, NULL);
+INSERT INTO `inmuebles` (`id`, `persona_id`, `lugar_id`, `tipo_id`, `direccion`, `area_total`, `area_construccion`, `observacion`, `created_at`, `updated_at`) VALUES
+(1, 1, 15, 2, 'mz x casa 7', 70.50, 60.12, 'n/a', NULL, NULL),
+(7, 1, 22, 1, 'calle 15 casa 27', 50.15, 49.60, 'n/a', NULL, NULL),
+(8, 1, 30, 5, 'avenida norte 558', 50.00, 50.00, 'feo', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -326,7 +327,7 @@ CREATE TABLE `postulaciones` (
   `inmueble_id` int(10) UNSIGNED NOT NULL,
   `fecha_inicio` date NOT NULL,
   `fecha_fin` date DEFAULT NULL,
-  `precio` float NOT NULL,
+  `precio` double(8,2) NOT NULL,
   `estado_pustulacion` enum('activo','inactivo') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'activo',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -337,10 +338,10 @@ CREATE TABLE `postulaciones` (
 --
 
 INSERT INTO `postulaciones` (`operacion_id`, `inmueble_id`, `fecha_inicio`, `fecha_fin`, `precio`, `estado_pustulacion`, `created_at`, `updated_at`) VALUES
-(1, 1, '2016-10-16', NULL, 123457000, 'activo', NULL, NULL),
-(1, 7, '2016-10-16', '2016-10-11', 300000, 'activo', NULL, NULL),
-(1, 8, '2016-10-16', NULL, 250000, 'activo', NULL, NULL),
-(2, 7, '2016-10-16', '2016-10-21', 80000000, 'activo', NULL, NULL);
+(1, 1, '2016-10-16', NULL, 999999.99, 'activo', NULL, NULL),
+(1, 7, '2016-10-16', '2016-10-11', 300000.00, 'activo', NULL, NULL),
+(1, 8, '2016-10-16', NULL, 250000.00, 'activo', NULL, NULL),
+(2, 7, '2016-10-16', '2016-10-21', 999999.99, 'activo', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -410,7 +411,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'AlianzaAdmin', 'AlianzaAdmin@alianza.com', '$2y$10$dHkK55zSVAWHAV7WHr09iuTV4SN8rimJgKf1v5v9MAq8ZPe3LJmua', NULL, '2016-10-16 09:05:39', '2016-10-16 09:05:39');
+(1, 'AlianzaAdmin', 'AlianzaAdmin@alianza.com', '$2y$10$dHkK55zSVAWHAV7WHr09iuTV4SN8rimJgKf1v5v9MAq8ZPe3LJmua', NULL, '2016-10-16 14:05:39', '2016-10-16 14:05:39');
 
 --
 -- Índices para tablas volcadas
@@ -450,8 +451,9 @@ ALTER TABLE `imagenes`
 --
 ALTER TABLE `inmuebles`
   ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `inmuebles_direccion_unique` (`direccion`),
   ADD KEY `inmuebles_persona_id_foreign` (`persona_id`),
-  ADD KEY `inmuebles_ubicacion_id_foreign` (`lugar_id`),
+  ADD KEY `inmuebles_lugar_id_foreign` (`lugar_id`),
   ADD KEY `inmuebles_tipo_id_foreign` (`tipo_id`);
 
 --
@@ -585,9 +587,9 @@ ALTER TABLE `imagenes`
 -- Filtros para la tabla `inmuebles`
 --
 ALTER TABLE `inmuebles`
+  ADD CONSTRAINT `inmuebles_lugar_id_foreign` FOREIGN KEY (`lugar_id`) REFERENCES `lugares` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `inmuebles_persona_id_foreign` FOREIGN KEY (`persona_id`) REFERENCES `personas` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `inmuebles_tipo_id_foreign` FOREIGN KEY (`tipo_id`) REFERENCES `tipos` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `inmuebles_ubicacion_id_foreign` FOREIGN KEY (`lugar_id`) REFERENCES `lugares` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `inmuebles_tipo_id_foreign` FOREIGN KEY (`tipo_id`) REFERENCES `tipos` (`id`) ON DELETE CASCADE;
 
 --
 -- Filtros para la tabla `lugares`

@@ -6,21 +6,16 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
-use App\Tipo; 
-
-use App\Operacion; 
-
-class ParametroController extends Controller
+class Personas extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-   
     public function index()
     {
-        return view('administrador.parametro');
+        return view('administrador.personas');
     }
 
     /**
@@ -41,17 +36,7 @@ class ParametroController extends Controller
      */
     public function store(Request $request)
     {
-
-      // dd($request->tipo);
-       $this->validate($request,[
-            'tipo'=> 'required'
-            ]);
-
-           $tipo= new Tipo();
-           $tipo->nombre= $request->tipo;
-           $tipo->save();
-           return view('administrador.parametro');
-        
+        //
     }
 
     /**

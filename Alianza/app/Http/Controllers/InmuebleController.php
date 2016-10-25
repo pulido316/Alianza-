@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use DB;
+
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -23,8 +25,13 @@ class InmuebleController extends Controller
      */
     public function index()
     {
-
-        return view('administrador.inmueble');
+     $lugar = DB::select("SELECT id,nombre FROM `lugares` where tipo = 'Zona'");
+     $data=array('zona'=>$lugar,
+        );
+     // $lugares =Lugar::pluck('nombre', 'id');
+      
+  // dd($lugar);
+   return view('administrador.inmueble',$data);
     }
 
     /**

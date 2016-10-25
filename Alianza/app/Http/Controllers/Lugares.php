@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use DB;
 use App\Http\Requests;
-use App\Persona;
-class PersonaController extends Controller
+use App\Lugar; 
+use Redirect;
+
+class Lugares extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +17,13 @@ class PersonaController extends Controller
      */
     public function index()
     {
-        return view('administrador.persona');
+        $barrio = DB::select("SELECT l.id id,l.nombre nombre,l.tipo tipo,u.nombre zona FROM lugares l, lugares u WHERE l.ubicacion_id=u.id");
+        $zona = DB::select("SELECT id,nombre FROM `lugares` where tipo = 'Zona'");
+
+        $data=array('barrios'=>$barrio,
+            'zonas'=>$zona,
+            );
+        return view('administrador.lugares',$data);
     }
 
     /**
@@ -25,7 +33,8 @@ class PersonaController extends Controller
      */
     public function create()
     {
-             }
+        //
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -35,26 +44,15 @@ class PersonaController extends Controller
      */
     public function store(Request $request)
     {
-         //dd($request->nombre);
-        $this->validate($request,[
-            'nombre'=> 'required',
-            'apellido'=> 'required',
-            'telefono'=> 'required',
-            'email'=> 'required'
+          
 
-            ]);
-
-           $persona = new Persona();
-           $persona->nombre= $request->nombre;
-           $persona->apellido= $request->apellido;
-           $persona->email= $request->email;
-           $persona->telefono= $request->telefono;
-           $persona->observacion= $request->observacion;
-
-           dd($request->observacion);
-           //$tipo->save();*/
-           //return view('administrador.parametro');
-
+           
+           $nombre= $request->nombre;
+           $zona= $request->zona;
+          // $barrio->tipo='barrio';
+          // dd($barrio);
+          Lugar::insert(['nombre' => $nombre, 'ubicacion_id'=> $zona, 'tipo'=> 'barrio']);
+          return Redirect::to('lugares');
     }
 
     /**
@@ -63,9 +61,15 @@ class PersonaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+      public function buscar($id)
+    {
+        $buscar= DB::select("SELECT * FROM `lugares` WHERE `id` = '".$id."'");
+        $busqueda=Lugar::where('id',$id)->first();
+        return response()->json($busqueda);
+    }
     public function show($id)
     {
-        //
+      
     }
 
     /**
@@ -86,9 +90,17 @@ class PersonaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function actualizar(Request $request, $id)
     {
-        //
+         
+
+           
+           $nombre= $request->nombre_edi;
+           $zona= $request->zona_edi;
+          // $barrio->tipo='barrio';
+
+        $dato =  Lugar::where('id',$id)->update(['nombre' => $nombre, 'ubicacion_id'=> $zona]);
+        return Redirect::to('lugares');
     }
 
     /**

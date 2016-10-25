@@ -30,6 +30,7 @@ class CreateInmueblesTable extends Migration
                 ->references('id')
                 ->on('tipos')
                 ->onDelete('cascade');
+            $table->string('direccion')->unique();
             $table->float('area_total');
             $table->float('area_construccion');
             $table->string('observacion');
