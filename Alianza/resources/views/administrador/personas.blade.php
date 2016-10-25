@@ -91,6 +91,8 @@
 						</div>
 						<div id="add-persona" class="col-lg-6" style="display: none;">
 							<h3>Agregar Persona</h3>
+							<form role="form" method="POST" action="{{url('personas')}}">
+							{{csrf_field()}}
 							<div class="form-group has-success">
 								<label class="control-label" for="inputSuccess">Nombres</label>
 								<input type="text" class="form-control" id="nombre" name="nombre" required>

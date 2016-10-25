@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use App\Http\Requests;
+use App\Persona; 
+use Redirect;
 
 class Personas extends Controller
 {
@@ -42,8 +44,16 @@ class Personas extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+       $nombre= $request->nombre;
+       $apellido=$request->apellido;
+       $cc=$request->cc;
+       $correo=$request->correo;
+       $telefono=$request->telefono;
+       $observacion=$request->observacion;
+      // dd($nombre,$apellido,$cc,$correo,$telefono,$observacion);
+       Persona::insert(['nombre' => $nombre, 'apellido'=> $apellido, 'email' => $correo,'documento_id'=>$cc,'telefono'=>$telefono,'observacion'=>$observacion]);
+        return Redirect::to('administrador.personas');
+   }
 
     /**
      * Display the specified resource.
