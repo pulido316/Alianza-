@@ -82,7 +82,7 @@
 										<td>{!! $persona->telefono!!}</td>
 										<td>{!! $persona->observacion!!}</td>
 										<td>
-											<button class="btn btn-primary editar-boton" id="{!! $persona->id !!}">editar</button>
+											<button class="btn btn-primary editar-boton" id="{!! $persona->CC !!}">editar</button>
 										</td>
 									</tr>
 									@endforeach
@@ -116,6 +116,33 @@
 
 						</form>
 					</div>
+					<div id="editar-persona" class="col-lg-6" style="display: none;">
+							<h3>Editar Persona</h3>
+							<form role="form" method="POST" action="{{url('personas')}}">
+							{{csrf_field()}}
+							<div class="form-group has-success">
+								<label class="control-label" for="inputSuccess">Nombres</label>
+								<input type="text" class="form-control" id="edi_nombre" name="nombre" required>
+								<label class="control-label" for="inputSuccess">Apellidos</label>
+								<input type="text" class="form-control" id="edi_apellido" name="apellido" required>
+								<label class="control-label" for="inputSuccess">Identificacion (C.C)</label>
+								<input type="number" class="form-control" id="edi_cc" name="cc" required>
+								<label class="control-label" for="inputSuccess">Correo</label>
+								<input type="email" class="form-control" id="edi_correo" name="correo" required>
+								<label class="control-label" for="inputSuccess">Telefono</label>
+								<input type="number" class="form-control" id="edi_telefono" name="telefono" required>
+								<label class="control-label" for="inputSuccess">Observaciones</label>
+								<textarea class="form-control" rows="5" id="edi_observacion" name="observacion"></textarea>
+								<br>
+								<center>
+									<button type="submit" class="btn btn-primary">Guardar</button>
+									<button id="cancelar_edi" name="cancelar_edi" type="reset" class="btn btn-warning">Cancelar</button>
+								</center>
+								
+							</div>
+
+						</form>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -126,14 +153,50 @@
 	$("#listar").click(function(){
 		$(".tabla-lista").show()
 		$("#add-persona").hide()
+		$("#editar-persona").hide()
 	});
 	$("#persona-nueva").click(function(){
 		$(".tabla-lista").hide()
 		$("#add-persona").show()
+		$("#editar-persona").hide()
 	});
 	$("#cancelar").click(function(){
 		$(".tabla-lista").hide()
 		$("#add-persona").hide()
+		$("#editar-persona").hide()
 	});
+	$("#cancelar_edi").click(function(){
+		$(".tabla-lista").hide()
+		$("#add-persona").hide()
+		$("#editar-persona").hide()
+	});
+	$(".editar-boton").click(function(){
+		$(".tabla-lista").hide()
+		$("#add-persona").hide()
+		$("#editar-persona").show()
+		var dataId = this.id;
+		//alert(dataId)
+		//$("#button_update").attr("id", dataId);
+		$.ajax({ 
+			type: 'GET', 
+			url: '/buscarpersona/'+dataId, 
+			dataType: 'json',
+			success: function (data) {
+				$("#edi_nombre").val(data.nombre);
+				$("#edi_apellido").val(data.apellido);
+				$("#edi_cc").val(data.documento_id);
+				$("#edi_correo").val(data.email);
+				$("#edi_telefono").val(data.telefono);
+				$("#edi_observacion").val(data.observacion);
+				
+			},
+			error:function(msg) {
+	   			// body...
+	   			console.log(msg+"fallo");
+	   		}
+	   	});
+	});
+	
+	
 </script>
 @stop

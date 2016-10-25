@@ -65,6 +65,15 @@ class Personas extends Controller
     {
         //
     }
+    public function buscar($id)
+    {
+      
+        //SELECT * FROM `personas` WHERE documento_id =1049630805
+     // $buscar= DB::select("SELECT id,documento_id CC, nombre nombres, apellido apellidos, email correo, telefono telefono, observacion observacion FROM `personas` WHERE documento_id = '".$id."'");
+      //dd($buscar);
+        $busqueda=Persona::where('documento_id',$id)->first();
+        return response()->json($busqueda);
+    }
 
     /**
      * Show the form for editing the specified resource.

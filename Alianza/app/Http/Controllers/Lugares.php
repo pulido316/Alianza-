@@ -63,8 +63,10 @@ class Lugares extends Controller
      */
       public function buscar($id)
     {
-        $buscar= DB::select("SELECT * FROM `lugares` WHERE `id` = '".$id."'");
+       // dd($id);
+        //$buscar= DB::select("SELECT * FROM `lugares` WHERE `id` = '".$id."'");
         $busqueda=Lugar::where('id',$id)->first();
+        //dd($busqueda);
         return response()->json($busqueda);
     }
     public function show($id)

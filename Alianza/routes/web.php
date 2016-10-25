@@ -25,6 +25,7 @@ Route::get('/', 'InicioController@indexInicio');
 
 Route::get('buscar/{id}', 'lugares@buscar');
 Route::post('actualizar/{id}', 'lugares@actualizar');
+Route::get('buscarpersona/{id}', 'personas@buscar');
 /**administrador**/
 Route::get('home', 'HomeController@index');
 //Route::get('apartamentos', 'ApartamentosController@indexApartamentos');
