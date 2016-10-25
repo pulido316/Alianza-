@@ -14,7 +14,7 @@ class Persona extends Model
      */
     protected $table = 'personas';
     protected $fillable = [
-        'nombre','apellido','email','telefono','observacion',
+        'nombre','apellido','email','documento_id','telefono','observacion',
     ];
      public function inmuebles(){
         return $this->hasMany('App\Inmueble');

@@ -14,7 +14,7 @@ class Inmueble extends Model
      */
     protected $table = 'inmuebles';
     protected $fillable = [
-        'persona_id','lugar_id','tipo_id','area_total','area_construccion','observacion',
+        'persona_id','lugar_id','tipo_id','area_total','direccion','area_construccion','observacion',
     ];
      public function dotaciones(){
         return $this->hasMany('App\Dotacion');

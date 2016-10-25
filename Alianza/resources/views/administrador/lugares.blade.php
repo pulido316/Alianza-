@@ -94,7 +94,7 @@
 										{!! $barrio->zona !!}
 									</td>
 									<td>
-										<button class="show-edit editar-boton" id="{!! $barrio->id !!}">editar</button>
+										<button class="btn btn-primary editar-boton" id="{!! $barrio->id !!}">editar</button>
 									</td>
 								</tr>
 
@@ -169,58 +169,59 @@
 			<!-- /.container-fluid -->
 
 		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	$(".show-edit").click(function(){
+		$(".table").hide()
+		$("#editar-barrio").hide()
+		$("#add-barrio").hide()
+	});
 
-		<script type="text/javascript">
-			$(".show-edit").click(function(){
-				$(".table").hide()
-				$("#editar-barrio").hide()
-				$("#add-barrio").hide()
-			});
+	$("#listar-lugar").click(function(){
+		$(".table").show()
+		$("#editar-barrio").hide()
+		$("#add-barrio").hide()
+	});
+	$("#mostrar-barrio").click(function(){
+		$(".table").hide()
+		$("#editar-barrio").hide()
+		$("#add-barrio").show()
+	});
+	$("#cancelar").click(function(){
+		$(".table").hide()
+		$("#add-barrio").hide()
+	});
+	$("#cancelar_editar").click(function(){
+		$(".table").hide()
+		$("#add-barrio").hide()
+		$("#editar-barrio").hide()
 
-			$("#listar-lugar").click(function(){
-				$(".table").show()
-				$("#editar-barrio").hide()
-				$("#add-barrio").hide()
-			});
-			$("#mostrar-barrio").click(function(){
-				$(".table").hide()
-				$("#editar-barrio").hide()
-				$("#add-barrio").show()
-			});
-			$("#cancelar").click(function(){
-				$(".table").hide()
-				$("#add-barrio").hide()
-			});
-			$("#cancelar_editar").click(function(){
-				$(".table").hide()
-				$("#add-barrio").hide()
-				$("#editar-barrio").hide()
+	});
+	$(".editar-boton").click(function(){
+		$(".table").hide()
+		$("#add-barrio").hide()
+		$("#editar-barrio").show()
 
-			});
-			$(".editar-boton").click(function(){
-				$(".table").hide()
-				$("#add-barrio").hide()
-				$("#editar-barrio").show()
-
-				var dataId = this.id;
-				$("#button_update").attr("id", dataId);
-				$('#editar_barrios').attr("action", '{{url('actualizar')}}/'+dataId);
-				$.ajax({ 
-					type: 'GET', 
-					url: '/buscar/'+dataId, 
-					dataType: 'json',
-					success: function (data) {
-						$("#nombre_edi").val(data.nombre);
-						$("#zona_edi option[value='"+data.ubicacion_id+"']").attr("selected","selected");
-					},
-					error:function(msg) {
+		var dataId = this.id;
+		$("#button_update").attr("id", dataId);
+		$('#editar_barrios').attr("action", '{{url('actualizar')}}/'+dataId);
+		$.ajax({ 
+			type: 'GET', 
+			url: '/buscar/'+dataId, 
+			dataType: 'json',
+			success: function (data) {
+				$("#nombre_edi").val(data.nombre);
+				$("#zona_edi option[value='"+data.ubicacion_id+"']").attr("selected","selected");
+			},
+			error:function(msg) {
 	   			// body...
 	   			console.log(msg+"fallo");
 	   		}
 	   	});
-			});
-			
+	});
+	
 
 
-		</script>
-		@stop
+</script>
+@stop

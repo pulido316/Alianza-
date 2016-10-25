@@ -303,6 +303,7 @@ CREATE TABLE `personas` (
   `nombre` varchar(40) COLLATE utf8_unicode_ci NOT NULL,
   `apellido` varchar(40) COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(60) COLLATE utf8_unicode_ci NOT NULL,
+  `documento_id` int(11) NOT NULL,
   `telefono` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
   `observacion` varchar(300) COLLATE utf8_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -313,8 +314,8 @@ CREATE TABLE `personas` (
 -- Volcado de datos para la tabla `personas`
 --
 
-INSERT INTO `personas` (`id`, `nombre`, `apellido`, `email`, `telefono`, `observacion`, `created_at`, `updated_at`) VALUES
-(1, 'pepe', 'rojas', 'pepe.rojas@correo.com', '123456789', 'N/A', NULL, NULL);
+INSERT INTO `personas` (`id`, `nombre`, `apellido`, `email`,`documento_id`, `telefono`, `observacion`, `created_at`, `updated_at`) VALUES
+(1, 'pepe', 'rojas', 'pepe.rojas@correo.com','1049630805', '123456789', 'N/A', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -481,7 +482,8 @@ ALTER TABLE `password_resets`
 --
 ALTER TABLE `personas`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `personas_email_unique` (`email`);
+  ADD UNIQUE KEY `personas_email_unique` (`email`),
+  ADD UNIQUE KEY `personas_documento_id_unique` (`documento_id`);
 
 --
 -- Indices de la tabla `postulaciones`
