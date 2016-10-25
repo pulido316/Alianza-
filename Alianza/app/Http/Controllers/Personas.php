@@ -52,7 +52,7 @@ class Personas extends Controller
        $observacion=$request->observacion;
       // dd($nombre,$apellido,$cc,$correo,$telefono,$observacion);
        Persona::insert(['nombre' => $nombre, 'apellido'=> $apellido, 'email' => $correo,'documento_id'=>$cc,'telefono'=>$telefono,'observacion'=>$observacion]);
-        return Redirect::to('administrador.personas');
+        return Redirect::to('personas');
    }
 
     /**
