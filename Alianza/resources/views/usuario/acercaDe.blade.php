@@ -5,7 +5,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12">
-				<h2 class="pageTitle">About Us</h2>
+				<h2 class="pageTitle">Acerca de nosotros</h2>
 			</div>
 		</div>
 	</div>
@@ -18,12 +18,12 @@
 						<div class="row"> 
 							<div class="col-md-12">
 								<div class="about-logo">
-									<h3><span class="color">Mision</span></h3>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores quae porro consequatur aliquam, incidunt eius magni provident, doloribus omnis minus temporibus perferendis nesciunt quam repellendus nulla nemo ipsum odit corrupti consequuntur possimus</p>
+									<h3><span class="color">Misión de la empresa</span></h3>
+									<p>Trabajar en equipo con conocimiento, empeño y corazón los diferentes servicios ofertados, buscando siempre satisfacer las necesidades de los clientes a alcanzar, y trascender más allá de un beneficio empresarial con un servicio social.</p>
 								</div>
 								<div class="about-logo">
-									<h3><span class="color">Visión</span></h3>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores quae porro consequatur aliquam, incidunt eius magni provident, doloribus omnis minus temporibus perferendis nesciunt quam repellendus nulla nemo ipsum odit corrupti consequuntur possimus</p>
+									<h3><span class="color">Visión de la empresa</span></h3>
+									<p>Desarrollar un escenario optimo que logre satisfacer las diferentes necesidades en el campo de la finca raíz de la población de la ciudad de Tunja, garantizando la calidad de los servicios ofertados y la satisfacción de los clientes, a través de un equipo integrado de trabajo que actué con conocimiento, empeño y corazón. </p>
 								</div>
 							</div>
 						</div>
