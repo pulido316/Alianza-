@@ -52,7 +52,7 @@ class Personas extends Controller
        $observacion=$request->observacion;
       // dd($nombre,$apellido,$cc,$correo,$telefono,$observacion);
        Persona::insert(['nombre' => $nombre, 'apellido'=> $apellido, 'email' => $correo,'documento_id'=>$cc,'telefono'=>$telefono,'observacion'=>$observacion]);
-        return Redirect::to('personas');
+       return Redirect::to('personas');
    }
 
     /**
@@ -67,7 +67,7 @@ class Personas extends Controller
     }
     public function buscar($id)
     {
-      
+
         //SELECT * FROM `personas` WHERE documento_id =1049630805
      // $buscar= DB::select("SELECT id,documento_id CC, nombre nombres, apellido apellidos, email correo, telefono telefono, observacion observacion FROM `personas` WHERE documento_id = '".$id."'");
       //dd($buscar);
@@ -96,6 +96,22 @@ class Personas extends Controller
     public function update(Request $request, $id)
     {
         //
+    }
+    public function actualizar(Request $request, $id)
+    {
+       
+
+        $nombre= $request->edi_nombre;
+        $apellido=$request->edi_apellido;
+        $cc=$request->edi_cc;
+        $correo=$request->edi_correo;
+        $telefono=$request->edi_telefono;
+        $observacion=$request->edi_observacion;
+
+       // dd($id,$nombre,$apellido,$cc,$correo,$telefono,$observacion);
+
+       $dato=Persona::where('documento_id',$id)->update(['nombre'=> $nombre,'apellido'=> $apellido,'email'=> $correo,'documento_id'=> $cc,'telefono'=> $telefono,'observacion'=> $observacion]);
+        return Redirect::to('personas');
     }
 
     /**

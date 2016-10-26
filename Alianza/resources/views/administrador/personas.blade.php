@@ -118,24 +118,24 @@
 					</div>
 					<div id="editar-persona" class="col-lg-6" style="display: none;">
 							<h3>Editar Persona</h3>
-							<form role="form" method="POST" action="{{url('personas')}}">
+							<form role="form"  id="editar_persona" method="POST">
 							{{csrf_field()}}
 							<div class="form-group has-success">
 								<label class="control-label" for="inputSuccess">Nombres</label>
-								<input type="text" class="form-control" id="edi_nombre" name="nombre" required>
+								<input type="text" class="form-control" id="edi_nombre" name="edi_nombre" required>
 								<label class="control-label" for="inputSuccess">Apellidos</label>
-								<input type="text" class="form-control" id="edi_apellido" name="apellido" required>
+								<input type="text" class="form-control" id="edi_apellido" name="edi_apellido" required>
 								<label class="control-label" for="inputSuccess">Identificacion (C.C)</label>
-								<input type="number" class="form-control" id="edi_cc" name="cc" required>
+								<input type="number" class="form-control" id="edi_cc" name="edi_cc" required>
 								<label class="control-label" for="inputSuccess">Correo</label>
-								<input type="email" class="form-control" id="edi_correo" name="correo" required>
+								<input type="email" class="form-control" id="edi_correo" name="edi_correo" required>
 								<label class="control-label" for="inputSuccess">Telefono</label>
-								<input type="number" class="form-control" id="edi_telefono" name="telefono" required>
+								<input type="number" class="form-control" id="edi_telefono" name="edi_telefono" required>
 								<label class="control-label" for="inputSuccess">Observaciones</label>
-								<textarea class="form-control" rows="5" id="edi_observacion" name="observacion"></textarea>
+								<textarea class="form-control" rows="5" id="edi_observacion" name="edi_observacion"></textarea>
 								<br>
 								<center>
-									<button type="submit" class="btn btn-primary">Guardar</button>
+									<button type="submit" id="button_update" class="btn btn-primary modify-course">Salvar</button>
 									<button id="cancelar_edi" name="cancelar_edi" type="reset" class="btn btn-warning">Cancelar</button>
 								</center>
 								
@@ -175,8 +175,8 @@
 		$("#add-persona").hide()
 		$("#editar-persona").show()
 		var dataId = this.id;
-		//alert(dataId)
-		//$("#button_update").attr("id", dataId);
+		$("#button_update").attr("id", dataId);
+		$('#editar_persona').attr("action", '{{url('actualizarpersona')}}/'+dataId);
 		$.ajax({ 
 			type: 'GET', 
 			url: '/buscarpersona/'+dataId, 

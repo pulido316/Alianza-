@@ -100,9 +100,9 @@ class Lugares extends Controller
            $nombre= $request->nombre_edi;
            $zona= $request->zona_edi;
           // $barrio->tipo='barrio';
-
+           // dd($nombre,$zona);
         $dato =  Lugar::where('id',$id)->update(['nombre' => $nombre, 'ubicacion_id'=> $zona]);
-        return Redirect::to('lugares');
+       return Redirect::to('lugares');
     }
 
     /**
