@@ -1,8 +1,11 @@
+
 @extends('layouts.app_index')
 
 @section('content')
 
-
+	<link rel="stylesheet" href="http://cdn.datatables.net/1.10.2/css/jquery.dataTables.css">
+	<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
 
 <div id="wrapper">
 	<div id="page-wrapper">
@@ -64,8 +67,8 @@
 
 			<div class="row">
 				<div class="col-lg-12">
-					<div class="table-responsive table">
-						<table id="example" style="display: none;" class="table table-hover table-striped table table-striped table-borderedSeen" >
+					<div class="table-responsive table" style="display: none;">
+						<table id="example" class=" table-hover table-striped table table-striped table-borderedSeen display" >
 							<thead>
 								<tr>
 									<th>Identificacion</th>
@@ -75,6 +78,15 @@
 									<th>Editar</th>                                      
 								</tr>
 							</thead>
+							<tfoot>
+								<tr>
+									<th>Identificacion</th>
+									<th>Nombre</th>
+									<th>Tipo</th>
+									<th>Zona</th>
+									<th>Editar</th>   
+								</tr>
+							</tfoot>
 							<tbody>
 								@foreach($barrios as $barrio)
 								<tr>
@@ -100,6 +112,7 @@
 
 							</tbody>
 						</table>
+
 					</div>
 
 					<div id="add-barrio" class="col-lg-6" style="display: none;">
@@ -173,6 +186,10 @@
 		$("#editar-barrio").hide()
 		$("#add-barrio").hide()
 	});*/
+
+	
+    $('#example').dataTable();
+	
 
 	$("#listar-lugar").click(function(){
 		$(".table").show()

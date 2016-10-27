@@ -1,6 +1,10 @@
+
 	@extends('layouts.app_index')
 
 	@section('content')
+	<link rel="stylesheet" href="http://cdn.datatables.net/1.10.2/css/jquery.dataTables.css">
+	<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
 	<div id="wrapper">
 		<div id="page-wrapper">
 			<div class="container-fluid">
@@ -59,8 +63,8 @@
 				</div>
 				<div class="row">
 					<div class="col-lg-12">
-						<div id="tabla-lista" class="table-responsive">
-							<table id="example" style="display: none;" class="table table-hover table-striped tabla-lista table-striped table-borderedSeen" >
+						<div id="tabla-lista" class="table-responsive table tabla-lista" style="display: none;">
+							<table id="example"  class="table table-hover table-striped  table-striped table-borderedSeen" >
 								<thead>
 									<tr>
 										<th>CC</th>
@@ -150,6 +154,8 @@
 </div>
 
 <script type="text/javascript">
+ $('#example').dataTable();
+
 	$("#listar").click(function(){
 		$(".tabla-lista").show()
 		$("#add-persona").hide()

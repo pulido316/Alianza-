@@ -23,6 +23,8 @@ class Lugares extends Controller
         $data=array('barrios'=>$barrio,
             'zonas'=>$zona,
             );
+       // $lugar = DB::table('lugares')->paginate(5);
+       // dd($lugar);
         return view('administrador.lugares',$data);
     }
 
