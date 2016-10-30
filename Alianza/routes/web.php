@@ -25,13 +25,20 @@ Auth::routes();
 
 
 Route::get('/', 'InicioController@indexInicio');
-
+//rutas de opciones y configuracion de datos
 Route::get('buscar/{id}', 'lugares@buscar');
 Route::post('actualizar/{id}', 'lugares@actualizar');
 Route::get('buscarpersona/{id}', 'personas@buscar');
 Route::post('actualizarpersona/{id}', 'personas@actualizar');
 Route::get('buscartipo/{id}', 'tipos@buscar');
 Route::post('actualizartipo/{id}', 'tipos@actualizar');
+Route::get('buscarservicio/{id}', 'opciones@buscarservicio');
+Route::get('buscardetalle/{id}', 'opciones@buscardetalle');
+Route::get('buscaropcion/{id}', 'opciones@buscaropcion');
+
+Route::post('actualizarservicio/{id}', 'opciones@actualizarservicio');
+Route::post('actualizardetalle/{id}', 'opciones@actualizardetalle');
+Route::post('actualizaropcion/{id}', 'opciones@actualizaropcion');
 
 /**administrador**/
 Route::get('home', 'HomeController@index');

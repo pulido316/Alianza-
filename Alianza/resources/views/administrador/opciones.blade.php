@@ -161,15 +161,15 @@
 				</div>
 				<div class="col-lg-4" id="editar_servicio" style="display: none;">
 				<legend>Editar servicio</legend>
-				<form role="form">
+				<form role="form" id="editar" method="POST">
 							{{csrf_field()}}
 
 							<div class="form-group has-success">
 								<label class="control-label" for="inputSuccess">Nombre del servicio</label>
-								<input type="text" class="form-control" id="nombre" name="nombre" required>
+								<input type="text" class="form-control" id="nombre_edi_ser" name="nombre_edi_ser" required>
 								<center>
 									<br>
-									<button type="submit" id="button_update" class="btn btn-primary modify-course">Salvar</button>
+									<button type="submit" id="button_update1" class="btn btn-primary modify-course">Salvar</button>
 									<button id="cancelar_edi_ser" name="cancelar_edi_ser" type="reset" class="btn btn-warning cancelar_edi_ser">Cancelar</button>
 								</center>
 							</div>
@@ -232,15 +232,15 @@
 				</div>
 				<div class="col-lg-4" id="editar_deta" style="display: none;">
 				<legend>Editar detalle inmueble</legend>
-				<form role="form">
+				<form role="form" id="editar2" method="POST">
 							{{csrf_field()}}
 
 							<div class="form-group has-success">
-								<label class="control-label" for="inputSuccess">Nombre del servicio</label>
-								<input type="text" class="form-control" id="nombre" name="nombre" required>
+								<label class="control-label" for="inputSuccess">Nombre del detalle</label>
+								<input type="text" class="form-control" id="nombre_edi_det" name="nombre_edi_det" required>
 								<center>
 									<br>
-									<button type="submit" id="button_update" class="btn btn-primary modify-course">Salvar</button>
+									<button type="submit" id="button_update2" class="btn btn-primary modify-course">Salvar</button>
 									<button  type="reset" class="btn btn-warning cancelar_edi_det">Cancelar</button>
 								</center>
 							</div>
@@ -302,15 +302,15 @@
 				</div>
 				<div class="col-lg-4" id="editar_operacion" style="display: none;">
 				<legend>Editar detalle inmueble</legend>
-				<form role="form">
+				<form role="form" id="editar3" method="POST">
 							{{csrf_field()}}
 
 							<div class="form-group has-success">
 								<label class="control-label" for="inputSuccess">Nombre de la operacion</label>
-								<input type="text" class="form-control" id="nombre" name="nombre" required>
+								<input type="text" class="form-control" id="nombre_edi_opc" name="nombre_edi_opc" required>
 								<center>
 									<br>
-									<button type="submit" id="button_update" class="btn btn-primary modify-course">Salvar</button>
+									<button type="submit" id="button_update2" class="btn btn-primary modify-course">Salvar</button>
 									<button  type="reset" class="btn btn-warning cancelar_edi_det">Cancelar</button>
 								</center>
 							</div>
@@ -351,6 +351,21 @@
 		$('#add_servicio').hide()
 		$('#editar_servicio').show()
 
+		var dataId = this.id;
+		$("#button_update1").attr("id", dataId);
+		$('#editar').attr("action", '{{url('actualizarservicio')}}/'+dataId);
+		$.ajax({ 
+			type: 'GET', 
+			url: '/buscarservicio/'+dataId, 
+			dataType: 'json',
+			success: function (data) {
+				$("#nombre_edi_ser").val(data.nombre);			
+			},
+			error:function(msg) {
+	   			// body...
+	   			console.log(msg+"fallo");
+	   		}
+	   	});
 
 	});
 	$(".cancelar_edi_ser").click(function(){
@@ -378,7 +393,21 @@
 		$('#add_detalle').hide()
 		$('#editar_deta').show()
 
-
+		var dataId = this.id;
+		$("#button_update2").attr("id", dataId);
+		$('#editar2').attr("action", '{{url('actualizardetalle')}}/'+dataId);
+		$.ajax({ 
+			type: 'GET', 
+			url: '/buscardetalle/'+dataId, 
+			dataType: 'json',
+			success: function (data) {
+				$("#nombre_edi_det").val(data.nombre);			
+			},
+			error:function(msg) {
+	   			// body...
+	   			console.log(msg+"fallo");
+	   		}
+	   	});
 	});
 	$(".cancelar_edi_det").click(function(){
 		$("#panel_servicios").hide()
@@ -404,7 +433,21 @@
 		$('#add_operacion').hide()
 		$('#editar_operacion').show()
 
-
+		var dataId = this.id;
+		$("#button_update3").attr("id", dataId);
+		$('#editar3').attr("action", '{{url('actualizaropcion')}}/'+dataId);
+		$.ajax({ 
+			type: 'GET', 
+			url: '/buscaropcion/'+dataId, 
+			dataType: 'json',
+			success: function (data) {
+				$("#nombre_edi_opc").val(data.nombre);			
+			},
+			error:function(msg) {
+	   			// body...
+	   			console.log(msg+"fallo");
+	   		}
+	   	});
 	});
 	$(".cancelar_edi_det").click(function(){
 		$("#panel_servicios").hide()
