@@ -7,25 +7,29 @@
 <meta name="description" content="" />
 <meta name="author" content="http://webthemez.com" />
 <!-- css -->
-<link href="css/bootstrap.min.css" rel="stylesheet" />
-<link href="css/fancybox/jquery.fancybox.css" rel="stylesheet">
-<link href="css/jcarousel.css" rel="stylesheet" />
-<link href="css/flexslider.css" rel="stylesheet" />
-<link href="js/owl-carousel/owl.carousel.css" rel="stylesheet">
-<link href="css/style.css" rel="stylesheet" />
 
 
-<script src="js/jquery.js"></script>
-<script src="js/jquery.easing.1.3.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/jquery.fancybox.pack.js"></script>
-<script src="js/jquery.fancybox-media.js"></script>
-<script src="js/portfolio/jquery.quicksand.js"></script>
-<script src="js/portfolio/setting.js"></script>
-<script src="js/jquery.flexslider.js"></script>
-<script src="js/animate.js"></script>
-<script src="js/custom.js"></script>
-<script src="js/owl-carousel/owl.carousel.js"></script>
+{{ Html::style('css/bootstrap.min.css') }}
+{{ Html::style('css/fancybox/jquery.fancybox.css') }}
+{{ Html::style('css/jcarousel.css') }}
+{{ Html::style('css/flexslider.css')}}
+{{ Html::style('css/style.css') }}
+{{ Html::style('css/css.css') }}
+
+
+
+{{ Html::script('js/jquery.js') }}
+{{ Html::script('js/jquery.easing.1.3.js') }}
+{{ Html::script('js/bootstrap.min.js') }}
+{{ Html::script('js/jquery.fancybox.pack.js') }}
+{{ Html::script('js/jquery.fancybox-media.js') }}
+{{ Html::script('js/portfolio/jquery.quicksand.js') }}
+{{ Html::script('js/portfolio/setting.js') }}
+{{ Html::script('js/jquery.flexslider.js') }}
+{{ Html::script('js/animate.js') }}
+{{ Html::script('js/custom.js') }}
+{{ Html::script('js/owl-carousel/owl.carousel.js') }}
+
 
 <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
 <!--[if lt IE 9]>
@@ -46,16 +50,16 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="/"><img class="logo" src="img/logo.png" alt="logo"/></a>
+                    <a class="navbar-brand" href="/">{{ HTML::image('img/logo.png', 'logo', array('class' => 'logo')) }}</a>
                 </div>
                   <div class="navbar-collapse collapse ">
                     <ul class="nav navbar-nav">
-                        <li id="inicio"><a href="/">Inicio</a></li>
-                        <li id="arriendo"><a href="arriendos">Arriendos</a></li>
-                        <li id="venta"><a href="ventas">Ventas</a></li>
-                         <li id="servicio"><a href="servicios">Servicios Adicionales</a></li>
-                        <li id="acerca"><a href="acercaDe">Acerca de nosotros</a></li>
-                        <li id="contacto"><a href="contacto">Contacto</a></li>
+                        <li id="inicio">{{ HTML::link('/', 'Inicio') }}</a></li>
+                        <li id="arriendo">{{ HTML::link('arriendos', 'Arriendos') }}</a></li>
+                        <li id="venta">{{ HTML::link('ventas', 'Ventas') }}</a></li>
+                         <li id="servicio">{{ HTML::link('servicios', 'Servicios Adicionales') }}</a></li>
+                        <li id="acerca">{{ HTML::link('acercaDe', 'Acerca de nosotros') }}</a></li>
+                        <li id="contacto">{{ HTML::link('contacto', 'Contacto') }}</a></li>
                     </ul>
                 </div>
                

@@ -1,10 +1,10 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.0.2
+-- version 4.5.1
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 24-10-2016 a las 23:41:24
--- Versión del servidor: 10.0.17-MariaDB
+-- Tiempo de generación: 30-10-2016 a las 01:00:05
+-- Versión del servidor: 10.1.8-MariaDB
 -- Versión de PHP: 5.6.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -65,21 +65,31 @@ CREATE TABLE `distribuciones` (
 --
 
 INSERT INTO `distribuciones` (`inmueble_id`, `detalle_id`, `cantidad`, `created_at`, `updated_at`) VALUES
-(1, 1, 4, NULL, NULL),
-(1, 2, 2, NULL, NULL),
+(1, 1, 1, NULL, NULL),
+(1, 2, 1, NULL, NULL),
 (1, 4, 1, NULL, NULL),
-(1, 5, 1, NULL, NULL),
-(1, 7, 1, NULL, NULL),
-(7, 1, 5, NULL, NULL),
-(7, 2, 5, NULL, NULL),
+(2, 1, 1, NULL, NULL),
+(2, 2, 1, NULL, NULL),
+(2, 4, 1, NULL, NULL),
+(2, 7, 1, NULL, NULL),
+(3, 1, 2, NULL, NULL),
+(3, 2, 2, NULL, NULL),
+(3, 3, 1, NULL, NULL),
+(3, 4, 1, NULL, NULL),
+(3, 7, 1, NULL, NULL),
+(5, 1, 2, NULL, NULL),
+(5, 2, 2, NULL, NULL),
+(5, 4, 1, NULL, NULL),
+(5, 7, 1, NULL, NULL),
+(6, 1, 2, NULL, NULL),
+(6, 2, 1, NULL, NULL),
+(6, 4, 1, NULL, NULL),
+(6, 7, 1, NULL, NULL),
+(7, 1, 2, NULL, NULL),
+(7, 2, 1, NULL, NULL),
 (7, 3, 1, NULL, NULL),
 (7, 4, 1, NULL, NULL),
-(7, 5, 1, NULL, NULL),
-(7, 7, 1, NULL, NULL),
-(8, 1, 2, NULL, NULL),
-(8, 2, 1, NULL, NULL),
-(8, 4, 1, NULL, NULL),
-(8, 5, 1, NULL, NULL);
+(7, 7, 1, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -103,13 +113,27 @@ INSERT INTO `dotaciones` (`inmueble_id`, `servicio_id`, `created_at`, `updated_a
 (1, 2, NULL, NULL),
 (1, 3, NULL, NULL),
 (1, 4, NULL, NULL),
+(2, 1, NULL, NULL),
+(2, 2, NULL, NULL),
+(2, 3, NULL, NULL),
+(2, 4, NULL, NULL),
+(3, 1, NULL, NULL),
+(3, 2, NULL, NULL),
+(3, 3, NULL, NULL),
+(3, 4, NULL, NULL),
+(4, 1, NULL, NULL),
+(4, 2, NULL, NULL),
+(5, 1, NULL, NULL),
+(5, 2, NULL, NULL),
+(5, 3, NULL, NULL),
+(5, 4, NULL, NULL),
+(6, 1, NULL, NULL),
+(6, 2, NULL, NULL),
+(6, 3, NULL, NULL),
+(6, 4, NULL, NULL),
 (7, 1, NULL, NULL),
 (7, 2, NULL, NULL),
-(7, 3, NULL, NULL),
-(8, 1, NULL, NULL),
-(8, 2, NULL, NULL),
-(8, 3, NULL, NULL),
-(8, 4, NULL, NULL);
+(7, 3, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -124,6 +148,56 @@ CREATE TABLE `imagenes` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `imagenes`
+--
+
+INSERT INTO `imagenes` (`id`, `inmueble_id`, `url_img`, `created_at`, `updated_at`) VALUES
+(1, 1, 'IMG_5250.JPG', NULL, NULL),
+(2, 1, 'IMG_5251.JPG', NULL, NULL),
+(3, 1, 'IMG_5252.JPG', NULL, NULL),
+(4, 1, 'IMG_5253.JPG', NULL, NULL),
+(5, 1, 'IMG_5254.JPG', NULL, NULL),
+(6, 1, 'IMG_5255.JPG', NULL, NULL),
+(7, 1, 'IMG_5256.JPG', NULL, NULL),
+(8, 2, 'IMG_5257.JPG', NULL, NULL),
+(9, 2, 'IMG_5258.JPG', NULL, NULL),
+(10, 2, 'IMG_5259.JPG', NULL, NULL),
+(11, 2, 'IMG_5260.JPG', NULL, NULL),
+(12, 2, 'IMG_5261.JPG', NULL, NULL),
+(13, 2, 'IMG_5262.JPG', NULL, NULL),
+(14, 2, 'IMG_5263.JPG', NULL, NULL),
+(15, 2, 'IMG_5264.JPG', NULL, NULL),
+(16, 3, 'IMG_5265.JPG', NULL, NULL),
+(17, 3, 'IMG_5266.JPG', NULL, NULL),
+(18, 3, 'IMG_5267.JPG', NULL, NULL),
+(19, 3, 'IMG_5268.JPG', NULL, NULL),
+(20, 3, 'IMG_5269.JPG', NULL, NULL),
+(21, 3, 'IMG_5270.JPG', NULL, NULL),
+(22, 3, 'IMG_5271.JPG', NULL, NULL),
+(23, 3, 'IMG_5272.JPG', NULL, NULL),
+(24, 3, 'IMG_5273.JPG', NULL, NULL),
+(25, 4, 'IMG_5274.JPG', NULL, NULL),
+(26, 4, 'IMG_5275.JPG', NULL, NULL),
+(27, 5, 'IMG_5276.JPG', NULL, NULL),
+(28, 5, 'IMG_5277.JPG', NULL, NULL),
+(29, 5, 'IMG_5278.JPG', NULL, NULL),
+(30, 5, 'IMG_5279.JPG', NULL, NULL),
+(31, 5, 'IMG_5280.JPG', NULL, NULL),
+(32, 5, 'IMG_5281.JPG', NULL, NULL),
+(33, 5, 'IMG_5282.JPG', NULL, NULL),
+(34, 5, 'IMG_5283.JPG', NULL, NULL),
+(35, 5, 'IMG_5284.JPG', NULL, NULL),
+(36, 5, 'IMG_5285.JPG', NULL, NULL),
+(37, 6, 'IMG_5286.JPG', NULL, NULL),
+(38, 6, 'IMG_5287.JPG', NULL, NULL),
+(39, 6, 'IMG_5288.JPG', NULL, NULL),
+(40, 7, 'IMG_5289.JPG', NULL, NULL),
+(41, 7, 'IMG_5290.JPG', NULL, NULL),
+(42, 7, 'IMG_5291.JPG', NULL, NULL),
+(43, 7, 'IMG_5292.JPG', NULL, NULL),
+(44, 7, 'IMG_5293.JPG', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -149,9 +223,13 @@ CREATE TABLE `inmuebles` (
 --
 
 INSERT INTO `inmuebles` (`id`, `persona_id`, `lugar_id`, `tipo_id`, `direccion`, `area_total`, `area_construccion`, `observacion`, `created_at`, `updated_at`) VALUES
-(1, 1, 15, 2, 'mz x casa 7', 70.50, 60.12, 'n/a', NULL, NULL),
-(7, 1, 22, 1, 'calle 15 casa 27', 50.15, 49.60, 'n/a', NULL, NULL),
-(8, 1, 30, 5, 'avenida norte 558', 50.00, 50.00, 'feo', NULL, NULL);
+(1, 2, 36, 4, 'calle 21 # 7-70 - Interior 301', 25.00, 28.00, 'Ninguna', NULL, NULL),
+(2, 1, 36, 4, ' Cra 8 21 39', 30.00, 32.00, 'Ninguna', NULL, NULL),
+(3, 3, 34, 3, 'Cr 7 Numero 23 50 - Interior 401', 37.00, 37.00, 'Ninguna', NULL, NULL),
+(4, 2, 67, 5, 'Avenida maldonado', 50.00, 55.00, '', NULL, NULL),
+(5, 5, 36, 3, 'Cr 7 Numero 23 50 - Interior 506', 37.00, 37.00, '', NULL, NULL),
+(6, 4, 67, 3, 'Calle 28 No. 11 – 22', 35.00, 36.00, 'Ninguna', NULL, NULL),
+(7, 3, 3, 3, 'Transversal 3 #60-41 - Interior 904', 38.00, 38.00, 'Ninguna', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -227,7 +305,8 @@ INSERT INTO `lugares` (`id`, `ubicacion_id`, `nombre`, `tipo`, `created_at`, `up
 (63, 3, 'Balcones de Terranova', 'barrio', NULL, NULL),
 (64, 3, 'Tejares del Norte', 'barrio', NULL, NULL),
 (65, 3, 'La Colorada', 'barrio', NULL, NULL),
-(66, 3, 'Zona Industrial', 'barrio', NULL, NULL);
+(66, 3, 'Zona Industrial', 'barrio', NULL, NULL),
+(67, 3, 'Maldonado', 'barrio', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -314,8 +393,13 @@ CREATE TABLE `personas` (
 -- Volcado de datos para la tabla `personas`
 --
 
-INSERT INTO `personas` (`id`, `nombre`, `apellido`, `email`,`documento_id`, `telefono`, `observacion`, `created_at`, `updated_at`) VALUES
-(1, 'pepe', 'rojas', 'pepe.rojas@correo.com','1049630805', '123456789', 'N/A', NULL, NULL);
+INSERT INTO `personas` (`id`, `nombre`, `apellido`, `email`, `documento_id`, `telefono`, `observacion`, `created_at`, `updated_at`) VALUES
+(1, 'pepe', 'rojas', 'pepe.rojas@correo.com', 1049630805, '123456789', 'N/A', NULL, NULL),
+(2, 'Juan', 'Perez', 'juan217@hotmail.com', 6642376, '3145982609', 'Ninguna', NULL, NULL),
+(3, 'Milena ', 'Torres', 'm_torres6@gmail.com', 1043675428, '3125609568', 'Ninguna', NULL, NULL),
+(4, 'Fanny ', 'Torres', 'ftorres13@hotmail.com', 1049785275, '3218675639', 'Ninguna', NULL, NULL),
+(5, 'Maria', 'Sanchez', 'mariasanchez09@hotmail.com', 40087265, '3157265801', 'Ninguna', NULL, NULL),
+(6, 'Andres Felipe', 'Martinez Gutierrez', 'felipeMG@gmail.com', 1037625894, '3208276471', 'Ninguna', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -328,7 +412,7 @@ CREATE TABLE `postulaciones` (
   `inmueble_id` int(10) UNSIGNED NOT NULL,
   `fecha_inicio` date NOT NULL,
   `fecha_fin` date DEFAULT NULL,
-  `precio` double(8,2) NOT NULL,
+  `precio` double(15,2) NOT NULL,
   `estado_pustulacion` enum('activo','inactivo') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'activo',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -339,10 +423,13 @@ CREATE TABLE `postulaciones` (
 --
 
 INSERT INTO `postulaciones` (`operacion_id`, `inmueble_id`, `fecha_inicio`, `fecha_fin`, `precio`, `estado_pustulacion`, `created_at`, `updated_at`) VALUES
-(1, 1, '2016-10-16', NULL, 999999.99, 'activo', NULL, NULL),
-(1, 7, '2016-10-16', '2016-10-11', 300000.00, 'activo', NULL, NULL),
-(1, 8, '2016-10-16', NULL, 250000.00, 'activo', NULL, NULL),
-(2, 7, '2016-10-16', '2016-10-21', 999999.99, 'activo', NULL, NULL);
+(1, 6, '2016-10-27', NULL, 75000000.00, 'activo', NULL, NULL),
+(1, 7, '2016-10-27', NULL, 90000000.00, 'activo', NULL, NULL),
+(2, 1, '2016-10-10', NULL, 380000.00, 'activo', NULL, NULL),
+(2, 2, '2016-10-17', NULL, 230000.00, 'activo', NULL, NULL),
+(2, 3, '2016-10-18', NULL, 450000.00, 'activo', NULL, NULL),
+(2, 4, '2016-10-19', NULL, 950000.00, 'activo', NULL, NULL),
+(2, 5, '2016-10-27', NULL, 460000.00, 'activo', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -525,7 +612,7 @@ ALTER TABLE `detalles`
 -- AUTO_INCREMENT de la tabla `imagenes`
 --
 ALTER TABLE `imagenes`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 --
 -- AUTO_INCREMENT de la tabla `inmuebles`
 --
@@ -535,7 +622,7 @@ ALTER TABLE `inmuebles`
 -- AUTO_INCREMENT de la tabla `lugares`
 --
 ALTER TABLE `lugares`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
 --
 -- AUTO_INCREMENT de la tabla `operaciones`
 --
@@ -545,7 +632,7 @@ ALTER TABLE `operaciones`
 -- AUTO_INCREMENT de la tabla `personas`
 --
 ALTER TABLE `personas`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT de la tabla `servicios`
 --

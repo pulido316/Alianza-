@@ -26,22 +26,44 @@
 				<div class="row">
 					<section id="projects">
 					<ul id="thumbs" class="portfolio">
-						<li class="item-thumbs col-lg-3 design" data-id="id-0" data-type="web">
-						<div class="project">
-                                <img src="img/works/1.jpg" class="img-responsive" alt="">
+						<!-- Item Project and Filter Name -->
+						<div id= "inmuebles" class="row">
+                        @foreach($postulaciones as $inmueble)
+                       
+                        <div class="col-md-4 col-sm-4">
+                            <div class="project">
+                              <a href="/detallesInmueble/{!! $inmueble->id !!}">
+                                <img id="imagen" src="img/fotos/{!! $inmueble->imagen !!}" class="img-responsive" alt="">
+                              </a>
                                 <div class="project-details">
                                     <ul>
-                                        <li><strong>Tipo :</strong> Apartaestudio</li>
-                                        <li><strong>Lugar :</strong> San Francisco</li>
-                                        <li><strong>Habitaciones :</strong> 3</li>
-                                        <li><strong>Baños :</strong>2</li>
-                                        <li><strong>Precio :</strong> $700.000 </li>
+                                        <li ><strong>Lugar :</strong> {!! $inmueble->lugar !!}</li>
+                                        <li ><strong>Tipo :</strong> {!! $inmueble->tipo !!}</li>
+                                        <?php  
+                                          $nombreOperacion = "";
+                                          $nombrePrecio = "";
+                                        ?>
+                                       
+                                        @foreach($inmueble->detalles as $detalle)
+                                        <li ><strong>{!! $detalle->nombre !!} :</strong> {!! $detalle->cantidad !!}</li>
+                                        @endforeach
+                                        @foreach($inmueble->operaciones as $operacion)
+                                        <?php 
+                                          $nombreOperacion = $nombreOperacion. '  ' .$operacion->nombre;
+                                          $nombrePrecio = $nombrePrecio. ' $ ' .$operacion->precio;
+                                        ?>
+                                        @endforeach
+                                        <li ><strong>Operación :</strong> {!! $nombreOperacion !!}</li>
+                                        <li ><strong>Precio :</strong> {!! $nombrePrecio !!}</li>
                                     </ul>
                                 </div>
                             </div>
-						</li>
-																	
-						</ul>
+                        </div>
+                        
+                        @endforeach
+                    </div>
+						
+					</ul>
 					</section>
 				</div>
 			</div>
