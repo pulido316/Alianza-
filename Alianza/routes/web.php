@@ -73,4 +73,10 @@ Route::get('ventaApartaes','ResultadoController@ventaApartaes');
 
 Route::get('ventaLote','ResultadoController@ventaLote');
 
+/*Busqueda*/
+
+Route::get('buscarInmueble', 'InicioController@buscarInmueble');
+
+Route::get('detallesInmueble/{id}', 'InicioController@detallesInmueble');
+
 Route::get('error',function(){abort(404);});
