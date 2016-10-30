@@ -41,6 +41,7 @@ Route::resource('/lugares','lugares');
 Route::resource('/personas','personas');
 Route::resource('/archivos','archivos');
 Route::resource('/tipos','tipos');
+Route::resource('/opciones','opciones');
 //Route::resource('/parametro','ParametroController');
 //Route::resource('/persona','PersonaController');
 Route::resource('/inmueble','InmuebleController');

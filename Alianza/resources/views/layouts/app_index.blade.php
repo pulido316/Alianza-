@@ -68,11 +68,11 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/home') }}">
-                     Alianza Inmobiliaria
-                 </a>
-             </div>
+                       Alianza Inmobiliaria
+                   </a>
+               </div>
 
-             <div class="collapse navbar-collapse" id="app-navbar-collapse">
+               <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
                     &nbsp;
@@ -133,26 +133,13 @@
                             <a href="/tipos">Tipos inmueble</a>
                         </li>
                         <li>
-                            <a href="/mas">Mas Opciones</a>
+                            <a href="/opciones">Mas Opciones</a>
                         </li>
-                        <li>
-                            <a href="#">Operaciones</a>
-                        </li>
-                        <li>
-                            <a href="#">Servicios</a>
-                        </li>
-                    </li>
-                    <li>
-                        <a href="#">Detalles de inmuebles</a>
-                    </li>
-                </ul>
-            </li>
-
-        </ul>
-
-    </div>
-    <!-- /.navbar-collapse -->
-</nav>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
 </div>
 </nav>
 
