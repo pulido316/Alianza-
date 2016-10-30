@@ -181,6 +181,7 @@
 		$("#add-tipo").hide()
 	});
 	$("#cancelar_edi").click(function(){
+		
 		$(".table").hide()
 		$("#add-tipo").hide()
 		$("#editar-tipo").hide()

@@ -131,7 +131,7 @@
 										{!! $serv->nombre !!}
 									</td>					
 									<td>
-										<button class="btn btn-primary editar-boton" id="{!! $serv->id !!}">editar</button>
+										<button class="btn btn-primary editar_boton_serv" id="{!! $serv->id !!}">editar</button>
 									</td>
 								</tr>
 
@@ -141,6 +141,40 @@
 							</tbody>
 						</table>
 					</div>
+				</div>
+				<div class="col-lg-4" id="add_servicio">
+				<legend>Agregar servicio</legend>
+				<form role="form" method="POST" action="{{url('opciones')}}">
+							{{csrf_field()}}
+
+							<div class="form-group has-success">
+								<label class="control-label" for="inputSuccess">Nombre del servicio</label>
+								<input type="text" class="form-control" id="nombre_servicio" name="nombre_servicio" required>
+								<center>
+									<br>
+									<button type="submit" class="btn btn-primary">Guardar</button>
+									<button id="limpiar" type="reset" class="btn btn-warning">Limpiar</button>
+								</center>
+							</div>
+
+						</form>
+				</div>
+				<div class="col-lg-4" id="editar_servicio" style="display: none;">
+				<legend>Editar servicio</legend>
+				<form role="form">
+							{{csrf_field()}}
+
+							<div class="form-group has-success">
+								<label class="control-label" for="inputSuccess">Nombre del servicio</label>
+								<input type="text" class="form-control" id="nombre" name="nombre" required>
+								<center>
+									<br>
+									<button type="submit" id="button_update" class="btn btn-primary modify-course">Salvar</button>
+									<button id="cancelar_edi_ser" name="cancelar_edi_ser" type="reset" class="btn btn-warning cancelar_edi_ser">Cancelar</button>
+								</center>
+							</div>
+
+						</form>
 				</div>
 			</div>
 
@@ -168,7 +202,7 @@
 										{!! $detalle->nombre !!}
 									</td>					
 									<td>
-										<button class="btn btn-primary editar-boton" id="{!! $detalle->id !!}">editar</button>
+										<button class="btn btn-primary editar_boton_det" id="{!! $detalle->id !!}">editar</button>
 									</td>
 								</tr>
 
@@ -178,6 +212,40 @@
 							</tbody>
 						</table>
 					</div>
+				</div>
+				<div class="col-lg-4" id="add_detalle">
+				<legend>Agregar detalle de inmuebles</legend>
+				<form role="form" method="POST" action="{{url('opciones')}}">
+							{{csrf_field()}}
+
+							<div class="form-group has-success">
+								<label class="control-label" for="inputSuccess">Nombre del detalle</label>
+								<input type="text" class="form-control" id="nombre_detalle" name="nombre_detalle" required>
+								<center>
+									<br>
+									<button type="submit" class="btn btn-primary">Guardar</button>
+									<button id="limpiar" type="reset" class="btn btn-warning">Limpiar</button>
+								</center>
+							</div>
+
+						</form>
+				</div>
+				<div class="col-lg-4" id="editar_deta" style="display: none;">
+				<legend>Editar detalle inmueble</legend>
+				<form role="form">
+							{{csrf_field()}}
+
+							<div class="form-group has-success">
+								<label class="control-label" for="inputSuccess">Nombre del servicio</label>
+								<input type="text" class="form-control" id="nombre" name="nombre" required>
+								<center>
+									<br>
+									<button type="submit" id="button_update" class="btn btn-primary modify-course">Salvar</button>
+									<button  type="reset" class="btn btn-warning cancelar_edi_det">Cancelar</button>
+								</center>
+							</div>
+
+						</form>
 				</div>
 			</div>
 
@@ -205,7 +273,7 @@
 										{!! $opcion->nombre !!}
 									</td>					
 									<td>
-										<button class="btn btn-primary editar-boton" id="{!! $opcion->id !!}">editar</button>
+										<button class="btn btn-primary editar_boton_op" id="{!! $opcion->id !!}">editar</button>
 									</td>
 								</tr>
 
@@ -216,6 +284,40 @@
 						</table>
 					</div>
 				</div>
+				<div class="col-lg-4" id="add_operacion">
+				<legend>Agregar operacion</legend>
+				<form role="form" method="POST" action="{{url('opciones')}}">
+							{{csrf_field()}}
+
+							<div class="form-group has-success">
+								<label class="control-label" for="inputSuccess">Nombre de la operacion</label>
+								<input type="text" class="form-control" id="nombre_operacion" name="nombre_operacion" required>
+								<center>
+									<br>
+									<button type="submit" class="btn btn-primary">Guardar</button>
+									<button id="limpiar" type="reset" class="btn btn-warning">Limpiar</button>
+								</center>
+							</div>
+						</form>
+				</div>
+				<div class="col-lg-4" id="editar_operacion" style="display: none;">
+				<legend>Editar detalle inmueble</legend>
+				<form role="form">
+							{{csrf_field()}}
+
+							<div class="form-group has-success">
+								<label class="control-label" for="inputSuccess">Nombre de la operacion</label>
+								<input type="text" class="form-control" id="nombre" name="nombre" required>
+								<center>
+									<br>
+									<button type="submit" id="button_update" class="btn btn-primary modify-course">Salvar</button>
+									<button  type="reset" class="btn btn-warning cancelar_edi_det">Cancelar</button>
+								</center>
+							</div>
+
+						</form>
+				</div>
+			</div>
 			</div>
 
 		</div>
@@ -239,18 +341,78 @@
 		$("#panel_distri").hide()
 		$("#panel_opcion").hide()
 		$('.table_servicio').show()
+	});	
+	
+	$(".editar_boton_serv").click(function(){
+		$("#panel_servicios").show()
+		$("#panel_distri").hide()
+		$("#panel_opcion").hide()
+		$('.table_servicio').show()
+		$('#add_servicio').hide()
+		$('#editar_servicio').show()
+
+
 	});
+	$(".cancelar_edi_ser").click(function(){
+		$("#panel_servicios").show()
+		$("#panel_distri").hide()
+		$("#panel_opcion").hide()
+		$('.table_servicio').show()
+		$('#add_servicio').show()
+		$('#editar_servicio').hide()
+	});
+
+	
 	$("#distribucion").click(function(){
 		$("#panel_servicios").hide()
 		$("#panel_distri").show()
 		$("#panel_opcion").hide()
 		$(".table_distri").show()
 	});
+
+		$(".editar_boton_det").click(function(){
+		$("#panel_servicios").hide()
+		$("#panel_distri").show()
+		$("#panel_opcion").hide()
+		$('.table_distri').show()
+		$('#add_detalle').hide()
+		$('#editar_deta').show()
+
+
+	});
+	$(".cancelar_edi_det").click(function(){
+		$("#panel_servicios").hide()
+		$("#panel_distri").show()
+		$("#panel_opcion").hide()
+		$('.table_distri').show()
+		$('#add_detalle').show()
+		$('#editar_deta').hide()
+	});
+
 	$("#operacion").click(function(){
 		$("#panel_servicios").hide()
 		$("#panel_distri").hide()
 		$("#panel_opcion").show()
 		$(".table_opcion").show()
+	});
+
+		$(".editar_boton_op").click(function(){
+		$("#panel_servicios").hide()
+		$("#panel_distri").hide()
+		$("#panel_opcion").show()
+		$(".table_opcion").show()
+		$('#add_operacion').hide()
+		$('#editar_operacion').show()
+
+
+	});
+	$(".cancelar_edi_det").click(function(){
+		$("#panel_servicios").hide()
+		$("#panel_distri").hide()
+		$("#panel_opcion").show()
+		$(".table_opcion").show()
+		$('#add_operacion').show()
+		$('#editar_operacion').hide()
 	});
 
 

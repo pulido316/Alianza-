@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use DB;
+use Redirect;
+use App\Detalle;
+use App\Servicio;
+use App\Operacion;
 class opciones extends Controller
 {
     /**
@@ -50,8 +54,28 @@ class opciones extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+       $nombre_servicio= $request->nombre_servicio;
+       $nombre_detalle=  $request->nombre_detalle;
+       $nombre_operacion= $request->nombre_operacion;
+          // $barrio->tipo='barrio';
+       if ($request->nombre_servicio) {
+        Servicio::insert(['nombre' => $nombre_servicio]);
+        return Redirect::to('opciones');
+    }elseif ($request->nombre_detalle) {
+      Detalle::insert(['nombre' => $nombre_detalle]);
+      return Redirect::to('opciones');
+      
+  }
+  elseif ($request->nombre_operacion) {
+     Operacion::insert(['nombre' => $nombre_operacion]);
+     return Redirect::to('opciones');
+     
+ }
+
+         // Lugar::insert(['nombre' => $nombre, 'ubicacion_id'=> $zona, 'tipo'=> 'barrio']);
+         // return Redirect::to('lugares');
+
+}
 
     /**
      * Display the specified resource.
