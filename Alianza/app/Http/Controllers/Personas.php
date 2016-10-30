@@ -18,8 +18,10 @@ class Personas extends Controller
     public function index()
     {
         $persona=DB::select("SELECT id,documento_id CC, nombre nombres, apellido apellidos, email correo, telefono telefono, observacion observacion FROM  personas");
+        $contar= DB::select("SELECT COUNT(`id`)numero FROM personas");
         $data=array(
             'personas'=>$persona,
+            'contar'=>$contar,
             );
         
 

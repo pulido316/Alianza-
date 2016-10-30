@@ -14,12 +14,15 @@
 /**Route::get('/', function () {
     return view('usuario.inicio');
 });*/
-Route::get('postulaciones/{id?}',[
+Route::get('postulaciones/',[
 	'uses' => 'prueba@prueba'
 
 	]);
 
 Auth::routes();
+
+//img
+
 
 Route::get('/', 'InicioController@indexInicio');
 
@@ -27,6 +30,8 @@ Route::get('buscar/{id}', 'lugares@buscar');
 Route::post('actualizar/{id}', 'lugares@actualizar');
 Route::get('buscarpersona/{id}', 'personas@buscar');
 Route::post('actualizarpersona/{id}', 'personas@actualizar');
+Route::get('buscartipo/{id}', 'tipos@buscar');
+Route::post('actualizartipo/{id}', 'tipos@actualizar');
 
 /**administrador**/
 Route::get('home', 'HomeController@index');
@@ -34,6 +39,8 @@ Route::get('home', 'HomeController@index');
 //rutas parametros
 Route::resource('/lugares','lugares');
 Route::resource('/personas','personas');
+Route::resource('/archivos','archivos');
+Route::resource('/tipos','tipos');
 //Route::resource('/parametro','ParametroController');
 //Route::resource('/persona','PersonaController');
 Route::resource('/inmueble','InmuebleController');

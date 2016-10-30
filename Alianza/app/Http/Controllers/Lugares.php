@@ -10,7 +10,7 @@ use Redirect;
 
 class Lugares extends Controller
 {
-    /**
+    /** 
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -19,13 +19,15 @@ class Lugares extends Controller
     {
         $barrio = DB::select("SELECT l.id id,l.nombre nombre,l.tipo tipo,u.nombre zona FROM lugares l, lugares u WHERE l.ubicacion_id=u.id");
         $zona = DB::select("SELECT id,nombre FROM `lugares` where tipo = 'Zona'");
-
+        $contar= DB::select("SELECT COUNT(`id`)numero FROM lugares WHERE tipo like 'barrio'");
         $data=array('barrios'=>$barrio,
             'zonas'=>$zona,
+            'contar'=>$contar,
             );
+       // dd($contar);
        // $lugar = DB::table('lugares')->paginate(5);
        // dd($lugar);
-        return view('administrador.lugares',$data);
+       return view('administrador.lugares',$data);
     }
 
     /**
@@ -36,6 +38,10 @@ class Lugares extends Controller
     public function create()
     {
         //
+    }
+    public function totales(){
+        $busqueda=DB::select("SELECT COUNT(id) FROM `lugares` where tipo like 'barrio'");
+        return response()->json($busqueda);
     }
 
     /**

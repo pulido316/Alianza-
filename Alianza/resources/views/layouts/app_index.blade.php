@@ -23,7 +23,7 @@
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
-<!-- jQuery -->
+    <!-- jQuery -->
     
     <script src="js/jquery.js"></script>
 
@@ -34,7 +34,7 @@
     <script src="js/plugins/morris/raphael.min.js"></script>
     <script src="js/plugins/morris/morris.min.js"></script>
     <script src="js/plugins/morris/morris-data.js"></script>
-     <script src="js/jquery.js"></script>
+    <script src="js/jquery.js"></script>
 
     <!-- Flot Charts JavaScript -->
     <!--[if lte IE 8]><script src="js/excanvas.min.js"></script><![endif]-->
@@ -48,31 +48,31 @@
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+        <![endif]-->
 
-</head>
-<body>
-    
+    </head>
+    <body>
+
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
-         
-            <div class="navbar-header">
+            <div class="container">
 
-                <!-- Collapsed Hamburger -->
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
-                    <span class="sr-only">Toggle Navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
+                <div class="navbar-header">
 
-                <!-- Branding Image -->
-                 <a class="navbar-brand" href="{{ url('/home') }}">
-                   Alianza Inmobiliaria
-                </a>
-            </div>
+                    <!-- Collapsed Hamburger -->
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
+                        <span class="sr-only">Toggle Navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
 
-            <div class="collapse navbar-collapse" id="app-navbar-collapse">
+                    <!-- Branding Image -->
+                    <a class="navbar-brand" href="{{ url('/home') }}">
+                     Alianza Inmobiliaria
+                 </a>
+             </div>
+
+             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
                     &nbsp;
@@ -84,78 +84,81 @@
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Authentication Links -->
                     @if (Auth::guest())
-                        <li><a href="{{ url('/login') }}">Login</a></li>
-                        <li><a href="{{ url('/register') }}">Register</a></li>
+                    <li><a href="{{ url('/login') }}">Login</a></li>
+                    <li><a href="{{ url('/register') }}">Register</a></li>
                     @else
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                {{ Auth::user()->name }} <span class="caret"></span>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                            {{ Auth::user()->name }} <span class="caret"></span>
+                        </a>
+
+                        <ul class="dropdown-menu" role="menu">
+                            <li>
+                                <a href="{{ url('/logout') }}"
+                                onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();">
+                                Salir
                             </a>
 
-                            <ul class="dropdown-menu" role="menu">
-                                <li>
-                                    <a href="{{ url('/logout') }}"
-                                        onclick="event.preventDefault();
-                                                 document.getElementById('logout-form').submit();">
-                                        Salir
-                                    </a>
-
-                                    <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
-                                        {{ csrf_field() }}
-                                    </form>
-                                </li>
-                            </ul>
+                            <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                                {{ csrf_field() }}
+                            </form>
                         </li>
-                    @endif
-                </ul>
-            </div>
-
-            <div class="collapse navbar-collapse navbar-ex1-collapse">
-                <ul class="nav navbar-nav side-nav">
-
-
-                    <li id="home">
-                    <a href="home"><i class="glyphicon glyphicon-th-large"></i> Home</a>
-                    </li>
-                    <li id="inmueble"> 
-                        <a href="inmueble"><i class="glyphicon glyphicon-home "></i> Inmuenbles</a>
-                    </li>
-                    <li id="parametro">
-                        <a href="javascript:;" data-toggle="collapse" data-target="#demo" class="collapsed" aria-expanded="false"><i class=" fa fa-cog fa-spin"></i> Parámetros <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="demo" class="collapse" aria-expanded="false" style="height: 0px;">
-                            <li>
-                                <a href="/personas">Personas</a>
-                            </li>
-                            <li>
-                                <a href="/lugares">Lugares</a>
-                            </li>
-                                <li>
-                                <a href="#">Tipos inmueble</a>
-                            </li>
-                                <li>
-                                <a href="#">Operaciones</a>
-                            </li>
-                                <li>
-                                <a href="#">Servicios</a>
-                            </li>
-                            </li>
-                                <li>
-                                <a href="#">Detalles de inmuebles</a>
-                            </li>
-                        </ul>
-                    </li>
-
-                 </ul>
-               
-            </div>
-            <!-- /.navbar-collapse -->
-        </nav>
+                    </ul>
+                </li>
+                @endif
+            </ul>
         </div>
-    </nav>
 
-    @yield('content')
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav side-nav">
 
-    <!-- Scripts -->
-    <script src="/js/app.js"></script>
+
+                <li id="home">
+                    <a href="home"><i class="glyphicon glyphicon-th-large"></i> Home</a>
+                </li>
+                <li id="inmueble"> 
+                    <a href="inmueble"><i class="glyphicon glyphicon-home "></i> Inmuenbles</a>
+                </li>
+                <li id="parametro">
+                    <a href="javascript:;" data-toggle="collapse" data-target="#demo" class="collapsed" aria-expanded="false"><i class=" fa fa-cogs"></i> Opciones <i class="fa fa-fw fa-caret-down"></i></a>
+                    <ul id="demo" class="collapse" aria-expanded="false" style="height: 0px;">
+                        <li>
+                            <a href="/personas">Personas</a>
+                        </li>
+                        <li>
+                            <a href="/lugares">Lugares</a>
+                        </li>
+                        <li>
+                            <a href="/tipos">Tipos inmueble</a>
+                        </li>
+                        <li>
+                            <a href="/mas">Mas Opciones</a>
+                        </li>
+                        <li>
+                            <a href="#">Operaciones</a>
+                        </li>
+                        <li>
+                            <a href="#">Servicios</a>
+                        </li>
+                    </li>
+                    <li>
+                        <a href="#">Detalles de inmuebles</a>
+                    </li>
+                </ul>
+            </li>
+
+        </ul>
+
+    </div>
+    <!-- /.navbar-collapse -->
+</nav>
+</div>
+</nav>
+
+@yield('content')
+
+<!-- Scripts -->
+<script src="/js/app.js"></script>
 </body>
 </html>

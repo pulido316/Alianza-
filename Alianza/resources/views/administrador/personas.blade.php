@@ -24,7 +24,13 @@
 										<i class="fa fa-users  fa-4x"></i>
 									</div>
 									<div class="col-xs-9 text-right">
-										<div class="huge">26</div>
+										<div class="huge">
+											@foreach($contar as $cuenta)
+
+										{!! $cuenta->numero !!}
+
+										@endforeach
+										</div>
 										<div>Personas</div>
 									</div>
 								</div>
@@ -46,7 +52,7 @@
 										<i class="fa fa-user fa-4x"></i>
 									</div>
 									<div class="col-xs-9 text-right">
-										<div class="huge">12</div>
+										<div class="huge"><br></div>
 										<div>Nueva Persona</div>
 									</div>
 								</div>
