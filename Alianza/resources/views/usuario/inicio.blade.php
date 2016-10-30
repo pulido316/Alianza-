@@ -14,7 +14,7 @@
             <ul class="slides">
 
               <li>
-                <img src="img/slides/1.jpg" alt="" />
+                <img src="img/slides/logo.png" alt="" />
 
               </li>
               <li>
