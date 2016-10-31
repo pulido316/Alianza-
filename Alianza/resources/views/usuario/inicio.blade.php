@@ -77,7 +77,7 @@
             </div>
             
             <div class="form-group col-md-4">
-              <label for="bedroom">Operacion</label>
+              <label for="bedroom">Operación</label>
               <select class="form-control">
               <option>Arriendo</option>
               <option>Venta</option>
@@ -91,9 +91,9 @@
               <option>2</option>
               </select>
             </div>
-            
+            <div class="form-group col-md-4">
             <input name="submit" value="Buscar" class="btn btn-success btn-lg btn-block" type="submit">
-            
+            </div>
             
             </form>
 
@@ -113,7 +113,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12">
-				<div class="aligncenter"><h1 class="aligncenter">Alianza Inmobiliaria</h1><p>En esta pagina web podra encontrar toda la información referente a sus necesidades de busqueda de apartamentos, apartaestudios, casas, locales o lotes en arriendo o venta, tambien podra encontrar mas información de nuestros serivicos ofrecidos de avaluos y dictamenes periciales, propiedad horizontal, diseño y licencias de construccion, remodelaciones y tramites inmobiliarios</p></div>
+				<div class="aligncenter"><h1 class="aligncenter">Alianza Inmobiliaria</h1><p>En esta paginá web podrá encontrar toda la información referente a sus necesidades de búsqueda de apartamentos, apartaestudios, casas, locales o lotes en arriendo o venta, también podrá encontrar más información de nuestros serivicos ofrecidos de avalúos, propiedad horizontal, diseño y licencias de construcción, remodelaciones y trámites inmobiliarios</p></div>
 			</div>
 		</div>
 	</div>
@@ -126,7 +126,7 @@
     <div class="row">
            
                 <div class="project">
-                    <h3 class="section-title">Ultimos proyectos</h3>
+                    <h3 class="section-title">Últimos proyectos</h3>
                     <div id= "inmuebles" class="row">
                         @foreach($inmuebles as $inmueble)
                        
