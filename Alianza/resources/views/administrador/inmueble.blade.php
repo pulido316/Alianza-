@@ -26,11 +26,7 @@
                                 </div>
                                 <div class="col-xs-9 text-right">
                                     <div class="huge">
-                                        @foreach($contar as $cuenta)
-
-                                        {!! $cuenta->numero !!}
-
-                                        @endforeach
+                                        26
                                     </div>
                                     <div>Inmuebles</div>
                                 </div>
@@ -73,54 +69,78 @@
 
             <div class="row">
                 <div class="col-lg-12">
-                   <div id="tabla-lista" class="table-responsive table tabla-lista" style="display: none;">
+                 <div id="tabla-lista" class="table-responsive table tabla-lista" style="display: none;">
                     <table id="example"  class="table table-hover table-striped  table-striped table-borderedSeen" >
                         <thead>
                             <tr>
-                                <th>ID</th>
-                                <th>Persona vinculada</th>
+
+                                <th>Propietario</th>
                                 <th>Direccion</th>
                                 <th>Tipo</th>
                                 <th>Dimensiones</th>  
                                 <th>Observacion</th>
+                                <th>Distribucion</th>
+                                <th>Servicios</th>
                                 <th>editar</th>                                      
                             </tr>
                         </thead>
                         <tbody>
-                                    @foreach($todos as $todo)
-                                    <tr>
-                                        <td>{!! $todo->id!!}</td>
-                                        <td>
-                                        {!! $todo->nombre!!}<br>
-                                        C.C: <strong>{!! $todo->cc!!}</strong>
-                                        </td>
-                                        <td>
-                                        <strong>{!! $todo->barrio!!}</strong>
-                                        <em>{!! $todo->direccion!!}</em>
-                                        </td>
-                                        <td>{!! $todo->tipo!!}</td>
-                                        <td><center>
-                                        <strong>Tamaño del inmuenle:</strong> {!! $todo->metros_total!!} m<sup>2</sup><br>
-                                        <strong>Area de construcion:</strong> {!! $todo->metros_construccion_total!!}m<sup>2</sup>
-                                        </center>
-                                        </td>
-                                        <td>{!! $todo->observacion!!}</td>
-                                        
-                
-                                        <td>
-                                            <button class="btn btn-primary editar-boton" id="{!! $todo->id !!}">editar</button>
-                                        </td>
-                                    </tr>
-                                    @endforeach
-                                </tbody>
-                    </table>
-                </div>
-                <div id="add-inmueble" class="col-lg-6" style="display: none;">
-                   <h1>loco re loco</h1>
-                </div>
-            </div>
+                            @foreach($inmuebles as $inmueble)
+                            <tr>
+                                <td>
+                                    <strong>
+                                        {!! $inmueble->persona->nombre!!}<br>
+
+                                        C.C: 
+                                    </strong><em>{!! $inmueble->persona->cc!!}</em>
+                                </td>
+                                <td>
+                                    <strong> {!! $inmueble->lugar!!}</strong>
+                                    <br>
+                                    <em>{!! $inmueble->direccion!!}</em>                                    
+                                </td>
+                                <td>
+                                    {!! $inmueble->tipo!!}
+                                </td>
+                                <td>
+                                    <strong>area total:</strong><br>
+                                    {!! $inmueble->area_total!!} m<sup>2</sup><br>
+                                    <strong>area construccion:</strong><br>
+                                    {!! $inmueble->area_construccion!!} m<sup>2</sup>
+                                </td>
+                                <td>
+                                   {!! $inmueble->observacion!!}
+                               </td>
+                               <td>
+                                 @foreach( $inmueble->detalles as $detalle)
+
+                                 <ul>
+                                     <li><strong>{!!$detalle->nombre!!}: </strong>{!!$detalle->cantidad!!}</li>
+                                 </ul>
+                                 @endforeach
+                               </td>
+                               <td>
+                                 @foreach( $inmueble->servicios as $servicio)
+
+                                 <ul>
+                                     <li>{!!$servicio->nombre!!}</li>
+                                 </ul>
+                                 @endforeach
+                               </td>
+                          <td>
+                            <button class="btn btn-primary editar-boton" id="{!! $inmueble->id !!}">editar</button>
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
         </div>
-    </div>
+        <div id="add-inmueble" class="col-lg-6" style="display: none;">
+         <h1>loco re loco</h1>
+     </div>
+ </div>
+</div>
+</div>
 </div>
 </div>
 
@@ -130,7 +150,7 @@
     $("#listar").click(function(){
         $(".tabla-lista").show()
         $("#add-inmueble").hide()
-       
+
     });
     $("#crear").click(function(){
         $(".tabla-lista").hide()

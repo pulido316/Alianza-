@@ -19,7 +19,7 @@ Route::resource('/personas','personas');
 Route::resource('/archivos','archivos');
 Route::resource('/tipos','tipos');
 Route::resource('/opciones','opciones');
-Route::resource('/inmueble','inmueble');
+Route::resource('/inmueble','inmuebleController');
 
 Route::get('/', 'InicioController@indexInicio');
 //rutas de opciones y configuracion de datos

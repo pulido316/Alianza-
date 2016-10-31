@@ -13,14 +13,11 @@
 				<div class="col-lg-12">
 					
 					<h1>archivos</h1>
-					<form  class="dropzone" id="dropzone">
+					<form action="{{url('archivos')}}" class="dropzone" id="dropzone">
 						<div class="fallback">
 							<input type="file" name="file" multiple id="archivos">
 							<script type="text/javascript">
 									Dropzone.options.dropzone = {
-									if (1==1) {
-										alert("loco re loco");
-									}
 									maxFilesize: 4,
 									acceptedFiles:'image/*',
 									dictDefaultMessage: "Arrastra los archivos aquí para subirlos",
