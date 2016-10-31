@@ -24,7 +24,7 @@
                                 
                             </li>
                             <li>
-                                <h3>Correo Electronico</h3>
+                                <h3>Correo Electrónico</h3>
                                 <p><a href="#">alianzatunja@yahoo.es</a></p>
                             </li>
                             <li>

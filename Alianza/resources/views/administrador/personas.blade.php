@@ -77,7 +77,7 @@
 										<th>Nombres</th>
 										<th>Apellidos</th>
 										<th>Correo</th>
-										<th>Telefono</th>
+										<th>Teléfono</th>
 										<th>Observación</th>
 										<th>Editar</th>                                      
 									</tr>
@@ -108,11 +108,11 @@
 								<input type="text" class="form-control" id="nombre" name="nombre" required>
 								<label class="control-label" for="inputSuccess">Apellidos</label>
 								<input type="text" class="form-control" id="apellido" name="apellido" required>
-								<label class="control-label" for="inputSuccess">Identificacion (C.C)</label>
+								<label class="control-label" for="inputSuccess">Identificación (C.C)</label>
 								<input type="number" class="form-control" id="cc" name="cc" required>
 								<label class="control-label" for="inputSuccess">Correo</label>
 								<input type="email" class="form-control" id="correo" name="correo" required>
-								<label class="control-label" for="inputSuccess">Telefono</label>
+								<label class="control-label" for="inputSuccess">Teléfono</label>
 								<input type="number" class="form-control" id="telefono" name="telefono" required>
 								<label class="control-label" for="inputSuccess">Observaciones</label>
 								<textarea class="form-control" rows="5" id="observacion" name="observacion"></textarea>

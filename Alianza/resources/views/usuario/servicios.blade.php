@@ -37,7 +37,7 @@
                 <p>Contratación de obras civiles tendientes a la remodelación de espacios en viviendas, locales, oficinas, bodegas; servicio prestado por Arquitecto Especialista en diseño de interiores.</p>        
             </div>
             <div class="col-md-4">           
-                <h2>Tramites Inmobiliarios</h2>
+                <h2>Trámites Inmobiliarios</h2>
                 <p>Elaboración de documentos inmobiliarios como promesas de compraventa, poderes, autorizaciones, contratos de arrendamiento, entre otros; servicio prestado por Abogada Especialista en Gestión Inmobiliaria.   </p>        
             </div>      
         </div>

@@ -121,7 +121,7 @@
                     <a href="#"><i class="fa fa-tags "></i> Publicaciones</a>
                 </li>
                 <li id="inmueble"> 
-                    <a href="inmueble"><i class="glyphicon glyphicon-home "></i> Inmuenbles</a>
+                    <a href="inmueble"><i class="glyphicon glyphicon-home "></i> Inmuebles</a>
                 </li>
 
                 <li id="parametro">
@@ -137,7 +137,7 @@
                             <a href="/tipos">Tipos inmueble</a>
                         </li>
                         <li>
-                            <a href="/opciones">Mas Opciones</a>
+                            <a href="/opciones">Más Opciones</a>
                         </li>
                     </ul>
                 </li>

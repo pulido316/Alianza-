@@ -23,7 +23,7 @@
 								</div>
 								<div class="about-logo">
 									<h3><span class="color">Visión de la empresa</span></h3>
-									<p>Desarrollar un escenario optimo que logre satisfacer las diferentes necesidades en el campo de la finca raíz de la población de la ciudad de Tunja, garantizando la calidad de los servicios ofertados y la satisfacción de los clientes, a través de un equipo integrado de trabajo que actué con conocimiento, empeño y corazón. </p>
+									<p>Desarrollar un escenario óptimo que logre satisfacer las diferentes necesidades en el campo de la finca raíz de la población de la ciudad de Tunja, garantizando la calidad de los servicios ofertados y la satisfacción de los clientes, a través de un equipo integrado de trabajo que actué con conocimiento, empeño y corazón. </p>
 								</div>
 							</div>
 						</div>
