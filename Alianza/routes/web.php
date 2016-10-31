@@ -10,19 +10,16 @@
 | to using a Closure or controller method. Build something great!
 |
 */
-
-/**Route::get('/', function () {
-    return view('usuario.inicio');
-});*/
-Route::get('postulaciones/',[
-	'uses' => 'prueba@prueba'
-
-	]);
-
 Auth::routes();
-
-//img
-
+/**administrador**/
+Route::get('home', 'HomeController@index');
+//rutas parametros
+Route::resource('/lugares','lugares');
+Route::resource('/personas','personas');
+Route::resource('/archivos','archivos');
+Route::resource('/tipos','tipos');
+Route::resource('/opciones','opciones');
+Route::resource('/inmueble','inmueble');
 
 Route::get('/', 'InicioController@indexInicio');
 //rutas de opciones y configuracion de datos
@@ -39,26 +36,6 @@ Route::get('buscaropcion/{id}', 'opciones@buscaropcion');
 Route::post('actualizarservicio/{id}', 'opciones@actualizarservicio');
 Route::post('actualizardetalle/{id}', 'opciones@actualizardetalle');
 Route::post('actualizaropcion/{id}', 'opciones@actualizaropcion');
-
-/**administrador**/
-Route::get('home', 'HomeController@index');
-//Route::get('apartamentos', 'ApartamentosController@indexApartamentos');
-//rutas parametros
-Route::resource('/lugares','lugares');
-Route::resource('/personas','personas');
-Route::resource('/archivos','archivos');
-Route::resource('/tipos','tipos');
-Route::resource('/opciones','opciones');
-//Route::resource('/parametro','ParametroController');
-//Route::resource('/persona','PersonaController');
-Route::resource('/inmueble','InmuebleController');
-//Route::get('inmueble','InmuebleController@indexInmueble');
-
-//Route::get('parametro','ParametroController@index');
-Route::get('/inmueble','InmuebleController@index');
-//Route::get('apartaestudios', 'ApartaestudioController@indexApartaestudio');
-
-//Route::get('lotes', 'LotesController@indexLotes');
 
 /**usuario*/
 Route::get('arriendos', 'ArriendosController@indexArriendos');

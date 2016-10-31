@@ -301,7 +301,7 @@
 						</form>
 				</div>
 				<div class="col-lg-4" id="editar_operacion" style="display: none;">
-				<legend>Editar detalle inmueble</legend>
+				<legend>Editar detalle operacion</legend>
 				<form role="form" id="editar3" method="POST">
 							{{csrf_field()}}
 

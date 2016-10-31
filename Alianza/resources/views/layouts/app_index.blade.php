@@ -53,7 +53,7 @@
     </head>
     <body>
 
-        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" >
             <div class="container">
 
                 <div class="navbar-header">
@@ -117,9 +117,13 @@
                 <li id="home">
                     <a href="home"><i class="glyphicon glyphicon-th-large"></i> Home</a>
                 </li>
+                <li id="publicar"> 
+                    <a href="#"><i class="fa fa-tags "></i> Publicaciones</a>
+                </li>
                 <li id="inmueble"> 
                     <a href="inmueble"><i class="glyphicon glyphicon-home "></i> Inmuenbles</a>
                 </li>
+
                 <li id="parametro">
                     <a href="javascript:;" data-toggle="collapse" data-target="#demo" class="collapsed" aria-expanded="false"><i class=" fa fa-cogs"></i> Opciones <i class="fa fa-fw fa-caret-down"></i></a>
                     <ul id="demo" class="collapse" aria-expanded="false" style="height: 0px;">

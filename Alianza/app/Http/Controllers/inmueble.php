@@ -2,21 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use DB;
-
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-
-use App\Inmueble; 
-
-use App\Persona; 
-
-use App\Lugar; 
-
-use App\Tipo;
-
-class InmuebleController extends Controller
+use DB;
+class inmueble extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -25,21 +15,21 @@ class InmuebleController extends Controller
      */
     public function index()
     {
-     $lugar = DB::select("SELECT id,nombre FROM `lugares` where tipo = 'Zona'");
-     $data=array('zona'=>$lugar,
+       $cantidad=DB::select("SELECT COUNT(`id`)numero FROM `inmuebles`");
+       $todos=DB::select("SELECT i.id id, CONCAT(p.nombre, ' ', p.apellido) As nombre,p.documento_id cc,l.nombre barrio,t.nombre tipo , i.direccion direccion,i.area_total metros_total,i.area_construccion metros_construccion_total, i.observacion observacion FROM inmuebles i,personas p,lugares l, tipos t where i.`persona_id`=p.id and i.`lugar_id`=l.id and i.`tipo_id`=t.id");
+
+       $data=array(
+        'contar'=>$cantidad,
+        'todos'=>$todos,
         );
-     // $lugares =Lugar::pluck('nombre', 'id');
-      
-  // dd($lugar);
-   return view('administrador.inmueble',$data);
-    }
+       return view('administrador.inmueble',$data);
+   }
 
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
- 
     public function create()
     {
         //
