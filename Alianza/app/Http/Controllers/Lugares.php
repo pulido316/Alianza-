@@ -52,9 +52,7 @@ class Lugares extends Controller
      */
     public function store(Request $request)
     {
-          
-
-           
+                     
            $nombre= $request->nombre;
            $zona= $request->zona;
           // $barrio->tipo='barrio';

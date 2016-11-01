@@ -143,64 +143,67 @@
             </table>
         </div>
         <div id="add-inmueble" class="col-lg-6 " style="display: none;">
-           <h1>Agregar nuevo Inmueble</h1>
-           <form role="form" id="nuevo_inmueble" method="POST">
+           <h3>Agregar Tipo de Inmueble</h3>
+           <form role="form"  method="POST" action="{{url('inmueble')}}" >
+             {{csrf_field()}}
                <div class="form-group has-success">
+                    
                    <label class="control-label" for="inputSuccess">Seleccione propietario del inmueble</label>
-                   <select id="persona_select" style="width: 29em">
+                   <select id="persona_select" name="persona_select" required style="width: 29em">
                      @foreach( $personas as $persona)
                      <option value="{!!$persona->id!!}">CC: {!!$persona->documento_id!!} Nombres:  {!!$persona->nombre!!} {!!$persona->apellido!!}</option>
                      @endforeach
                  </select>
 
                  <label class="control-label" for="inputSuccess">Seleccione los servicios del inmueble</label><br>
-                 <select class="js-example-basic-multiple" multiple="multiple" style="width: 29em">
+                 <select class="js-example-basic-multiple" multiple="multiple" style="width: 29em" required>
                      @foreach( $servicios as $servicio)
                      <option value="{!!$servicio->id!!}">{!!$servicio->nombre!!}</option>
                      @endforeach
                  </select>
 
                  <label class="control-label" for="inputSuccess">Seleccione Detalles del inmueble</label><br>
-                 <select class="js-example-basic-multiple" multiple="multiple" style="width: 29em">
+                 <select class="js-example-basic-multiple" multiple="multiple" style="width: 29em" required>
                      @foreach( $detalles as $detalle)
                      <option value="{!!$detalle->id!!}">{!!$detalle->nombre!!}</option>
                      @endforeach
                  </select>
                   <label class="control-label" for="inputSuccess">Seleccione el barrio del inmueble</label><br>
-                 <!--  
+                <!-- 
                  <select id="zona_select" style="width: 29em">
                      @foreach( $zonas as $zona)
                      <option value="{!!$zona->id!!}">{!!$zona->nombre!!}</option>
                      @endforeach
-                 </select>
+                 </select>-->
                  <br>
                  <br>
-                 -->
-                 <select id="lugar_select" style="width: 29em">
+                 
+                 <select id="lugar_select" name="lugar_select" style="width: 29em" required>
                      @foreach( $barrios as $barrio)
                      <option value="{!!$barrio->id!!}">{!!$barrio->nombre!!}</option>
                      @endforeach
                  </select><br>
                  <label class="control-label" for="inputSuccess">Tipo de Inmueble</label>
-                  <select id="tipo_select" style="width: 29em">
+                  <select id="tipo_select" style="width: 29em" required>
                      @foreach( $tipos as $tipo)
                      <option value="{!!$tipo->id!!}">{!!$tipo->nombre!!}</option>
                      @endforeach
-                 </select><br>
+                 </select>
+                 <br>
                  <label class="control-label" for="inputSuccess">Direccion</label>
                 <input type="text" class="form-control" id="direccion" name="direccion" required>
 
                 <label class="control-label" for="inputSuccess">Area de Inmueble</label>
-                <input type="text" class="form-control" id="are_inmueble" name="are_inmueble" required>
+                <input type="number" class="form-control" id="are_inmueble" name="are_inmueble" required>
 
                 <label class="control-label" for="inputSuccess">Area construccion Inmueble</label>
-                <input type="text" class="form-control" id="cons_inmueble" name="cons_inmueble" required>
+                <input type="number" class="form-control" id="cons_inmueble" name="cons_inmueble" required>
 
                 <label class="control-label" for="inputSuccess">Observaciones</label>
                 <textarea class="form-control" rows="5" id="observacion" name="observacion"></textarea>
                 <br>
                  <label class="control-label" for="inputSuccess"> Seleccione las imagenes del inmueble</label>
-                <input type="file" name="img" class="form-control" multiple>
+                <input type="file" name="img" class="form-control" multiple required>
                 <br>
                 <center>
                 <button type="submit" class="btn btn-primary">Guardar</button>
@@ -220,9 +223,9 @@
 <script type="text/javascript">
 
     $("#persona_select").select2(),
-    $("#zona_select").select2(),
+    //$("#zona_select").select2(),
     $("#lugar_select").select2(),
-     $("#tipo_select").select2(),
+    $("#tipo_select").select2(),
     $(".js-example-basic-multiple").select2();
 
     $('#example').dataTable();

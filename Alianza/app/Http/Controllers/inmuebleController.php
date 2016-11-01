@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
 use DB;
 use Redirect;
@@ -150,8 +149,7 @@ class inmuebleController extends Controller
     {
         //
     }
-
-    /**
+/**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -159,7 +157,12 @@ class inmuebleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        
+        $persona= $request->persona_select;
+        dd($persona);
+        /*Tipo::insert(['nombre' => $nombre]);
+        return Redirect::to('tipos');*/
     }
 
     /**
@@ -205,5 +208,14 @@ class inmuebleController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function buscar($id)
+    {
+        echo $id;
+        //SELECT * FROM `personas` WHERE documento_id =1049630805
+     // $buscar= DB::select("SELECT id,documento_id CC, nombre nombres, apellido apellidos, email correo, telefono telefono, observacion observacion FROM `personas` WHERE documento_id = '".$id."'");
+      //dd($buscar);
+       // $busqueda=Persona::where('documento_id',$id)->first();
+        //return response()->json($busqueda);
     }
 }

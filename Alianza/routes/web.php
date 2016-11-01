@@ -22,6 +22,7 @@ Route::resource('/tipos','tipos');
 Route::resource('/opciones','opciones');
 Route::resource('/inmueble','inmuebleController');
 
+
 Route::get('/', 'InicioController@indexInicio');
 //rutas de opciones y configuracion de datos
 Route::get('buscar/{id}', 'lugares@buscar');
@@ -72,4 +73,4 @@ Route::get('buscarInmueble', 'InicioController@buscarInmueble');
 
 Route::get('detallesInmueble/{id}', 'InicioController@detallesInmueble');
 
-Route::get('error',function(){abort(404);});
+//Route::get('error',function(){abort(404);});
