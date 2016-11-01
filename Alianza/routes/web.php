@@ -13,6 +13,7 @@
 Auth::routes();
 /**administrador**/
 Route::get('publicaciones', 'PublicacionesController@index');
+
 //rutas parametros
 Route::resource('/lugares','lugares');
 Route::resource('/personas','personas');

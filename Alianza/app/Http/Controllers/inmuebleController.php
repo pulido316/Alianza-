@@ -13,7 +13,10 @@ use App\Postulacion;
 use App\Imagen;
 use App\Dotacion;
 use App\Persona;
-
+use App\Servicio;
+use App\Detalle;
+use App\Lugar;
+use App\Tipo;
 
 class ObjectPersona
 {
@@ -121,8 +124,18 @@ class inmuebleController extends Controller
             // esta person esta en el objeto definido arriba de inmueble
             $dataInmuebles[]= $inmuebleObj;
         }
+
+
+        $barrio = DB::select("SELECT l.id id,l.nombre nombre,l.tipo tipo,u.nombre zona FROM lugares l, lugares u WHERE l.ubicacion_id=u.id");
+        $zonas = DB::select("SELECT id,nombre FROM `lugares` where tipo = 'Zona'");
         $data=array(
             'inmuebles'=>$dataInmuebles,
+            'personas'=>Persona::all(),
+            'servicios'=>Servicio::all(),
+            'detalles'=>Detalle::all(),
+            'barrios'=>$barrio,
+            'zonas'=>$zonas,
+            'tipos'=>Tipo::all(),
             );
         // return response()->json($dataInmuebles);
         return view('administrador.inmueble',$data);
