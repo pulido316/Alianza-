@@ -5,7 +5,6 @@
 <link rel="stylesheet" href="http://cdn.datatables.net/1.10.2/css/jquery.dataTables.css">
 <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
-<script type="text/javascript" src="js/zelect.js"></script>
 
 <link rel="stylesheet" type="text/css" href="css/select2.min.css">
 <script type="text/javascript" src="js/select2.min.js"></script>
@@ -144,7 +143,7 @@
         </div>
         <div id="add-inmueble" class="col-lg-6 " style="display: none;">
            <h3>Agregar Tipo de Inmueble</h3>
-           <form role="form"  method="POST" action="{{url('inmueble')}}" >
+           <form files=true role="form"  method="POST" action="{{url('inmueble')}}">
              {{csrf_field()}}
                <div class="form-group has-success">
                     
@@ -156,14 +155,14 @@
                  </select>
 
                  <label class="control-label" for="inputSuccess">Seleccione los servicios del inmueble</label><br>
-                 <select class="js-example-basic-multiple" multiple="multiple" style="width: 29em" required>
+                 <select id="select_servicio" name="select_servicio[]" class="js-example-basic-multiple" multiple="multiple" style="width: 29em" required>
                      @foreach( $servicios as $servicio)
                      <option value="{!!$servicio->id!!}">{!!$servicio->nombre!!}</option>
                      @endforeach
                  </select>
 
                  <label class="control-label" for="inputSuccess">Seleccione Detalles del inmueble</label><br>
-                 <select class="js-example-basic-multiple" multiple="multiple" style="width: 29em" required>
+                 <select class="js-example-basic-multiple" name="select_detalle[]" multiple="multiple" style="width: 29em" required>
                      @foreach( $detalles as $detalle)
                      <option value="{!!$detalle->id!!}">{!!$detalle->nombre!!}</option>
                      @endforeach
@@ -178,13 +177,13 @@
                  <br>
                  <br>
                  
-                 <select id="lugar_select" name="lugar_select" style="width: 29em" required>
+                 <select id="lugar_select" name="lugar_select"  style="width: 29em" required>
                      @foreach( $barrios as $barrio)
                      <option value="{!!$barrio->id!!}">{!!$barrio->nombre!!}</option>
                      @endforeach
                  </select><br>
                  <label class="control-label" for="inputSuccess">Tipo de Inmueble</label>
-                  <select id="tipo_select" style="width: 29em" required>
+                  <select id="tipo_select" name="tipo_select" style="width: 29em" required>
                      @foreach( $tipos as $tipo)
                      <option value="{!!$tipo->id!!}">{!!$tipo->nombre!!}</option>
                      @endforeach
@@ -203,7 +202,8 @@
                 <textarea class="form-control" rows="5" id="observacion" name="observacion"></textarea>
                 <br>
                  <label class="control-label" for="inputSuccess"> Seleccione las imagenes del inmueble</label>
-                <input type="file" name="img" class="form-control" multiple required>
+                <!-- <input type="file" name="img" class="form-control" multiple id="select_img" name="select_img[]" > -->
+                {!! Form::file('image', null) !!}
                 <br>
                 <center>
                 <button type="submit" class="btn btn-primary">Guardar</button>

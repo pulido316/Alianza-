@@ -16,7 +16,8 @@ use App\Servicio;
 use App\Detalle;
 use App\Lugar;
 use App\Tipo;
-
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Input;
 class ObjectPersona
 {
     public $nombre;
@@ -43,7 +44,7 @@ class ObjectInmueble
     public $lugar;
     public $tipo;
     public $detalles;
-     public $direccion;
+    public $direccion;
     public $operacion;
     public $imagenes;
     public $area_total;
@@ -155,15 +156,32 @@ class inmuebleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        
-        
-        $persona= $request->persona_select;
-        dd($persona);
-        /*Tipo::insert(['nombre' => $nombre]);
-        return Redirect::to('tipos');*/
-    }
+public function store(Request $request)
+{
+    $persona=$request->persona_select;
+    $servicios=$request->select_servicio;
+    $detalles=$request->select_detalle;
+    $lugar=$request->lugar_select;
+    $tipo=$request->tipo_select;
+    $direccion=$request->direccion;
+    $area_total=$request->are_inmueble;
+    $area_construccion=$request->cons_inmueble;
+    $observacion=$request->observacion;
+    $img=$request->myfile;
+    
+    
+    
+
+     //  dd( $servicio);
+   $id= Inmueble::insertGetId(['persona_id'=>$persona,'lugar_id'=>$lugar,'tipo_id'=>$tipo,'area_total'=>$area_total,'direccion'=>$direccion,'area_construccion'=>$area_construccion,'observacion'=>$observacion]);
+    foreach ($servicios as $servicio) {
+      Dotacion::insert(['inmueble_id'=>$id,'servicio_id'=>$servicio,]);
+  }
+  foreach ($detalles as $detalle) {
+      Distribucion::insert(['inmueble_id'=>$id,'detalle_id'=>$detalle,'cantidad'=>'1',]);
+  }
+  return Redirect::to('inmueble');
+}
 
     /**
      * Display the specified resource.
