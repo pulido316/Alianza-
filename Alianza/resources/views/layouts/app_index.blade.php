@@ -67,7 +67,7 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/home') }}">
+                    <a class="navbar-brand" href="{{ url('/publicaciones') }}">
                        Alianza Inmobiliaria
                    </a>
                </div>
@@ -114,11 +114,8 @@
             <ul class="nav navbar-nav side-nav">
 
 
-                <li id="home">
-                    <a href="home"><i class="glyphicon glyphicon-th-large"></i> Home</a>
-                </li>
-                <li id="publicar"> 
-                    <a href="#"><i class="fa fa-tags "></i> Publicaciones</a>
+                 <li id="publicar"> 
+                    <a href="publicaciones"><i class="fa fa-tags "></i> Publicaciones</a>
                 </li>
                 <li id="inmueble"> 
                     <a href="inmueble"><i class="glyphicon glyphicon-home "></i> Inmuebles</a>
