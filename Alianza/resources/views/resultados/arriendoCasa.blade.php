@@ -35,7 +35,7 @@
                               <a href="/detallesInmueble/{!! $inmueble->id !!}">
                                 <img id="imagen" src="img/fotos/{!! $inmueble->imagen !!}" class="img-responsive" alt="">
                               </a>
-                                <div class="project-details">
+                                <div class="project-details infoInmueble">
                                     <ul>
                                         <li ><strong>Lugar :</strong> {!! $inmueble->lugar !!}</li>
                                         <li ><strong>Tipo :</strong> {!! $inmueble->tipo !!}</li>

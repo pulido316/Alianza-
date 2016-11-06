@@ -14,7 +14,7 @@
 	<div class="container">
 		<div class="row">
     <h3 class="section-title">Detalles generales</h3>
-			<div class="col-lg-12" style="background: #FF432E">
+			<div class="col-lg-12 infoInmueble">
                 <div >
                     <div class="form-group col-md-4">
                         <strong>Lugar:</strong>       
