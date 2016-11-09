@@ -16,6 +16,7 @@ use App\Servicio;
 use App\Detalle;
 use App\Lugar;
 use App\Tipo;
+use Storage;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Input;
 class ObjectPersona
@@ -67,6 +68,7 @@ class inmuebleController extends Controller
      */
     public function index()
     {   
+        $contar=DB::select("SELECT COUNT(id) numero FROM `inmuebles`");
         $inmuebles = Inmueble::all();
         $dataInmuebles = array();
 
@@ -136,6 +138,7 @@ class inmuebleController extends Controller
             'barrios'=>$barrio,
             'zonas'=>$zonas,
             'tipos'=>Tipo::all(),
+            'contar'=>$contar,
             );
         // return response()->json($dataInmuebles);
         return view('administrador.inmueble',$data);
@@ -158,6 +161,9 @@ class inmuebleController extends Controller
      */
 public function store(Request $request)
 {
+
+
+
     $persona=$request->persona_select;
     $servicios=$request->select_servicio;
     $detalles=$request->select_detalle;
@@ -167,12 +173,10 @@ public function store(Request $request)
     $area_total=$request->are_inmueble;
     $area_construccion=$request->cons_inmueble;
     $observacion=$request->observacion;
-    $img=$request->myfile;
-    
-    
+   
+    $img=$request->file('img_url');
     
 
-     //  dd( $servicio);
    $id= Inmueble::insertGetId(['persona_id'=>$persona,'lugar_id'=>$lugar,'tipo_id'=>$tipo,'area_total'=>$area_total,'direccion'=>$direccion,'area_construccion'=>$area_construccion,'observacion'=>$observacion]);
     foreach ($servicios as $servicio) {
       Dotacion::insert(['inmueble_id'=>$id,'servicio_id'=>$servicio,]);
@@ -180,7 +184,12 @@ public function store(Request $request)
   foreach ($detalles as $detalle) {
       Distribucion::insert(['inmueble_id'=>$id,'detalle_id'=>$detalle,'cantidad'=>'1',]);
   }
-  return Redirect::to('inmueble');
+  foreach ($img as $imagen ) {
+        $file_url=time().'_'.$imagen->getClientOriginalName();
+        Storage::disk('prueba')->put($file_url,file_get_contents( $imagen->getRealPath() ));
+        Imagen::insert(['inmueble_id'=>$id,'url_img'=>$file_url]);
+    }
+  return Redirect::to('inmueble');  
 }
 
     /**

@@ -42,6 +42,11 @@ return [
     */
 
     'disks' => [
+       'prueba' => [
+            'driver' => 'local',
+            'root' => public_path('img/fotos'),
+        
+        ],
 
         'local' => [
             'driver' => 'local',

@@ -32,7 +32,11 @@
                                 </div>
                                 <div class="col-xs-9 text-right">
                                     <div class="huge">
-                                        26
+                                        @foreach($contar as $cuenta)
+
+                                        {!! $cuenta->numero !!}
+
+                                        @endforeach
                                     </div>
                                     <div>Inmuebles</div>
                                 </div>
@@ -75,7 +79,7 @@
 
             <div class="row">
                 <div class="col-lg-12">
-                   <div id="tabla-lista" class="table-responsive table tabla-lista" style="display: none;">
+                 <div id="tabla-lista" class="table-responsive table tabla-lista" style="display: none;">
                     <table id="example"  class="table table-hover table-striped  table-striped table-borderedSeen" >
                         <thead>
                             <tr>
@@ -115,59 +119,60 @@
                                     {!! $inmueble->area_construccion!!} m<sup>2</sup>
                                 </td>
                                 <td>
-                                 {!! $inmueble->observacion!!}
+                                   {!! $inmueble->observacion!!}
+                               </td>
+                               <td>
+                                 @foreach( $inmueble->detalles as $detalle)
+
+                                 <ul>
+                                     <li><strong>{!!$detalle->nombre!!}: </strong>{!!$detalle->cantidad!!}</li>
+                                 </ul>
+                                 @endforeach
                              </td>
                              <td>
-                               @foreach( $inmueble->detalles as $detalle)
+                                 @foreach( $inmueble->servicios as $servicio)
 
-                               <ul>
-                                   <li><strong>{!!$detalle->nombre!!}: </strong>{!!$detalle->cantidad!!}</li>
-                               </ul>
-                               @endforeach
-                           </td>
-                           <td>
-                               @foreach( $inmueble->servicios as $servicio)
-
-                               <ul>
-                                   <li>{!!$servicio->nombre!!}</li>
-                               </ul>
-                               @endforeach
-                           </td>
-                           <td>
-                            <button class="btn btn-primary editar-boton" id="{!! $inmueble->id !!}">editar</button>
-                        </td>
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
-        </div>
-        <div id="add-inmueble" class="col-lg-6 " style="display: none;">
-           <h3>Agregar Tipo de Inmueble</h3>
-           <form files=true role="form"  method="POST" action="{{url('inmueble')}}">
-             {{csrf_field()}}
+                                 <ul>
+                                     <li>{!!$servicio->nombre!!}</li>
+                                 </ul>
+                                 @endforeach
+                             </td>
+                             <td>
+                                <button class="btn btn-primary editar-boton" id="{!! $inmueble->id !!}">editar</button>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+            <div id="add-inmueble" class="col-lg-6 " style="display: none;">
+             <h3>Agregar Tipo de Inmueble</h3>
+             <form files=true role="form"  method="POST" action="{{url('inmueble')}}" enctype="multipart/form-data">
+               {{csrf_field()}}
                <div class="form-group has-success">
-                    
-                   <label class="control-label" for="inputSuccess">Seleccione propietario del inmueble</label>
-                   <select id="persona_select" name="persona_select" required style="width: 29em">
-                     @foreach( $personas as $persona)
-                     <option value="{!!$persona->id!!}">CC: {!!$persona->documento_id!!} Nombres:  {!!$persona->nombre!!} {!!$persona->apellido!!}</option>
-                     @endforeach
-                 </select>
 
-                 <label class="control-label" for="inputSuccess">Seleccione los servicios del inmueble</label><br>
-                 <select id="select_servicio" name="select_servicio[]" class="js-example-basic-multiple" multiple="multiple" style="width: 29em" required>
-                     @foreach( $servicios as $servicio)
-                     <option value="{!!$servicio->id!!}">{!!$servicio->nombre!!}</option>
-                     @endforeach
-                 </select>
+                 <label class="control-label" for="inputSuccess">Seleccione propietario del inmueble</label>
+                 <select id="persona_select" name="persona_select" required style="width: 29em">
+                   @foreach( $personas as $persona)
+                   <option value="{!!$persona->id!!}">CC: {!!$persona->documento_id!!} Nombres:  {!!$persona->nombre!!} {!!$persona->apellido!!}</option>
+                   @endforeach
+               </select>
 
-                 <label class="control-label" for="inputSuccess">Seleccione Detalles del inmueble</label><br>
-                 <select class="js-example-basic-multiple" name="select_detalle[]" multiple="multiple" style="width: 29em" required>
-                     @foreach( $detalles as $detalle)
-                     <option value="{!!$detalle->id!!}">{!!$detalle->nombre!!}</option>
-                     @endforeach
-                 </select>
-                  <label class="control-label" for="inputSuccess">Seleccione el barrio del inmueble</label><br>
+               <label class="control-label" for="inputSuccess">Seleccione los servicios del inmueble</label><br>
+               <select id="select_servicio" name="select_servicio[]" class="js-example-basic-multiple" multiple="multiple" style="width: 29em" required>
+                   @foreach( $servicios as $servicio)
+                   <option value="{!!$servicio->id!!}">{!!$servicio->nombre!!}</option>
+                   @endforeach
+               </select>
+
+               <label class="control-label" for="inputSuccess">Seleccione Detalles del inmueble</label><br>
+               <select class="js-example-basic-multiple" name="select_detalle[]" multiple="multiple" style="width: 29em" required>
+                   @foreach( $detalles as $detalle)
+                   <option value="{!!$detalle->id!!}">{!!$detalle->nombre!!}
+                   </option>
+                   @endforeach
+               </select>
+               <label class="control-label" for="inputSuccess">Seleccione el barrio del inmueble</label><br>
                 <!-- 
                  <select id="zona_select" style="width: 29em">
                      @foreach( $zonas as $zona)
@@ -178,43 +183,45 @@
                  <br>
                  
                  <select id="lugar_select" name="lugar_select"  style="width: 29em" required>
-                     @foreach( $barrios as $barrio)
-                     <option value="{!!$barrio->id!!}">{!!$barrio->nombre!!}</option>
-                     @endforeach
-                 </select><br>
-                 <label class="control-label" for="inputSuccess">Tipo de Inmueble</label>
-                  <select id="tipo_select" name="tipo_select" style="width: 29em" required>
-                     @foreach( $tipos as $tipo)
-                     <option value="{!!$tipo->id!!}">{!!$tipo->nombre!!}</option>
-                     @endforeach
-                 </select>
-                 <br>
-                 <label class="control-label" for="inputSuccess">Direccion</label>
-                <input type="text" class="form-control" id="direccion" name="direccion" required>
+                   @foreach( $barrios as $barrio)
+                   <option value="{!!$barrio->id!!}">{!!$barrio->nombre!!}</option>
+                   @endforeach
+               </select><br>
+               <label class="control-label" for="inputSuccess">Tipo de Inmueble</label>
+               <select id="tipo_select" name="tipo_select" style="width: 29em" required>
+                   @foreach( $tipos as $tipo)
+                   <option value="{!!$tipo->id!!}">{!!$tipo->nombre!!}</option>
+                   @endforeach
+               </select>
+               <br>
+               <label class="control-label" for="inputSuccess">Direccion</label>
+               <input type="text" class="form-control" id="direccion" name="direccion" required>
 
-                <label class="control-label" for="inputSuccess">Area de Inmueble</label>
-                <input type="number" class="form-control" id="are_inmueble" name="are_inmueble" required>
+               <label class="control-label" for="inputSuccess">Area de Inmueble</label>
+               <input type="number" class="form-control" id="are_inmueble" name="are_inmueble" required>
 
-                <label class="control-label" for="inputSuccess">Area construccion Inmueble</label>
-                <input type="number" class="form-control" id="cons_inmueble" name="cons_inmueble" required>
+               <label class="control-label" for="inputSuccess">Area construccion Inmueble</label>
+               <input type="number" class="form-control" id="cons_inmueble" name="cons_inmueble" required>
 
-                <label class="control-label" for="inputSuccess">Observaciones</label>
-                <textarea class="form-control" rows="5" id="observacion" name="observacion"></textarea>
-                <br>
-                 <label class="control-label" for="inputSuccess"> Seleccione las imagenes del inmueble</label>
-                <!-- <input type="file" name="img" class="form-control" multiple id="select_img" name="select_img[]" > -->
-                {!! Form::file('image', null) !!}
-                <br>
-                <center>
+               <label class="control-label" for="inputSuccess">Observaciones</label>
+               <textarea class="form-control" rows="5" id="observacion" name="observacion"></textarea>
+               <br>
+
+               <input type="file" id="img_url" name="img_url[]" multiple="multiple class="form-control" >
+
+
+               
+               <br>
+               <center>
                 <button type="submit" class="btn btn-primary">Guardar</button>
                 <button id="cancelar" type="reset" class="btn btn-warning">Cancelar</button>
                 <button id="limpiar" type="reset" class="btn btn-success">Limpiar</button>
-                </center>
-                
-             </div>
-         </form>
-     </div>
- </div>
+            </center>
+
+        </div>
+    </form>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -239,7 +246,7 @@
         $("#add-inmueble").show()
 
     });
-   $("#cancelar").click(function(){
+    $("#cancelar").click(function(){
         $(".tabla-lista").hide()
         $("#add-inmueble").hide()
 
