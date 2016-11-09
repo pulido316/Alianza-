@@ -159,14 +159,14 @@
                </select>
 
                <label class="control-label" for="inputSuccess">Seleccione los servicios del inmueble</label><br>
-               <select id="select_servicio" name="select_servicio[]" class="js-example-basic-multiple" multiple="multiple" style="width: 29em" required>
+               <select id="select_servicio" name="select_servicio[]" class="js-example-basic-multiple" multiple="multiple" style="width: 29em">
                    @foreach( $servicios as $servicio)
                    <option value="{!!$servicio->id!!}">{!!$servicio->nombre!!}</option>
                    @endforeach
                </select>
 
                <label class="control-label" for="inputSuccess">Seleccione Detalles del inmueble</label><br>
-               <select class="js-example-basic-multiple" name="select_detalle[]" multiple="multiple" style="width: 29em" required>
+               <select class="js-example-basic-multiple" name="select_detalle[]" multiple="multiple" style="width: 29em" >
                    @foreach( $detalles as $detalle)
                    <option value="{!!$detalle->id!!}">{!!$detalle->nombre!!}
                    </option>
@@ -207,7 +207,7 @@
                <textarea class="form-control" rows="5" id="observacion" name="observacion"></textarea>
                <br>
 
-               <input type="file" id="img_url" name="img_url[]" multiple="multiple class="form-control" >
+               <input type="file" id="img_url" name="img_url[]" multiple="multiple class="form-control" required>
 
 
                

@@ -173,23 +173,29 @@ public function store(Request $request)
     $area_total=$request->are_inmueble;
     $area_construccion=$request->cons_inmueble;
     $observacion=$request->observacion;
-   
     $img=$request->file('img_url');
     
 
-   $id= Inmueble::insertGetId(['persona_id'=>$persona,'lugar_id'=>$lugar,'tipo_id'=>$tipo,'area_total'=>$area_total,'direccion'=>$direccion,'area_construccion'=>$area_construccion,'observacion'=>$observacion]);
-    foreach ($servicios as $servicio) {
-      Dotacion::insert(['inmueble_id'=>$id,'servicio_id'=>$servicio,]);
+
+
+    $id= Inmueble::insertGetId(['persona_id'=>$persona,'lugar_id'=>$lugar,'tipo_id'=>$tipo,'area_total'=>$area_total,'direccion'=>$direccion,'area_construccion'=>$area_construccion,'observacion'=>$observacion]);
+    if ($servicios != null) {
+        foreach ($servicios as $servicio) {
+          Dotacion::insert(['inmueble_id'=>$id,'servicio_id'=>$servicio,]);
+      }
   }
-  foreach ($detalles as $detalle) {
+  if ($detalles != null) {
+   foreach ($detalles as $detalle) {
       Distribucion::insert(['inmueble_id'=>$id,'detalle_id'=>$detalle,'cantidad'=>'1',]);
   }
-  foreach ($img as $imagen ) {
-        $file_url=time().'_'.$imagen->getClientOriginalName();
-        Storage::disk('prueba')->put($file_url,file_get_contents( $imagen->getRealPath() ));
-        Imagen::insert(['inmueble_id'=>$id,'url_img'=>$file_url]);
-    }
-  return Redirect::to('inmueble');  
+}
+
+foreach ($img as $imagen ) {
+    $file_url=time().'_'.$imagen->getClientOriginalName();
+    Storage::disk('prueba')->put($file_url,file_get_contents( $imagen->getRealPath() ));
+    Imagen::insert(['inmueble_id'=>$id,'url_img'=>$file_url]);
+}
+return Redirect::to('inmueble');  
 }
 
     /**
