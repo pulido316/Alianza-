@@ -53,7 +53,7 @@
     </head>
     <body>
 
-        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" >
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation"  STYLE="background-color:rgb(231, 76, 60)">
             <div class="container">
 
                 <div class="navbar-header">
@@ -72,7 +72,7 @@
                    </a>
                </div>
 
-               <div class="collapse navbar-collapse" id="app-navbar-collapse">
+               <div class="collapse navbar-collapse" id="app-navbar-collapse" >
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
                     &nbsp;
@@ -81,7 +81,7 @@
                 </ul>
 
                 <!-- Right Side Of Navbar -->
-                <ul class="nav navbar-nav navbar-right">
+                <ul class="nav navbar-nav navbar-right" >
                     <!-- Authentication Links -->
                     @if (Auth::guest())
                     <li><a href="{{ url('/login') }}">Login</a></li>
@@ -110,8 +110,9 @@
             </ul>
         </div>
 
-        <div class="collapse navbar-collapse navbar-ex1-collapse">
-            <ul class="nav navbar-nav side-nav">
+        <div class="collapse navbar-collapse navbar-ex1-collapse" >
+
+            <ul class="nav navbar-nav side-nav" STYLE="background-color:rgb(231, 76, 60)">
 
 
                  <li id="publicar"> 

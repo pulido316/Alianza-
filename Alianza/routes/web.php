@@ -21,6 +21,7 @@ Route::resource('/archivos','archivos');
 Route::resource('/tipos','tipos');
 Route::resource('/opciones','opciones');
 Route::resource('/inmueble','inmuebleController');
+Route::resource('/publicaciones','postulacion');
 
 
 Route::get('/', 'InicioController@indexInicio');
