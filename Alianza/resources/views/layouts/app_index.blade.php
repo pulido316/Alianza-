@@ -53,7 +53,7 @@
     </head>
     <body>
 
-        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation"  STYLE="background-color:rgb(231, 76, 60)">
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation"  STYLE="background-color:#6774f7">
             <div class="container">
 
                 <div class="navbar-header">
@@ -67,7 +67,7 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/publicaciones') }}">
+                    <a class="navbar-brand" href="{{ url('/publicaciones') }}" style="color: #FFFFFF !important">
                        Alianza Inmobiliaria
                    </a>
                </div>
@@ -88,7 +88,7 @@
                     <li><a href="{{ url('/register') }}">Register</a></li>
                     @else
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="color: #FFFFFF !important">
                             {{ Auth::user()->name }} <span class="caret"></span>
                         </a>
 
@@ -116,26 +116,26 @@
 
 
                  <li id="publicar"> 
-                    <a href="publicaciones"><i class="fa fa-tags "></i> Publicaciones</a>
+                    <a href="publicaciones" style="color: #FFFFFF !important"><i class="fa fa-tags "></i> Publicaciones</a>
                 </li>
                 <li id="inmueble"> 
-                    <a href="inmueble"><i class="glyphicon glyphicon-home "></i> Inmuebles</a>
+                    <a href="inmueble" style="color: #FFFFFF !important"><i class="glyphicon glyphicon-home "></i> Inmuebles</a>
                 </li>
 
                 <li id="parametro">
-                    <a href="javascript:;" data-toggle="collapse" data-target="#demo" class="collapsed" aria-expanded="false"><i class=" fa fa-cogs"></i> Opciones <i class="fa fa-fw fa-caret-down"></i></a>
+                    <a href="javascript:;" data-toggle="collapse" data-target="#demo" class="collapsed" aria-expanded="false" style="color: #FFFFFF !important"><i class=" fa fa-cogs"></i> Opciones <i class="fa fa-fw fa-caret-down"></i></a>
                     <ul id="demo" class="collapse" aria-expanded="false" style="height: 0px;">
                         <li>
-                            <a href="/personas">Personas</a>
+                            <a href="/personas" style="color: #FFFFFF !important">Personas</a>
                         </li>
                         <li>
-                            <a href="/lugares">Lugares</a>
+                            <a href="/lugares" style="color: #FFFFFF !important">Lugares</a>
                         </li>
                         <li>
-                            <a href="/tipos">Tipos inmueble</a>
+                            <a href="/tipos" style="color: #FFFFFF !important">Tipos inmueble</a>
                         </li>
                         <li>
-                            <a href="/opciones">Más Opciones</a>
+                            <a href="/opciones" style="color: #FFFFFF !important">Más Opciones</a>
                         </li>
                     </ul>
                 </li>
