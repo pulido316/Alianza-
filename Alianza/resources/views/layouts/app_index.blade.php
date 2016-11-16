@@ -112,7 +112,6 @@
 
         <div class="collapse navbar-collapse navbar-ex1-collapse" >
 
-<<<<<<< HEAD
             <ul class="nav navbar-nav side-nav" style="background:#FF432E">
 
 
@@ -143,38 +142,7 @@
         </ul>
     </div>
 </nav>
-=======
-            <ul class="nav navbar-nav side-nav" STYLE="background-color:rgb(231, 76, 60)">
 
-
-                 <li id="publicar"> 
-                    <a href="publicaciones" style="color: #FFFFFF !important"><i class="fa fa-tags "></i> Publicaciones</a>
-                </li>
-                <li id="inmueble"> 
-                    <a href="inmueble" style="color: #FFFFFF !important"><i class="glyphicon glyphicon-home "></i> Inmuebles</a>
-                </li>
-
-                <li id="parametro">
-                    <a href="javascript:;" data-toggle="collapse" data-target="#demo" class="collapsed" aria-expanded="false" style="color: #FFFFFF !important"><i class=" fa fa-cogs"></i> Opciones <i class="fa fa-fw fa-caret-down"></i></a>
-                    <ul id="demo" class="collapse" aria-expanded="false" style="height: 0px;">
-                        <li>
-                            <a href="/personas" style="color: #FFFFFF !important">Personas</a>
-                        </li>
-                        <li>
-                            <a href="/lugares" style="color: #FFFFFF !important">Lugares</a>
-                        </li>
-                        <li>
-                            <a href="/tipos" style="color: #FFFFFF !important">Tipos inmueble</a>
-                        </li>
-                        <li>
-                            <a href="/opciones" style="color: #FFFFFF !important">Más Opciones</a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </nav>
->>>>>>> 2ae08e7e93da57f11bd89b93162343768be50933
 </div>
 </nav>
 
