@@ -53,8 +53,13 @@
     </head>
     <body>
 
+<<<<<<< HEAD
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation"  style="background-color:#FF432E">
             <div class="container" >
+=======
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation"  STYLE="background-color:#6774f7">
+            <div class="container">
+>>>>>>> 2ae08e7e93da57f11bd89b93162343768be50933
 
                 <div class="navbar-header" >
 
@@ -67,10 +72,17 @@
                     </button>
 
                     <!-- Branding Image -->
+<<<<<<< HEAD
                     <a class="navbar-brand" href="{{ url('/publicaciones') }}">
                      Alianza Inmobiliaria
                  </a>
              </div>
+=======
+                    <a class="navbar-brand" href="{{ url('/publicaciones') }}" style="color: #FFFFFF !important">
+                       Alianza Inmobiliaria
+                   </a>
+               </div>
+>>>>>>> 2ae08e7e93da57f11bd89b93162343768be50933
 
              <div class="collapse navbar-collapse" id="app-navbar-collapse" >
                 <!-- Left Side Of Navbar -->
@@ -88,7 +100,7 @@
                     <li><a href="{{ url('/register') }}">Register</a></li>
                     @else
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="color: #FFFFFF !important">
                             {{ Auth::user()->name }} <span class="caret"></span>
                         </a>
 
@@ -112,6 +124,7 @@
 
         <div class="collapse navbar-collapse navbar-ex1-collapse" >
 
+<<<<<<< HEAD
             <ul class="nav navbar-nav side-nav" style="background:#FF432E">
 
 
@@ -142,6 +155,38 @@
         </ul>
     </div>
 </nav>
+=======
+            <ul class="nav navbar-nav side-nav" STYLE="background-color:rgb(231, 76, 60)">
+
+
+                 <li id="publicar"> 
+                    <a href="publicaciones" style="color: #FFFFFF !important"><i class="fa fa-tags "></i> Publicaciones</a>
+                </li>
+                <li id="inmueble"> 
+                    <a href="inmueble" style="color: #FFFFFF !important"><i class="glyphicon glyphicon-home "></i> Inmuebles</a>
+                </li>
+
+                <li id="parametro">
+                    <a href="javascript:;" data-toggle="collapse" data-target="#demo" class="collapsed" aria-expanded="false" style="color: #FFFFFF !important"><i class=" fa fa-cogs"></i> Opciones <i class="fa fa-fw fa-caret-down"></i></a>
+                    <ul id="demo" class="collapse" aria-expanded="false" style="height: 0px;">
+                        <li>
+                            <a href="/personas" style="color: #FFFFFF !important">Personas</a>
+                        </li>
+                        <li>
+                            <a href="/lugares" style="color: #FFFFFF !important">Lugares</a>
+                        </li>
+                        <li>
+                            <a href="/tipos" style="color: #FFFFFF !important">Tipos inmueble</a>
+                        </li>
+                        <li>
+                            <a href="/opciones" style="color: #FFFFFF !important">Más Opciones</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+>>>>>>> 2ae08e7e93da57f11bd89b93162343768be50933
 </div>
 </nav>
 
