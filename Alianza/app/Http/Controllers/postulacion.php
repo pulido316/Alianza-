@@ -15,10 +15,14 @@ class postulacion extends Controller
      */
     public function index()
     {
-        $contar=DB::select("SELECT COUNT(`operacion_id`) numero FROM `postulaciones`;");
-        $postulacion=DB::select("SELECT i.id id, i.direccion direccion,o.nombre operacion,p.fecha_inicio inicio,p.fecha_fin fin,p.`estado_pustulacion`estado FROM `postulaciones` p, operaciones o,inmuebles i WHERE o.id=p.`operacion_id` and p.`inmueble_id`=i.id");
-        $data=array('contar'=>$contar,
+        $contar=DB::select("SELECT COUNT(operacion_id) numero FROM postulaciones;");
+        $publicacion=DB::select("SELECT i.id id, i.direccion direccion,o.nombre operacion,p.fecha_inicio inicio,p.fecha_fin fin,p.estado_pustulacion estado FROM postulaciones p, operaciones o,inmuebles i WHERE o.id=p.operacion_id and p.inmueble_id=i.id;");
+       // dd($publicacion);
+        $data=array('valores'=>$publicacion,
+            'contar'=>$contar,    
             );
+        //dd($publicacion);
+
        return view('administrador.publicaciones',$data);
     }
 

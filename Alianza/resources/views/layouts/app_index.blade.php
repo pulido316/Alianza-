@@ -53,10 +53,10 @@
     </head>
     <body>
 
-        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation"  STYLE="background-color:rgb(231, 76, 60)">
-            <div class="container">
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation"  style="background-color:#FF432E">
+            <div class="container" >
 
-                <div class="navbar-header">
+                <div class="navbar-header" >
 
                     <!-- Collapsed Hamburger -->
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
@@ -68,13 +68,13 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/publicaciones') }}">
-                       Alianza Inmobiliaria
-                   </a>
-               </div>
+                     Alianza Inmobiliaria
+                 </a>
+             </div>
 
-               <div class="collapse navbar-collapse" id="app-navbar-collapse" >
+             <div class="collapse navbar-collapse" id="app-navbar-collapse" >
                 <!-- Left Side Of Navbar -->
-                <ul class="nav navbar-nav">
+                <ul class="nav navbar-nav" >
                     &nbsp;
                     
 
@@ -112,36 +112,36 @@
 
         <div class="collapse navbar-collapse navbar-ex1-collapse" >
 
-            <ul class="nav navbar-nav side-nav" STYLE="background-color:rgb(231, 76, 60)">
+            <ul class="nav navbar-nav side-nav" style="background:#FF432E">
 
 
-                 <li id="publicar"> 
-                    <a href="publicaciones"><i class="fa fa-tags "></i> Publicaciones</a>
-                </li>
-                <li id="inmueble"> 
-                    <a href="inmueble"><i class="glyphicon glyphicon-home "></i> Inmuebles</a>
-                </li>
+               <li id="publicar"> 
+                <a href="publicaciones"><i class="fa fa-tags "></i> Publicaciones</a>
+            </li>
+            <li id="inmueble"> 
+                <a href="inmueble"><i class="glyphicon glyphicon-home "></i> Inmuebles</a>
+            </li>
 
-                <li id="parametro">
-                    <a href="javascript:;" data-toggle="collapse" data-target="#demo" class="collapsed" aria-expanded="false"><i class=" fa fa-cogs"></i> Opciones <i class="fa fa-fw fa-caret-down"></i></a>
-                    <ul id="demo" class="collapse" aria-expanded="false" style="height: 0px;">
-                        <li>
-                            <a href="/personas">Personas</a>
-                        </li>
-                        <li>
-                            <a href="/lugares">Lugares</a>
-                        </li>
-                        <li>
-                            <a href="/tipos">Tipos inmueble</a>
-                        </li>
-                        <li>
-                            <a href="/opciones">Más Opciones</a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </nav>
+            <li id="parametro">
+                <a href="javascript:;" data-toggle="collapse" data-target="#demo" class="collapsed" aria-expanded="false"><i class=" fa fa-cogs"></i> Opciones <i class="fa fa-fw fa-caret-down"></i></a>
+                <ul id="demo" class="collapse" aria-expanded="false" style="height: 0px;">
+                    <li>
+                        <a href="/personas">Personas</a>
+                    </li>
+                    <li>
+                        <a href="/lugares">Lugares</a>
+                    </li>
+                    <li>
+                        <a href="/tipos">Tipos inmueble</a>
+                    </li>
+                    <li>
+                        <a href="/opciones">Más Opciones</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</nav>
 </div>
 </nav>
 

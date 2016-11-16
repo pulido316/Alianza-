@@ -26,9 +26,9 @@
                                 </div>
                                 <div class="col-xs-9 text-right">
                                     <div class="huge">
-                                        @foreach($contar as $cuenta)
+                                        @foreach($contar as $cantidad)
 
-                                        {!! $cuenta->numero !!}
+                                        {!! $cantidad->numero !!}
 
                                         @endforeach
                                     </div>
@@ -84,6 +84,20 @@
                                 <th>Editar</th>
                             </tr>
                         </thead>
+                        <tbody>
+                           @foreach ($valores as $valor)
+                           <tr>
+                               <td>{!! $valor->direccion !!}</td>
+                               <td>{!! $valor->operacion !!}</td>
+                               <td>{!! $valor->inicio !!}</td>
+                               <td>{!! $valor->fin !!}</td>
+                               <td>{!! $valor->estado !!}</td>
+                               <td>
+                                <button class="btn btn-primary editar_boton" id="{!! $valor->id !!}">editar</button>
+                               </td>
+                           </tr>
+                           @endforeach
+                        </tbody>
                     </table>
                 </div>
                 <div id="add_publicacion" style="display: none;">
