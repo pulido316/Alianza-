@@ -51,6 +51,10 @@ class ArriendosController extends Controller
     	$dataInmuebles = array();
 
         foreach ($postulaciones as $postulacion) {
+
+            $activos = Postulacion::where('inmueble_id', $postulacion->inmueble_id)->get();
+            foreach ($activos as $activo) {
+                if($activo->estado_pustulacion=="activo"){               
            
            		/*Detalles*/
     		$detalles = Distribucion::where('inmueble_id', $postulacion->inmueble_id)->get();
@@ -87,7 +91,8 @@ class ArriendosController extends Controller
     		$inmuebleObj->imagen = $imagen->url_img;
 
     		$dataInmuebles[]= $inmuebleObj;
-    		
+    		}
+        }
     	}
     	
     	$data=array(

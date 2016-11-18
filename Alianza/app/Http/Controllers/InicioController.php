@@ -66,48 +66,55 @@ class InicioController extends Controller
     public function indexInicio(){
     	
     	$inmuebles = Inmueble::all();
+        
     	$dataInmuebles = array();
 
-    	foreach ($inmuebles as $inmueble){
-    		/*Detalles*/
-    		$detalles = Distribucion::where('inmueble_id', $inmueble->id)->get();
-    		$dataDetalles = array();
-    		foreach ($detalles as $detalle){
-    			if ($detalle->detalle_id==1  || $detalle->detalle_id==2) {
-    				$detalleObj = new ObjectDetalle();
-    				$detalleObj->nombre = $detalle->detalle->nombre;
-    				$detalleObj->cantidad = $detalle->cantidad;
-    				$dataDetalles[] =  $detalleObj ;	
-    			}
-    			
-    		}
-    		/*operaciones*/
-    		$operaciones = Postulacion::where('inmueble_id', $inmueble->id)->get();
-    		$dataOperaciones = array();
-    		foreach ($operaciones as $operacion){
-    			$operacionObj = new ObjectOperacion();
-    			$operacionObj->nombre = $operacion->operacion->nombre;
-    			$operacionObj->precio = $operacion->precio;
-    			$dataOperaciones[] =  $operacionObj;
-    					    			
-    		}
+            foreach ($inmuebles as $inmueble){
 
-    		/*Imagen*/
-    		$imagen=Imagen::where('inmueble_id',  $inmueble->id)->first();
-    		
-    		$inmuebleObj = new ObjectInmueble();
-    		$inmuebleObj->id = $inmueble->id;
-    		$inmuebleObj->lugar = $inmueble->lugar->nombre;
-    		$inmuebleObj->tipo = $inmueble->tipo->nombre;
-    		$inmuebleObj->detalles = $dataDetalles;
-    		$inmuebleObj->operaciones = $dataOperaciones;
-    		$inmuebleObj->imagen = $imagen->url_img;
+                $activos = Postulacion::where('inmueble_id', $inmueble->id)->get();
+                foreach ($activos as $activo){
+            if($activo->estado_pustulacion=="activo"){
 
-    		$dataInmuebles[]= $inmuebleObj;
-    		
-    	}
-    	
-    	$barrio = DB::select("SELECT l.id id,l.nombre nombre,l.tipo tipo,u.nombre zona FROM lugares l, lugares u WHERE l.ubicacion_id=u.id");
+            /*Detalles*/
+            $detalles = Distribucion::where('inmueble_id', $inmueble->id)->get();
+            $dataDetalles = array();
+            foreach ($detalles as $detalle){
+                if ($detalle->detalle_id==1  || $detalle->detalle_id==2) {
+                    $detalleObj = new ObjectDetalle();
+                    $detalleObj->nombre = $detalle->detalle->nombre;
+                    $detalleObj->cantidad = $detalle->cantidad;
+                    $dataDetalles[] =  $detalleObj ;    
+                }
+                
+            }
+            /*operaciones*/
+            $operaciones = Postulacion::where('inmueble_id', $inmueble->id)->get();
+            $dataOperaciones = array();
+            foreach ($operaciones as $operacion){
+                $operacionObj = new ObjectOperacion();
+                $operacionObj->nombre = $operacion->operacion->nombre;
+                $operacionObj->precio = $operacion->precio;
+                $dataOperaciones[] =  $operacionObj;
+                                        
+            }
+
+            /*Imagen*/
+            $imagen=Imagen::where('inmueble_id',  $inmueble->id)->first();
+            
+            $inmuebleObj = new ObjectInmueble();
+            $inmuebleObj->id = $inmueble->id;
+            $inmuebleObj->lugar = $inmueble->lugar->nombre;
+            $inmuebleObj->tipo = $inmueble->tipo->nombre;
+            $inmuebleObj->detalles = $dataDetalles;
+            $inmuebleObj->operaciones = $dataOperaciones;
+            $inmuebleObj->imagen = $imagen->url_img;
+
+            $dataInmuebles[]= $inmuebleObj;
+            }
+        }
+        }
+        
+        $barrio = DB::select("SELECT l.id id,l.nombre nombre,l.tipo tipo,u.nombre zona FROM lugares l, lugares u WHERE l.ubicacion_id=u.id");
         $zonas = DB::select("SELECT id,nombre FROM `lugares` where tipo = 'Zona'");
         $data=array(
             'inmuebles'=>$dataInmuebles,
@@ -117,7 +124,8 @@ class InicioController extends Controller
             'operaciones'=>Operacion::all(),
             'postulaciones'=>Postulacion::all(),
             );
-    	return view('usuario.inicio', $data);
+        return view('usuario.inicio', $data);
+       	
     }
 
     public function acercaDe(){
