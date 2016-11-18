@@ -179,10 +179,13 @@
   <!-- javascript
       ================================================== -->
   <!-- Placed at the end of the document so the pages load faster -->
-  <script type="text/javascript">
-    $("#inicio").addClass('active');
+<script type="text/javascript">
+  $("#inicio").addClass('active');
+</script>
 
+  <script type="text/javascript">
+
+    $("#inicio").addClass('active');
     $("#lugar_select").select2(),
   </script>
-  <script type="text/javascript" src="js/inicio.js"></script>
   @stop
