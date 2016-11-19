@@ -53,7 +53,7 @@
     </head>
     <body>
 
-        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation"  style="background-color:#FF432E">
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation"  style="background-color:#334145">
             <div class="container" >
 
                 <div class="navbar-header" >

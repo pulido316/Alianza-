@@ -2,9 +2,6 @@
   @section('content')
   {{ Html::style('css/lightslider.css') }}
   {{ Html::script('js/lightslider.js') }}
-  <!-- <link rel="stylesheet" href="css/estilo_galeria.css">
-  lightslider
--->
 <style>
   ul{
     list-style: none outside none;
