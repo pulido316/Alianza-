@@ -230,8 +230,9 @@
 			url: '/buscar/'+dataId, 
 			dataType: 'json',
 			success: function (data) {
-				//$("#nombre_edi").val(data.nombre);
-				//$("#zona_edi option[value='"+data.ubicacion_id+"']").attr("selected","selected");
+				//console.log(data.nombre);
+				$("#nombre_edi").val(data.nombre);
+				$("#zona_edi option[value='"+data.ubicacion_id+"']").attr("selected","selected");
 			},
 			error:function(msg) {
 	   			// body...

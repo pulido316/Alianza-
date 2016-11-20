@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Postulacion;
+use App\Inmueble;
+use App\Operacion;
 use App\Http\Requests;
 use DB;
 use Redirect;
@@ -51,15 +53,15 @@ class postulacionController extends Controller
      */
     public function store(Request $request)
     {
-       $valor="";
-       $direccion_inmueble= $request->direccion_inmueble;
-       $fecha_fin= $request->fecha_fin;
-       $venta= $request->venta;
-       $arriendo= $request->arriendo;
-       $fecha=DB::select("select CURDATE() fecha");
-       $arriendo_p=$request->precio_arriendo;
-       $venta_p=$request->precio_venta;
-       foreach ($fecha as $key) {
+     $valor="";
+     $direccion_inmueble= $request->direccion_inmueble;
+     $fecha_fin= $request->fecha_fin;
+     $venta= $request->venta;
+     $arriendo= $request->arriendo;
+     $fecha=DB::select("select CURDATE() fecha");
+     $arriendo_p=$request->precio_arriendo;
+     $venta_p=$request->precio_venta;
+     foreach ($fecha as $key) {
         $valor=$key->fecha;
     } 
     if ($venta==null && $arriendo!= null) {
@@ -94,15 +96,33 @@ class postulacionController extends Controller
     }
     public function buscarPublicacion($id)
     {
+       // 'operacion_id','inmueble_id','fecha_inicio','fecha_fin','precio','estado_pustulacion',
 
-       $inmueble = intval(preg_replace('/[^0-9]+/', '', $id), 10);
-       $operacion = substr($id, 1);
+        $inmueble = intval(preg_replace('/[^0-9]+/', '', $id), 10);
+        if (substr($id, 0,8)=="Arriendo") {
+         $busqueda=DB::select("SELECT i.id id, i.direccion direccion,o.nombre operacion,p.fecha_inicio inicio,p.fecha_fin fin,p.estado_pustulacion estado FROM postulaciones p, operaciones o,inmuebles i WHERE o.id=p.operacion_id and p.inmueble_id=i.id and i.id= $inmueble");
+        // dd($busqueda);
+         
+         
+         foreach ($busqueda as $buscar ) {
+            return response()->json($buscar);
+         }
+         
+         
+        }elseif (substr($id, 0,5)=="Venta") {
+          
+        }
 
-       $busqueda=DB::select("SELECT i.id id, i.direccion direccion,o.nombre operacion,p.fecha_inicio inicio,p.fecha_fin fin,p.estado_pustulacion estado FROM postulaciones p, operaciones o,inmuebles i WHERE o.id=p.operacion_id and p.inmueble_id=i.id and i.id= $inmueble  and o.nombre LIKE '$operacion'");
-       //dd($busqueda);
-    
-        return response()->json($busqueda);
-    }
+
+
+       
+
+       //$busqueda=Postulacion::where('id',$id)->first();
+       /*$busqueda=DB::select("SELECT i.id id, i.direccion direccion,o.nombre operacion,p.fecha_inicio inicio,p.fecha_fin fin,p.estado_pustulacion estado FROM postulaciones p, operaciones o,inmuebles i WHERE o.id=p.operacion_id and p.inmueble_id=i.id and i.id= $inmueble  and o.nombre LIKE '$operacion'");
+       //dd($busqueda);*/
+
+       
+   }
     /**
      * Show the form for editing the specified resource.
      *

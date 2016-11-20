@@ -96,7 +96,7 @@
                                    <td>{!! $valor->fin !!}</td>
                                    <td>{!! $valor->estado !!}</td>
                                    <td>
-                                    <button class="btn btn-primary editar_boton" id="{!! $valor->id !!}{!!$valor->operacion !!}">editar</button>
+                                    <button class="btn btn-primary editar_boton" id="{!!$valor->operacion !!}{!! $valor->id !!}">editar</button>
                                 </td>
                             </tr>
                             @endforeach
@@ -285,6 +285,8 @@ $(".editar_boton").click(function(){
             url: '/buscarPublicacion/'+dataId, 
             dataType: 'json',
             success: function (data) {
+                console.log(data.direccion);
+              // $("#edi_fecha_fin").val(data.fin);
                // $("#nombre_edi").val(data.nombre);
                 //$("#edi_direccion_inmueble option[value='"+data.ubicacion_id+"']").attr("selected","selected");
             },
