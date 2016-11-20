@@ -52,31 +52,31 @@ class postulacionController extends Controller
     public function store(Request $request)
     {
        $valor="";
-        $direccion_inmueble= $request->direccion_inmueble;
-        $fecha_fin= $request->fecha_fin;
-        $venta= $request->venta;
-        $arriendo= $request->arriendo;
-        $fecha=DB::select("select CURDATE() fecha");
-        $arriendo_p=$request->precio_arriendo;
-        $venta_p=$request->precio_venta;
-        foreach ($fecha as $key) {
-            $valor=$key->fecha;
-         } 
-        if ($venta==null && $arriendo!= null) {
+       $direccion_inmueble= $request->direccion_inmueble;
+       $fecha_fin= $request->fecha_fin;
+       $venta= $request->venta;
+       $arriendo= $request->arriendo;
+       $fecha=DB::select("select CURDATE() fecha");
+       $arriendo_p=$request->precio_arriendo;
+       $venta_p=$request->precio_venta;
+       foreach ($fecha as $key) {
+        $valor=$key->fecha;
+    } 
+    if ($venta==null && $arriendo!= null) {
             //'operacion_id','inmueble_id','fecha_inicio','fecha_fin','precio','estado_pustulacion',
-            Postulacion::insert(['operacion_id'=>$arriendo,'inmueble_id'=>$direccion_inmueble,'fecha_inicio'=>$valor,'fecha_fin'=>$fecha_fin,'precio'=>$arriendo_p,'estado_pustulacion'=>"activo"]);
-            return Redirect::to('publicaciones');
+        Postulacion::insert(['operacion_id'=>$arriendo,'inmueble_id'=>$direccion_inmueble,'fecha_inicio'=>$valor,'fecha_fin'=>$fecha_fin,'precio'=>$arriendo_p,'estado_pustulacion'=>"activo"]);
+        return Redirect::to('publicaciones');
           //insert en arriendo   Lugar::insert(['nombre' => $nombre, 'ubicacion_id'=> $zona, 'tipo'=> 'barrio']);    return Redirect::to('lugares');
-           /* echo "direccion ".$direccion_inmueble. " fecha fin " . $fecha_fin ." arriendo".$arriendo."  fecha sistema ".$valor." valor arriendo ".$arriendo_p." valor venta ". $venta_p;*/
-        }elseif ($venta!=null && $arriendo== null) {
-            Postulacion::insert(['operacion_id'=>$venta,'inmueble_id'=>$direccion_inmueble,'fecha_inicio'=>$valor,'fecha_fin'=>$fecha_fin,'precio'=>$venta_p,'estado_pustulacion'=>"activo"]);
-            return Redirect::to('publicaciones');
+        /* echo "direccion ".$direccion_inmueble. " fecha fin " . $fecha_fin ." arriendo".$arriendo."  fecha sistema ".$valor." valor arriendo ".$arriendo_p." valor venta ". $venta_p;*/
+    }elseif ($venta!=null && $arriendo== null) {
+        Postulacion::insert(['operacion_id'=>$venta,'inmueble_id'=>$direccion_inmueble,'fecha_inicio'=>$valor,'fecha_fin'=>$fecha_fin,'precio'=>$venta_p,'estado_pustulacion'=>"activo"]);
+        return Redirect::to('publicaciones');
           //insert ventas
-           /* echo "direccion ".$direccion_inmueble. " fecha fin " . $fecha_fin ." venta".$venta."  fecha sistema ".$valor." valor arriendo ".$arriendo_p." valor venta ". $venta_p;*/
-        }else{
-            Postulacion::insert(['operacion_id'=>$arriendo,'inmueble_id'=>$direccion_inmueble,'fecha_inicio'=>$valor,'fecha_fin'=>$fecha_fin,'precio'=>$arriendo_p,'estado_pustulacion'=>"activo"]);
-            Postulacion::insert(['operacion_id'=>$venta,'inmueble_id'=>$direccion_inmueble,'fecha_inicio'=>$valor,'fecha_fin'=>$fecha_fin,'precio'=>$venta_p,'estado_pustulacion'=>"activo"]);
-            return Redirect::to('publicaciones');
+        /* echo "direccion ".$direccion_inmueble. " fecha fin " . $fecha_fin ." venta".$venta."  fecha sistema ".$valor." valor arriendo ".$arriendo_p." valor venta ". $venta_p;*/
+    }else{
+        Postulacion::insert(['operacion_id'=>$arriendo,'inmueble_id'=>$direccion_inmueble,'fecha_inicio'=>$valor,'fecha_fin'=>$fecha_fin,'precio'=>$arriendo_p,'estado_pustulacion'=>"activo"]);
+        Postulacion::insert(['operacion_id'=>$venta,'inmueble_id'=>$direccion_inmueble,'fecha_inicio'=>$valor,'fecha_fin'=>$fecha_fin,'precio'=>$venta_p,'estado_pustulacion'=>"activo"]);
+        return Redirect::to('publicaciones');
             /*
             echo "direccion ".$direccion_inmueble. " fecha fin " . $fecha_fin ." arriendo = ".$arriendo ." venta= " .$venta." ".$valor." valor arriendo ".$arriendo_p." valor venta ". $venta_p;*/
         }
@@ -92,7 +92,17 @@ class postulacionController extends Controller
     {
         //
     }
+    public function buscarPublicacion($id)
+    {
 
+       $inmueble = intval(preg_replace('/[^0-9]+/', '', $id), 10);
+       $operacion = substr($id, 1);
+
+       $busqueda=DB::select("SELECT i.id id, i.direccion direccion,o.nombre operacion,p.fecha_inicio inicio,p.fecha_fin fin,p.estado_pustulacion estado FROM postulaciones p, operaciones o,inmuebles i WHERE o.id=p.operacion_id and p.inmueble_id=i.id and i.id= $inmueble  and o.nombre LIKE '$operacion'");
+       //dd($busqueda);
+    
+        return response()->json($busqueda);
+    }
     /**
      * Show the form for editing the specified resource.
      *

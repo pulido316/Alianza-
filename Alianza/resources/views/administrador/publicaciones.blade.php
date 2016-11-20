@@ -96,7 +96,7 @@
                                    <td>{!! $valor->fin !!}</td>
                                    <td>{!! $valor->estado !!}</td>
                                    <td>
-                                    <button class="btn btn-primary editar_boton" id="{!! $valor->id !!}">editar</button>
+                                    <button class="btn btn-primary editar_boton" id="{!! $valor->id !!}{!!$valor->operacion !!}">editar</button>
                                 </td>
                             </tr>
                             @endforeach
@@ -104,6 +104,7 @@
                     </table>
                 </div>
                 <div id="add_publicacion" class="col-lg-6 " style="display: none;">
+                  <legend>Publicar</legend>
                     <form role="form"  method="POST" action="{{url('publicaciones')}}">
                         {{csrf_field()}}
                         <div class="form-group has-success">
@@ -142,6 +143,42 @@
                        </form>
 
                    </div>
+                   <div id="editar_publicacion" class="col-lg-6 " style="display: none;">
+                       <legend>Editar Publicacion</legend>
+                       <form role="form"  method="POST">
+                        {{csrf_field()}}
+                        <div class="form-group has-success">
+                            <label class="control-label" for="inputSuccess">Seleccione direccion del inmueble</label><br>
+                            <select id="edi_direccion_inmueble" name="edi_direccion_inmueble" required style="width: 29em">
+                                @foreach( $inmuebles as $inmueble)
+                                <option value="{!!$inmueble->id!!}"> {!!$inmueble->direccion!!}  Barrio: 
+                                    {!!$inmueble->barrio!!} </option>
+                                    @endforeach
+                                </select><br>
+                                <label class="control-label" for="inputSuccess">Seleccione fecha de cierre</label><br>
+                                <input type="date" name="edi_fecha_fin"  id="edi_fecha_fin" required="">
+                                <br>
+                                <br>
+                                <label class="control-label" for="inputSuccess">
+                                    Tipo de publicacion:
+                                </label>
+                                <br>
+                                <input name="edi_venta" type="checkbox" id="edi_venta" value="1" ><label>Venta</label><br>
+                                <input type="number" name="edi_precio_venta" id="edi_precio_venta" placeholder="Precio de venta" style="display: none"> <br>
+                                <input name="edi_arriendo" id="edi_arriendo" type="checkbox" value="2" ><label>Arriendo</label><br>
+                                <input type="number" placeholder="Precio de arriendo" name="edi_precio_arriendo" id="edi_precio_arriendo" style="display: none"> <br>
+
+                                <p id="seleccion_edi" class="bg-danger" style="display: none"><strong>Seleccione una opción</strong></p>
+
+
+                                <br>
+                                <center>
+                                   <button type="submit" class="btn btn-primary button_update" id="checkBtnEdi">Publicar</button>
+                                   <button id="cancelar" type="reset" class="btn btn-warning">Cancelar</button>
+                               </center>
+                           </div>
+                       </form>
+                   </div>
                </div>
            </div>
        </div>
@@ -156,6 +193,18 @@
           if(!checked) {
              //alert("You must check at least one checkbox.");
              $("#seleccion").show()
+             return false;
+         }
+
+     });
+    });
+     $(document).ready(function () {
+        $('#checkBtnEdi').click(function() {
+          checked = $("input[type=checkbox]:checked").length;
+
+          if(!checked) {
+             //alert("You must check at least one checkbox.");
+             $("#seleccion_edi").show()
              return false;
          }
 
@@ -182,27 +231,69 @@
          $("#precio_arriendo").attr('required', false);
      }
  });
+  $("#edi_venta").click(function(){
+        if ($("#edi_venta").prop('checked')) {
+         $("#edi_precio_venta").show()
+         $("#edi_precio_venta").attr('required', 'required'); 
+     }
+     else{
+         $("#edi_precio_venta").hide() 
+         $("#edi_precio_venta").attr('required', false);
+     }
+ });
+     $("#edi_arriendo").click(function(){
+        if ($("#edi_arriendo").prop('checked')) {
+         $("#edi_precio_arriendo").show()
+         $("#edi_precio_arriendo").attr('required', 'required'); 
+     }
+     else{
+         $("#edi_precio_arriendo").hide() 
+         $("#edi_precio_arriendo").attr('required', false);
+     }
+ });
 
     $("#direccion_inmueble").select2(),
+    $("#edi_direccion_inmueble").select2(),
     $('#example').dataTable();
 
 
     $("#listar").click(function(){
         $(".tabla_lista").show()
         $("#add_publicacion").hide()
-
+        $("#editar_publicacion").hide()
     });
     $("#crear").click(function(){
         $(".tabla_lista").hide()
         $("#add_publicacion").show()
+        $("#editar_publicacion").hide()
 
     });
     $("#cancelar").click(function(){
       $(".tabla-lista").hide()
       $("#add_publicacion").hide()
-
+      $("#editar_publicacion").hide()
   });
+$(".editar_boton").click(function(){
+        $(".tabla_lista").hide()
+        $("#add_publicacion").hide()
+        $("#editar_publicacion").show()
 
+        var dataId = this.id;
+        $(".button_update").attr("id", dataId);
+        $.ajax({ 
+            type: 'GET', 
+            url: '/buscarPublicacion/'+dataId, 
+            dataType: 'json',
+            success: function (data) {
+               // $("#nombre_edi").val(data.nombre);
+                //$("#edi_direccion_inmueble option[value='"+data.ubicacion_id+"']").attr("selected","selected");
+            },
+            error:function(msg) {
+                // body...
+                console.log(msg+"fallo");
+            }
+        });
+    });
 
 
 
