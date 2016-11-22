@@ -66,15 +66,13 @@ class InicioController extends Controller
     public function indexInicio(){
     	
     	$inmuebles = Inmueble::all();
+        $activos = Postulacion::where('estado_pustulacion',"activo")->get();
         
     	$dataInmuebles = array();
 
+        if($activos){
             foreach ($inmuebles as $inmueble){
-
-                $activos = Postulacion::where('inmueble_id', $inmueble->id)->get();
-                foreach ($activos as $activo){
-            if($activo->estado_pustulacion=="activo"){
-
+         
             /*Detalles*/
             $detalles = Distribucion::where('inmueble_id', $inmueble->id)->get();
             $dataDetalles = array();
@@ -110,9 +108,9 @@ class InicioController extends Controller
             $inmuebleObj->imagen = $imagen->url_img;
 
             $dataInmuebles[]= $inmuebleObj;
-            }
+            
         }
-        }
+    }
         
         $barrio = DB::select("SELECT l.id id,l.nombre nombre,l.tipo tipo,u.nombre zona FROM lugares l, lugares u WHERE l.ubicacion_id=u.id");
         $zonas = DB::select("SELECT id,nombre FROM `lugares` where tipo = 'Zona'");

@@ -484,8 +484,8 @@ section.search-form {
 }
 
 #content img {
-	max-width:100%;
-	height:auto;
+	    width: 4608px;
+    height: 345px;
 }
 .btnlink{
 	color:red;
@@ -1706,3 +1706,4 @@ padding-top: 0;
 .infoInmueble{
 	background-color: #6774f7;
 }
+
