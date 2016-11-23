@@ -83,106 +83,122 @@
                                     <th>Operacion</th>
                                     <th>Fecha de publicacion</th>
                                     <th>Fecha de cierre publicacion</th>
-                                    <th>Estado</th>
+                                    <th>Estado publicacion</th>
                                     <th>Editar</th>
+
                                 </tr>
                             </thead>
                             <tbody>
-                               @foreach ($valores as $valor)
-                               <tr>
-                                   <td>{!! $valor->direccion !!}</td>
-                                   <td>{!! $valor->operacion !!}</td>
-                                   <td>{!! $valor->inicio !!}</td>
-                                   <td>{!! $valor->fin !!}</td>
-                                   <td>{!! $valor->estado !!}</td>
-                                   <td>
-                                    <button class="btn btn-primary editar_boton" id="{!!$valor->operacion !!}{!! $valor->id !!}">editar</button>
-                                </td>
-                            </tr>
+                             @foreach ($valores as $valor)
+                             <tr>
+                                 <td>{!! $valor->direccion !!}</td>
+                                 <td>{!! $valor->operacion !!}</td>
+                                 <td>{!! $valor->inicio !!}</td>
+                                 <td>{!! $valor->fin !!}</td>
+
+                                 @if ($valor->estado === "activo")
+                                 <td> <center>
+                                     <button class="btn btn-warning desactivar" id="{!!$valor->operacion !!}{!! $valor->id !!}">Desactivar</button>
+                                     </center>
+                                 </td>
+                                 @elseif($valor->estado === "inactivo")
+                                 <td>
+                                     <center> 
+                                       <button class="btn btn-success activar" id="{!!$valor->operacion !!}{!! $valor->id !!}">Activar</button>   
+                                   </center>
+                               </td>
+                               @endif
+
+
+                               <td>
+                                <button class="btn btn-primary editar_boton" id="{!!$valor->operacion !!}{!! $valor->id !!}">editar</button>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+            <div id="add_publicacion" class="col-lg-6 " style="display: none;">
+              <legend>Publicar</legend>
+              <form role="form"  method="POST" action="{{url('publicaciones')}}">
+                {{csrf_field()}}
+                <div class="form-group has-success">
+                    <label class="control-label" for="inputSuccess">Seleccione direccion del inmueble</label><br>
+                    <select id="direccion_inmueble" name="direccion_inmueble" required style="width: 29em">
+                        @foreach( $inmuebles as $inmueble)
+                        <option value="{!!$inmueble->id!!}"> {!!$inmueble->direccion!!}  Barrio: 
+                            {!!$inmueble->barrio!!} </option>
                             @endforeach
-                        </tbody>
-                    </table>
-                </div>
-                <div id="add_publicacion" class="col-lg-6 " style="display: none;">
-                  <legend>Publicar</legend>
-                    <form role="form"  method="POST" action="{{url('publicaciones')}}">
-                        {{csrf_field()}}
-                        <div class="form-group has-success">
-                            <label class="control-label" for="inputSuccess">Seleccione direccion del inmueble</label><br>
-                            <select id="direccion_inmueble" name="direccion_inmueble" required style="width: 29em">
-                                @foreach( $inmuebles as $inmueble)
-                                <option value="{!!$inmueble->id!!}"> {!!$inmueble->direccion!!}  Barrio: 
-                                    {!!$inmueble->barrio!!} </option>
-                                    @endforeach
-                                </select><br>
-                                <label class="control-label" for="inputSuccess">Seleccione fecha de cierre</label><br>
-                                <input type="date" name="fecha_fin" required="">
-                                <br>
-                                <br>
-                                <label class="control-label" for="inputSuccess">
-                                    Tipo de publicacion:
-                                </label>
-                                <br>
-                                
-                                
-
-                                <input name="venta" type="checkbox" id="venta" value="1" ><label>Venta</label><br>
-                                <input type="number" name="precio_venta" id="precio_venta" placeholder="Precio de venta" style="display: none"> <br>
-                                <input name="arriendo" id="arriendo" type="checkbox" value="2" ><label>Arriendo</label><br>
-                                <input type="number" placeholder="Precio de arriendo" name="precio_arriendo" id="precio_arriendo" style="display: none"> <br>
-
-                                <p id="seleccion" class="bg-danger" style="display: none"><strong>Seleccione una opción</strong></p>
+                        </select><br>
+                        <label class="control-label" for="inputSuccess">Seleccione fecha de cierre</label><br>
+                        <input type="date" name="fecha_fin" required="">
+                        <br>
+                        <br>
+                        <label class="control-label" for="inputSuccess">
+                            Tipo de publicacion:
+                        </label>
+                        <br>
 
 
-                                <br>
-                                <center>
-                                   <button type="submit" class="btn btn-primary" id="checkBtn">Publicar</button>
-                                   <button id="cancelar" type="reset" class="btn btn-warning">Cancelar</button>
-                               </center>
-                           </div>
-                       </form>
 
-                   </div>
-                   <div id="editar_publicacion" class="col-lg-6 " style="display: none;">
-                       <legend>Editar Publicacion</legend>
-                       <form role="form"  method="POST">
-                        {{csrf_field()}}
-                        <div class="form-group has-success">
-                            <label class="control-label" for="inputSuccess">Seleccione direccion del inmueble</label><br>
-                            <select id="edi_direccion_inmueble" name="edi_direccion_inmueble" required style="width: 29em">
-                                @foreach( $inmuebles as $inmueble)
-                                <option value="{!!$inmueble->id!!}"> {!!$inmueble->direccion!!}  Barrio: 
-                                    {!!$inmueble->barrio!!} </option>
-                                    @endforeach
-                                </select><br>
-                                <label class="control-label" for="inputSuccess">Seleccione fecha de cierre</label><br>
-                                <input type="date" name="edi_fecha_fin"  id="edi_fecha_fin" required="">
-                                <br>
-                                <br>
-                                <label class="control-label" for="inputSuccess">
-                                    Tipo de publicacion:
-                                </label>
-                                <br>
-                                <input name="edi_venta" type="checkbox" id="edi_venta" value="1" ><label>Venta</label><br>
-                                <input type="number" name="edi_precio_venta" id="edi_precio_venta" placeholder="Precio de venta" style="display: none"> <br>
-                                <input name="edi_arriendo" id="edi_arriendo" type="checkbox" value="2" ><label>Arriendo</label><br>
-                                <input type="number" placeholder="Precio de arriendo" name="edi_precio_arriendo" id="edi_precio_arriendo" style="display: none"> <br>
+                        <input name="venta" type="checkbox" id="venta" value="1" ><label>Venta</label><br>
+                        <input type="number" name="precio_venta" id="precio_venta" placeholder="Precio de venta" style="display: none"> <br>
+                        <input name="arriendo" id="arriendo" type="checkbox" value="2" ><label>Arriendo</label><br>
+                        <input type="number" placeholder="Precio de arriendo" name="precio_arriendo" id="precio_arriendo" style="display: none"> <br>
 
-                                <p id="seleccion_edi" class="bg-danger" style="display: none"><strong>Seleccione una opción</strong></p>
+                        <p id="seleccion" class="bg-danger" style="display: none"><strong>Seleccione una opción</strong></p>
 
 
-                                <br>
-                                <center>
-                                   <button type="submit" class="btn btn-primary button_update" id="checkBtnEdi">Publicar</button>
-                                   <button id="cancelar" type="reset" class="btn btn-warning">Cancelar</button>
-                               </center>
-                           </div>
-                       </form>
-                   </div>
-               </div>
-           </div>
-       </div>
-   </div>
+                        <br>
+                        <center>
+                         <button type="submit" class="btn btn-primary" id="checkBtn">Publicar</button>
+                         <button id="cancelar" type="reset" class="btn btn-warning">Cancelar</button>
+                     </center>
+                 </div>
+             </form>
+
+         </div>
+         <div id="editar_publicacion" class="col-lg-6 " style="display: none;">
+             <legend>Editar Publicacion</legend>
+             <form role="form"  method="POST">
+                {{csrf_field()}}
+                <div class="form-group has-success">
+                    <label class="control-label" for="inputSuccess">Seleccione direccion del inmueble</label><br>
+                    <select id="edi_direccion_inmueble" name="edi_direccion_inmueble" required style="width: 29em">
+                        @foreach( $inmuebles as $inmueble)
+                        <option value="{!!$inmueble->id!!}"> {!!$inmueble->direccion!!}  Barrio: 
+                            {!!$inmueble->barrio!!} </option>
+                            @endforeach
+                        </select><br>
+                        <label class="control-label" for="inputSuccess">Seleccione fecha de cierre</label><br>
+                        <input type="date" name="edi_fecha_fin"  id="edi_fecha_fin" required="">
+                        <br>
+                        <br>
+                        <label class="control-label" for="inputSuccess">
+                            Tipo de publicacion:
+                        </label>
+                        <br>
+                        <input name="edi_venta" type="checkbox" id="edi_venta" value="1" ><label id="lable_venta">Venta</label><br>
+                        <input type="number" name="edi_precio_venta" id="edi_precio_venta" placeholder="Precio de venta" style="display: none"> <br>
+                        <input name="edi_arriendo" id="edi_arriendo" type="checkbox" value="2" ><label id="lable_arriendo">Arriendo</label><br>
+                        <input type="number" placeholder="Precio de arriendo" name="edi_precio_arriendo" id="edi_precio_arriendo" style="display: none"> <br>
+
+                        <p id="seleccion_edi" class="bg-danger" style="display: none"><strong>Seleccione una opción</strong></p>
+
+
+                        <br>
+                        <center>
+
+                         <button type="submit" class="btn btn-primary button_update" id="checkBtnEdi">Publicar</button>
+                         <button id="cancelar" type="reset" class="btn btn-warning">Cancelar</button>
+                     </center>
+                 </div>
+             </form>
+         </div>
+     </div>
+ </div>
+</div>
+</div>
 </div>
 
 <script type="text/javascript">
@@ -198,7 +214,7 @@
 
      });
     });
-     $(document).ready(function () {
+    $(document).ready(function () {
         $('#checkBtnEdi').click(function() {
           checked = $("input[type=checkbox]:checked").length;
 
@@ -213,44 +229,44 @@
 
     $("#venta").click(function(){
         if ($("#venta").prop('checked')) {
-         $("#precio_venta").show()
-         $("#precio_venta").attr('required', 'required'); 
-     }
-     else{
-         $("#precio_venta").hide() 
-         $("#precio_venta").attr('required', false);
-     }
- });
-     $("#arriendo").click(function(){
+           $("#precio_venta").show()
+           $("#precio_venta").attr('required', 'required'); 
+       }
+       else{
+           $("#precio_venta").hide() 
+           $("#precio_venta").attr('required', false);
+       }
+   });
+    $("#arriendo").click(function(){
         if ($("#arriendo").prop('checked')) {
-         $("#precio_arriendo").show()
-         $("#precio_arriendo").attr('required', 'required'); 
-     }
-     else{
-         $("#precio_arriendo").hide() 
-         $("#precio_arriendo").attr('required', false);
-     }
- });
-  $("#edi_venta").click(function(){
+           $("#precio_arriendo").show()
+           $("#precio_arriendo").attr('required', 'required'); 
+       }
+       else{
+           $("#precio_arriendo").hide() 
+           $("#precio_arriendo").attr('required', false);
+       }
+   });
+    $("#edi_venta").click(function(){
         if ($("#edi_venta").prop('checked')) {
-         $("#edi_precio_venta").show()
-         $("#edi_precio_venta").attr('required', 'required'); 
-     }
-     else{
-         $("#edi_precio_venta").hide() 
-         $("#edi_precio_venta").attr('required', false);
-     }
- });
-     $("#edi_arriendo").click(function(){
+           $("#edi_precio_venta").show()
+           $("#edi_precio_venta").attr('required', 'required'); 
+       }
+       else{
+           $("#edi_precio_venta").hide() 
+           $("#edi_precio_venta").attr('required', false);
+       }
+   });
+    $("#edi_arriendo").click(function(){
         if ($("#edi_arriendo").prop('checked')) {
-         $("#edi_precio_arriendo").show()
-         $("#edi_precio_arriendo").attr('required', 'required'); 
-     }
-     else{
-         $("#edi_precio_arriendo").hide() 
-         $("#edi_precio_arriendo").attr('required', false);
-     }
- });
+           $("#edi_precio_arriendo").show()
+           $("#edi_precio_arriendo").attr('required', 'required'); 
+       }
+       else{
+           $("#edi_precio_arriendo").hide() 
+           $("#edi_precio_arriendo").attr('required', false);
+       }
+   });
 
     $("#direccion_inmueble").select2(),
     $("#edi_direccion_inmueble").select2(),
@@ -273,7 +289,7 @@
       $("#add_publicacion").hide()
       $("#editar_publicacion").hide()
   });
-$(".editar_boton").click(function(){
+    $(".editar_boton").click(function(){
         $(".tabla_lista").hide()
         $("#add_publicacion").hide()
         $("#editar_publicacion").show()
@@ -285,12 +301,32 @@ $(".editar_boton").click(function(){
             url: '/buscarPublicacion/'+dataId, 
             dataType: 'json',
             success: function (data) {
-                console.log(data.direccion);
+             // alert(data.id);
               // $("#edi_fecha_fin").val(data.fin);
-               // $("#nombre_edi").val(data.nombre);
-                //$("#edi_direccion_inmueble option[value='"+data.ubicacion_id+"']").attr("selected","selected");
-            },
-            error:function(msg) {
+               // $("#nombre_edi").val(data.nombre);edi_fecha_fin
+               //$("#edi_fecha_fin").val(data.fin);
+               if (data.operacion==="Arriendo" ) {
+                $("#edi_venta").hide()
+                $("#lable_venta").hide()
+                $("#edi_arriendo").prop("checked",true);
+                $("#edi_precio_arriendo").val(data.precio);
+                $("#edi_precio_arriendo").show()
+
+
+            }else if(data.operacion==="Venta"){
+                alert("1")
+                $("#edi_arriendo").hide()
+                $("#lable_arriendo").hide()
+                $("#edi_venta").prop("checked",true);
+                $("#edi_precio_venta").val(data.precio);
+                $("#edi_precio_venta").show()
+            }
+               //console.log(data.estado+"  "+data.operacion),
+               $("#edi_direccion_inmueble option[value='"+data.id+"']").attr("selected","selected");
+               $("#select2-edi_direccion_inmueble-container").attr("title",data.direccion);
+               $("#select2-edi_direccion_inmueble-container").text(data.direccion);
+           },
+           error:function(msg) {
                 // body...
                 console.log(msg+"fallo");
             }

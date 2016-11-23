@@ -100,8 +100,9 @@ class postulacionController extends Controller
 
         $inmueble = intval(preg_replace('/[^0-9]+/', '', $id), 10);
         if (substr($id, 0,8)=="Arriendo") {
-         $busqueda=DB::select("SELECT i.id id, i.direccion direccion,o.nombre operacion,p.fecha_inicio inicio,p.fecha_fin fin,p.estado_pustulacion estado FROM postulaciones p, operaciones o,inmuebles i WHERE o.id=p.operacion_id and p.inmueble_id=i.id and i.id= $inmueble");
-        // dd($busqueda);
+
+         $busqueda=DB::select("SELECT i.id id, i.direccion direccion,o.nombre operacion,p.fecha_inicio inicio,p.fecha_fin fin,p.estado_pustulacion estado, p.precio precio FROM postulaciones p, operaciones o,inmuebles i WHERE o.id=p.operacion_id and p.inmueble_id=i.id and i.id= $inmueble and o.nombre LIKE 'Arriendo'");
+        //dd($busqueda);
          
          
          foreach ($busqueda as $buscar ) {
@@ -111,6 +112,11 @@ class postulacionController extends Controller
          
         }elseif (substr($id, 0,5)=="Venta") {
           
+         $busqueda=DB::select("SELECT i.id id, i.direccion direccion,o.nombre operacion,p.fecha_inicio inicio,p.fecha_fin fin,p.estado_pustulacion estado, p.precio precio FROM postulaciones p, operaciones o,inmuebles i WHERE o.id=p.operacion_id and p.inmueble_id=i.id and i.id= $inmueble and o.nombre LIKE 'Venta'");
+         //dd($busqueda);
+         foreach ($busqueda as $buscar ) {
+            return response()->json($buscar);
+         }
         }
 
 
