@@ -98,13 +98,15 @@
 
                                  @if ($valor->estado === "activo")
                                  <td> <center>
+                                    <!-- <button type="button" onclick="location.href = '/personas'" >lo que quieras poner en el boton</button>
+                                  -->
                                      <button class="btn btn-warning desactivar" id="{!!$valor->operacion !!}{!! $valor->id !!}">Desactivar</button>
                                      </center>
                                  </td>
                                  @elseif($valor->estado === "inactivo")
                                  <td>
                                      <center> 
-                                       <button class="btn btn-success activar" id="{!!$valor->operacion !!}{!! $valor->id !!}">Activar</button>   
+                                       <button class="btn btn-success activar" 
                                    </center>
                                </td>
                                @endif
