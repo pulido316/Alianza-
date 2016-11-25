@@ -65,6 +65,8 @@ class InicioController extends Controller
 {
     public function indexInicio(){
     	
+        $acutlizarDatos=DB::update('UPDATE `postulaciones` SET `estado_pustulacion`= "inactivo" WHERE `fecha_inicio`>`fecha_fin`');
+
     	$inmuebles = Inmueble::all();
         $activos = Postulacion::where('estado_pustulacion',"activo")->get();
         

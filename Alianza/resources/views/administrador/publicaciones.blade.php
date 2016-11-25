@@ -80,9 +80,7 @@
                             <thead>
                                 <tr>
                                     <th>Direccion</th>
-                                    <th>Operacion</th>
-                                    <th>Fecha de publicacion</th>
-                                    <th>Fecha de cierre publicacion</th>
+                                    <th>Detalles de la publicacion</th>
                                     <th>Estado publicacion</th>
                                     <th>Editar</th>
 
@@ -91,26 +89,54 @@
                             <tbody>
                              @foreach ($valores as $valor)
                              <tr>
-                                 <td>{!! $valor->direccion !!}</td>
-                                 <td>{!! $valor->operacion !!}</td>
-                                 <td>{!! $valor->inicio !!}</td>
-                                 <td>{!! $valor->fin !!}</td>
+                                 <td>
+                                 {!! $valor->direccion !!}
+                                 <br>
+                                 <strong>Barrio:</strong>
+                                 <li>{!! $valor->barrio !!}</li>
+                                 </td>
+                                 <td>
+                                 <strong>Operacion: </strong>
+                                 <br>
+                                 {!! $valor->operacion !!}
+                                 <br>
+                                 <strong>Se publico el: </strong>
+                                 <em><p>{!! $valor->inicio !!}</p></em>
 
+                                 <strong>La publicacion termina el : </strong>
+                                 <br>
+                                 @if($valor->fin =="")
+                                 <em>Indefinida</em>
+                                  @else
+                                  <em><p>{!! $valor->fin !!}</p></em>
+                                 @endif
+                                 <br>
+                                 
+                                 <strong>Precio de la publicacion: </strong>
+                                 <br>
+                                 {!! $valor->precio !!}
+                                 </td>
+                                 
+                              <!--    <td>
+                                 <center>
+                                   <button class="btn btn-warning desactivar"  id="{!!$valor->operacion !!}{!! $valor->id !!}" >Desactivar</button>
+                                   <button class="btn btn-success activar" id="{!!$valor->operacion !!}{!! $valor->id !!}">Activar</button>
+                                   </center>
+                                 </td> -->
                                  @if ($valor->estado === "activo")
                                  <td> <center>
-                                    <!-- <button type="button" onclick="location.href = '/personas'" >lo que quieras poner en el boton</button>
-                                  -->
-                                     <button class="btn btn-warning desactivar" id="{!!$valor->operacion !!}{!! $valor->id !!}">Desactivar</button>
+                                                                    
+                                    <button class="btn btn-warning desactivar" id="{!!$valor->operacion !!}{!! $valor->id !!}" >Desactivar</button>
                                      </center>
                                  </td>
                                  @elseif($valor->estado === "inactivo")
                                  <td>
                                      <center> 
-                                       <button class="btn btn-success activar" 
+                                       <button class="btn btn-success activar" id="{!!$valor->operacion !!}{!! $valor->id !!}">Activar</button>
                                    </center>
                                </td>
-                               @endif
-
+                               @endif 
+ 
 
                                <td>
                                 <button class="btn btn-primary editar_boton" id="{!!$valor->operacion !!}{!! $valor->id !!}">editar</button>
@@ -162,7 +188,7 @@
          </div>
          <div id="editar_publicacion" class="col-lg-6 " style="display: none;">
              <legend>Editar Publicacion</legend>
-             <form role="form"  method="POST">
+             <form role="form"  id="editar_publaciones" method="POST">
                 {{csrf_field()}}
                 <div class="form-group has-success">
                     <label class="control-label" for="inputSuccess">Seleccione direccion del inmueble</label><br>
@@ -173,7 +199,7 @@
                             @endforeach
                         </select><br>
                         <label class="control-label" for="inputSuccess">Seleccione fecha de cierre</label><br>
-                        <input type="date" name="edi_fecha_fin"  id="edi_fecha_fin" required="">
+                        <input type="date" name="edi_fecha_fin"  id="edi_fecha_fin" >
                         <br>
                         <br>
                         <label class="control-label" for="inputSuccess">
@@ -191,7 +217,7 @@
                         <br>
                         <center>
 
-                         <button type="submit" class="btn btn-primary button_update" id="checkBtnEdi">Publicar</button>
+                         <button type="submit" class="btn btn-primary button_update" id="checkBtnEdi">Actualizar</button>
                          <button id="cancelar" type="reset" class="btn btn-warning">Cancelar</button>
                      </center>
                  </div>
@@ -298,15 +324,12 @@
 
         var dataId = this.id;
         $(".button_update").attr("id", dataId);
+        $('#editar_publaciones').attr("action", '{{url('actualizarPublicacion')}}/'+dataId);
         $.ajax({ 
             type: 'GET', 
             url: '/buscarPublicacion/'+dataId, 
             dataType: 'json',
             success: function (data) {
-             // alert(data.id);
-              // $("#edi_fecha_fin").val(data.fin);
-               // $("#nombre_edi").val(data.nombre);edi_fecha_fin
-               //$("#edi_fecha_fin").val(data.fin);
                if (data.operacion==="Arriendo" ) {
                 $("#edi_venta").hide()
                 $("#lable_venta").hide()
@@ -316,7 +339,7 @@
 
 
             }else if(data.operacion==="Venta"){
-                alert("1")
+                //alert("1")
                 $("#edi_arriendo").hide()
                 $("#lable_arriendo").hide()
                 $("#edi_venta").prop("checked",true);
@@ -327,6 +350,7 @@
                $("#edi_direccion_inmueble option[value='"+data.id+"']").attr("selected","selected");
                $("#select2-edi_direccion_inmueble-container").attr("title",data.direccion);
                $("#select2-edi_direccion_inmueble-container").text(data.direccion);
+               $("#edi_fecha_fin").val(data.fin);
            },
            error:function(msg) {
                 // body...
