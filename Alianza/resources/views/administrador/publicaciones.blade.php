@@ -126,13 +126,17 @@
                                  @if ($valor->estado === "activo")
                                  <td> <center>
                                                                     
-                                    <button class="btn btn-warning desactivar" id="{!!$valor->operacion !!}{!! $valor->id !!}" >Desactivar</button>
+                                    <button class="btn btn-warning desactivar" id="{!!$valor->operacion !!}{!! $valor->id !!}" >Desactivar</button>                                    
+                                    <button class="btn btn-success activar1" style="display: none" id="{!!$valor->operacion !!}{!! $valor->id !!}">Activar1</button>
                                      </center>
                                  </td>
                                  @elseif($valor->estado === "inactivo")
                                  <td>
                                      <center> 
+
                                        <button class="btn btn-success activar" id="{!!$valor->operacion !!}{!! $valor->id !!}">Activar</button>
+                                       <button class="btn btn-warning desactivar1" style="display: none" id="{!!$valor->operacion !!}{!! $valor->id !!}" >Desactivar1</button>
+
                                    </center>
                                </td>
                                @endif 
