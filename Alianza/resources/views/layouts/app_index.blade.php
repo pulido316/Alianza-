@@ -137,6 +137,9 @@
                     <li>
                         <a href="/opciones" style="color: #FFFFFF !important">Más Opciones</a>
                     </li>
+                    <li>
+                        <a href="/informacion" style="color: #FFFFFF !important">Servicios Adicionales</a>
+                    </li>
                 </ul>
             </li>
         </ul>

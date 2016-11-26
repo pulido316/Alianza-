@@ -68,11 +68,9 @@ class InicioController extends Controller
         $acutlizarDatos=DB::update('UPDATE `postulaciones` SET `estado_pustulacion`= "inactivo" WHERE `fecha_inicio`>`fecha_fin`');
 
     	$inmuebles = Inmueble::all();
-        $activos = Postulacion::where('estado_pustulacion',"activo")->get();
-        
+            
     	$dataInmuebles = array();
 
-        if($activos){
             foreach ($inmuebles as $inmueble){
          
             /*Detalles*/
@@ -90,15 +88,19 @@ class InicioController extends Controller
             /*operaciones*/
             $operaciones = Postulacion::where('inmueble_id', $inmueble->id)->get();
             $dataOperaciones = array();
+            $activo = false;
             foreach ($operaciones as $operacion){
+                if($operacion->estado_pustulacion=="activo"){
                 $operacionObj = new ObjectOperacion();
                 $operacionObj->nombre = $operacion->operacion->nombre;
                 $operacionObj->precio = $operacion->precio;
                 $dataOperaciones[] =  $operacionObj;
-                                        
+                $activo = true;
+                  }                      
             }
 
-            /*Imagen*/
+            if($activo == true){
+                /*Imagen*/
             $imagen=Imagen::where('inmueble_id',  $inmueble->id)->first();
             
             $inmuebleObj = new ObjectInmueble();
@@ -110,8 +112,8 @@ class InicioController extends Controller
             $inmuebleObj->imagen = $imagen->url_img;
 
             $dataInmuebles[]= $inmuebleObj;
+            }
             
-        }
     }
         
         $barrio = DB::select("SELECT l.id id,l.nombre nombre,l.tipo tipo,u.nombre zona FROM lugares l, lugares u WHERE l.ubicacion_id=u.id");
@@ -206,9 +208,9 @@ class InicioController extends Controller
         $tipo= $request->tipo;
         $habitacion= $request->habitacion;
         $baño= $request->baño;
-        $operacionReq= $request->operacion;
+        $operacionReq= $request->operacionReq;
         $precio= $request->precio;
-        
+
         $inmuebles = Inmueble::all();
         $dataInmuebles = array();
 
@@ -262,7 +264,7 @@ class InicioController extends Controller
                             if ($detalle->nombre=="Baños" && $detalle->cantidad==$baño) {
                                 $baños = true;
                             }
-                            elseif ($detalle->nombre=="Habitacion" && $detalle->cantidad==$habitacion) {
+                            elseif ($detalle->nombre=="Habitación" && $detalle->cantidad==$habitacion) {
                                 $habitaciones = true;
                             }
                         }
@@ -276,10 +278,14 @@ class InicioController extends Controller
         }
 
          $data=array(
-            'inmuebles'=>$dataInmuebles,
+            'inmuebles'=>$busqueda,
             
             );
+         if(sizeof($busqueda) != 0){
         return view('usuario.resultadoInmueble', $data);
+    }else{
+        return view('usuario.noResultado');
         //return response()->json($data);
+    }
     }
 }
