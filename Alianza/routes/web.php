@@ -41,6 +41,10 @@ Route::post('actualizartipo/{id}', 'tipos@actualizar');
 Route::get('buscarservicio/{id}', 'opciones@buscarservicio');
 Route::get('buscardetalle/{id}', 'opciones@buscardetalle');
 Route::get('buscaropcion/{id}', 'opciones@buscaropcion');
+
+Route::get('buscarDesactivar/{id}', 'postulacionController@buscarDesactivar');
+Route::get('buscarActivar/{id}', 'postulacionController@buscarActivar');
+
 Route::get('buscarPublicacion/{id}', 'postulacionController@buscarPublicacion');
 Route::post('actualizarPublicacion/{id}', 'postulacionController@actualizarPublicacion');
 Route::post('actualizarservicio/{id}', 'opciones@actualizarservicio');

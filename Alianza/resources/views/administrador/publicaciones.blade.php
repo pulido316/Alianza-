@@ -117,29 +117,28 @@
                    {!! $valor->precio !!}
                  </td>
                  <td> 
-                 <h1>
-                 {!! $valor->estado !!}</h1>
+
                    @if ($valor->estado === "activo")
 
+                   <center>       
 
-                   <center>                                 
-                    <button class="btn btn-warning desactivar" id="{!!$valor->operacion !!}{!! $valor->id !!}" >Desactivar</button>   
-
-                    <button class="btn btn-success activar1"  id="{!!$valor->operacion !!}{!! $valor->id !!}">Activar1</button>
-                  </center>
-
-                  @elseif($valor->estado === "inactivo")
-                  <center> 
-
-                   <button class="btn btn-success activar" id="{!!$valor->operacion !!}{!! $valor->id !!}">Activar</button>
-                   <button class="btn btn-warning desactivar1"  id="{!!$valor->operacion !!}{!! $valor->id !!}" >Desactivar1</button>
-
+                     <input type="submit" class="btn btn-warning" value="Desactivar" onclick = "location='/buscarDesactivar/{!!$valor->operacion !!}{!! $valor->id !!}'"/>
+                     <!--  <button  type="submit" class="btn btn-warning desactivar" id="{!!$valor->operacion !!}{!! $valor->id !!}" >Desactivar</button>
+                   </form> -->
                  </center>
-               </td>
-               @endif
+
+                 @elseif($valor->estado === "inactivo")
+                 <center> 
+                  <input type="submit" class="btn btn-success" value="Activar" onclick = "location='/buscarActivar/{!!$valor->operacion !!}{!! $valor->id !!}'"/>
+                  <!-- <button class="btn btn-success activar" id="{!!$valor->operacion !!}{!! $valor->id !!}">Activar</button> -->
 
 
-               <td>
+                </center>
+              </td>
+              @endif
+
+
+              <td>
                 <button class="btn btn-primary editar_boton" id="{!!$valor->operacion !!}{!! $valor->id !!}">editar</button>
               </td>
             </tr>
@@ -259,6 +258,7 @@
        });
   });
 
+
   $("#venta").click(function(){
     if ($("#venta").prop('checked')) {
      $("#precio_venta").show()
@@ -343,20 +343,19 @@
 
 
         }else if(data.operacion==="Venta"){
-              //alert("1")
-              $("#edi_arriendo").hide()
-              $("#lable_arriendo").hide()
-              $("#edi_venta").prop("checked",true);
-              $("#edi_precio_venta").val(data.precio);
-              $("#edi_precio_venta").show()
-            }
-             //console.log(data.estado+"  "+data.operacion),
-             $("#edi_direccion_inmueble option[value='"+data.id+"']").attr("selected","selected");
-             $("#select2-edi_direccion_inmueble-container").attr("title",data.direccion);
-             $("#select2-edi_direccion_inmueble-container").text(data.direccion);
-             $("#edi_fecha_fin").val(data.fin);
-           },
-           error:function(msg) {
+
+          $("#edi_arriendo").hide()
+          $("#lable_arriendo").hide()
+          $("#edi_venta").prop("checked",true);
+          $("#edi_precio_venta").val(data.precio);
+          $("#edi_precio_venta").show()
+        }
+        $("#edi_direccion_inmueble option[value='"+data.id+"']").attr("selected","selected");
+        $("#select2-edi_direccion_inmueble-container").attr("title",data.direccion);
+        $("#select2-edi_direccion_inmueble-container").text(data.direccion);
+        $("#edi_fecha_fin").val(data.fin);
+      },
+      error:function(msg) {
               // body...
               console.log(msg+"fallo");
             }

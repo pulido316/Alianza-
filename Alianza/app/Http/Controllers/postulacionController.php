@@ -107,6 +107,43 @@
         {
         //
         }
+        public function buscarDesactivar($id){
+            $inmueble_id = intval(preg_replace('/[^0-9]+/', '', $id), 10);
+            $arriendo=substr($id, 0,8);
+            
+            if (substr($id, 0,8)=="Arriendo") {
+                $insertArriendo= Postulacion::where([
+                    ['inmueble_id', '=', $inmueble_id],
+                    ['operacion_id', '=', '2'],
+                    ])->update(['estado_pustulacion'=>'inactivo' ]);
+                return Redirect::to('publicaciones');
+             } elseif(substr($id, 0,5)=="Venta"){
+               $insertArriendo= Postulacion::where([
+                    ['inmueble_id', '=', $inmueble_id],
+                    ['operacion_id', '=', '1'],
+                    ])->update(['estado_pustulacion'=>'inactivo' ]);
+                return Redirect::to('publicaciones');
+             }
+            
+        }
+        public function buscarActivar($id){
+            $inmueble_id = intval(preg_replace('/[^0-9]+/', '', $id), 10);
+            $arriendo=substr($id, 0,8);
+            
+            if (substr($id, 0,8)=="Arriendo") {
+                $insertArriendo= Postulacion::where([
+                    ['inmueble_id', '=', $inmueble_id],
+                    ['operacion_id', '=', '2'],
+                    ])->update(['estado_pustulacion'=>'activo' ]);
+                return Redirect::to('publicaciones');
+             } elseif(substr($id, 0,5)=="Venta"){
+               $insertArriendo= Postulacion::where([
+                    ['inmueble_id', '=', $inmueble_id],
+                    ['operacion_id', '=', '1'],
+                    ])->update(['estado_pustulacion'=>'activo' ]);
+                return Redirect::to('publicaciones');
+             }
+        }
         public function buscarPublicacion($id)
         {
         // 'operacion_id','inmueble_id','fecha_inicio','fecha_fin','precio','estado_pustulacion',
