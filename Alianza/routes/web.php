@@ -24,6 +24,10 @@ Route::resource('/inmueble','inmuebleController');
 Route::resource('/publicaciones','postulacionController');
 Route::resource('/reportes','reporteController');
 Route::resource('/totales','reporteController@totales');
+Route::resource('/ventasrepo','reporteController@ventas');
+Route::resource('/arriendorepo','reporteController@arriendo');
+Route::resource('/activorepo','reporteController@activo');
+Route::resource('/inactivoorepo','reporteController@inactivo');
 //servicios
 Route::resource('/informacion','InformacionController@index');
 Route::get('updateAvaluo', 'InformacionController@updateAvaluo');

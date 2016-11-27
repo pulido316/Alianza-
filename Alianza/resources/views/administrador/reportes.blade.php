@@ -50,7 +50,7 @@
 									</div>
 								</div>
 							</div>
-							<a href="/pdf">
+							<a href="/ventasrepo">
 								<div id="avaluos" class="panel-footer">
 									<span class="pull-left"><i class="fa  fa-download fa-1x"></i> Generar</span>
 									<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -73,7 +73,7 @@
 									</div>
 								</div>
 							</div>
-							<a href="/pdf">
+							<a href="/arriendorepo">
 								<div id="avaluos" class="panel-footer">
 									<span class="pull-left"><i class="fa  fa-download fa-1x"></i> Generar</span>
 									<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -96,7 +96,7 @@
 									</div>
 								</div>
 							</div>
-							<a href="/pdf">
+							<a href="/activorepo">
 								<div id="avaluos" class="panel-footer">
 									<span class="pull-left"><i class="fa  fa-download fa-1x"></i> Generar</span>
 									<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -119,7 +119,7 @@
 									</div>
 								</div>
 							</div>
-							<a href="/pdf">
+							<a href="/inactivoorepo">
 								<div id="avaluos" class="panel-footer">
 									<span class="pull-left"><i class="fa  fa-download fa-1x"></i> Generar</span>
 									<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
