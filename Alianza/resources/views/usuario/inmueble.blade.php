@@ -36,8 +36,9 @@
 <section id="content">
  <div class="container">
   <div class="row">
+  <h4><a href="javascript:history.back()"> Regresar</a></h4>
     <h3 class="section-title">Detalles generales</h3>
-    <div class="col-lg-12 infoInmueble">
+    <div class="col-lg-12 infoInmueble1">
       <div >
         <div class="form-group col-md-4">
           <strong>Lugar:</strong>       
@@ -100,7 +101,7 @@
 
     <h3 class="section-title">Galeria</h3>
     <center>
-    <div class="demo" class="">
+    <div class="demo">
       <div class="item">            
         <div class="clearfix" style="max-width:474px;">
           <ul id="image-gallery" class="gallery list-unstyled cS-hidden">

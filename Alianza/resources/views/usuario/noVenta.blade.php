@@ -26,7 +26,7 @@
 				<div class="row">
 					<section id="projects">
 					<ul id="thumbs" class="portfolio">
-						<!-- Item Project and Filter Name -->
+						<h4><a href="javascript:history.back()"> Regresar</a></h4>
 						<h3 class="section-title">No se han encontrado inmuebles</h3>
 						
 					</ul>

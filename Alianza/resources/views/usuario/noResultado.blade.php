@@ -13,6 +13,7 @@
     <section id="content">
     <div class="container">
         <div class="row">
+        <h4><a href="javascript:history.back()"> Regresar</a></h4>
             <div class="col-lg-12">
                 
                 <div class="clearfix">

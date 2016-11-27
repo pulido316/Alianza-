@@ -137,13 +137,18 @@
                     <li>
                         <a href="/opciones" style="color: #FFFFFF !important">Más Opciones</a>
                     </li>
+                    <!--
                     <li>
                         <a href="/informacion" style="color: #FFFFFF !important">Servicios Adicionales</a>
                     </li>
+                    -->
                      <li>
                         <a href="/reportes" style="color: #FFFFFF !important">Reportes</a>
                     </li>
                 </ul>
+            </li>
+             <li id="informacion"> 
+                <a href="/informacion" style="color: #FFFFFF !important"><i class="glyphicon glyphicon-info-sign "></i> Servicios Adicionales</a>
             </li>
         </ul>
     </div>

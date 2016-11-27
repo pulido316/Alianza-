@@ -121,7 +121,7 @@
                           <div class="col-md-4 col-sm-4">
                               <div class="project">
                                 <a href="/detallesInmueble/{!! $inmueble->id !!}">
-                                  <img id="imagen" src="img/fotos/{!! $inmueble->imagen !!}" class="img-responsive" >
+                                  <img id="imagen" src="img/fotos/{!! $inmueble->imagen !!}" class="img1" >
                                 </a>
                                   <div class="project-details infoInmueble">
                                       <ul>
