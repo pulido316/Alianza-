@@ -22,6 +22,8 @@ Route::resource('/tipos','tipos');
 Route::resource('/opciones','opciones');
 Route::resource('/inmueble','inmuebleController');
 Route::resource('/publicaciones','postulacionController');
+Route::resource('/reportes','reporteController');
+Route::resource('/totales','reporteController@totales');
 //servicios
 Route::resource('/informacion','InformacionController@index');
 Route::get('updateAvaluo', 'InformacionController@updateAvaluo');
@@ -86,3 +88,8 @@ Route::get('buscarInmueble', 'InicioController@buscarInmueble');
 Route::get('detallesInmueble/{id}', 'InicioController@detallesInmueble');
 
 //Route::get('error',function(){abort(404);});
+
+Route::get('inmuebleTotal',function(){
+$pdf= PDF::loadView('administrador.prueba');
+return $pdf->download('reporte.pdf');
+});

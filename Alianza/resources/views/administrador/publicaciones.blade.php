@@ -117,7 +117,6 @@
                    {!! $valor->precio !!}
                  </td>
                  <td> 
-
                    @if ($valor->estado === "activo")
 
                    <center>       

@@ -140,6 +140,9 @@
                     <li>
                         <a href="/informacion" style="color: #FFFFFF !important">Servicios Adicionales</a>
                     </li>
+                     <li>
+                        <a href="/reportes" style="color: #FFFFFF !important">Reportes</a>
+                    </li>
                 </ul>
             </li>
         </ul>
