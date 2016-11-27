@@ -94,7 +94,13 @@ class ResultadoController extends Controller
             'postulaciones'=>$dataInmuebles,
            
         );
-    	return view('resultados.arriendoCasa',$data);
+         if(sizeof($dataInmuebles) != 0){
+       return view('resultados.arriendoCasa',$data);
+    }else{
+        return view('usuario.noArriendo');
+        //return response()->json($data);
+    }
+    	
     }
 
     public function arriendoApartamen(){
@@ -144,7 +150,13 @@ class ResultadoController extends Controller
             'postulaciones'=>$dataInmuebles,
            
         );
-    	return view('resultados.arriendoApartamen',$data);
+        if(sizeof($dataInmuebles) != 0){
+      return view('resultados.arriendoApartamen',$data);
+    }else{
+        return view('usuario.noArriendo');
+        //return response()->json($data);
+    }
+    	
     }
 
       public function arriendoApartaes(){
@@ -193,7 +205,13 @@ class ResultadoController extends Controller
             'postulaciones'=>$dataInmuebles,
            
         );
-    	return view('resultados.arriendoApartaes',$data);
+        if(sizeof($dataInmuebles) != 0){
+      return view('resultados.arriendoApartaes',$data);
+    }else{
+        return view('usuario.noArriendo');
+        //return response()->json($data);
+    }
+    	
     }
 
     public function arriendoLocal(){
@@ -242,7 +260,13 @@ class ResultadoController extends Controller
             'postulaciones'=>$dataInmuebles,
            
         );
-    	return view('resultados.arriendoLocal',$data);
+        if(sizeof($dataInmuebles) != 0){
+      return view('resultados.arriendoLocal',$data);
+    }else{
+        return view('usuario.noArriendo');
+        //return response()->json($data);
+    }
+    	
     }
 
     public function ventaCasa(){
@@ -296,7 +320,13 @@ class ResultadoController extends Controller
             'postulaciones'=>$dataInmuebles,
            
         );
-    	return view('resultados.ventaCasa',$data);
+        if(sizeof($dataInmuebles) != 0){
+     return view('resultados.ventaCasa',$data);
+    }else{
+        return view('usuario.noVenta');
+        //return response()->json($data);
+    }
+    	
     }
 
     public function ventaApartamen(){
@@ -350,7 +380,13 @@ class ResultadoController extends Controller
             'postulaciones'=>$dataInmuebles,
            
         );
-    	return view('resultados.ventaApartamen',$data);
+         if(sizeof($dataInmuebles) != 0){
+    return view('resultados.ventaApartamen',$data);
+    }else{
+        return view('usuario.noVenta');
+        //return response()->json($data);
+    }
+    	
     }
 
       public function ventaApartaes(){
@@ -404,7 +440,13 @@ class ResultadoController extends Controller
             'postulaciones'=>$dataInmuebles,
            
         );
-    	return view('resultados.ventaApartaes',$data);
+        if(sizeof($dataInmuebles) != 0){
+     return view('resultados.ventaApartaes',$data);
+    }else{
+        return view('usuario.noVenta');
+        //return response()->json($data);
+    }
+    	
     }
 
     public function ventaLote(){
@@ -458,6 +500,12 @@ class ResultadoController extends Controller
             'postulaciones'=>$dataInmuebles,
            
         );
-    	return view('resultados.ventaLote',$data);
+        if(sizeof($dataInmuebles) != 0){
+   return view('resultados.ventaLote',$data);
+    }else{
+        return view('usuario.noVenta');
+        //return response()->json($data);
+    }
+    	
     }
 }

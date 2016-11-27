@@ -19,11 +19,9 @@ class postulacionController extends Controller
      */
     public function index()
     {
-
-
-
         $contar=DB::select("SELECT COUNT(operacion_id) numero FROM postulaciones;");
         $publicacion=DB::select("SELECT i.id id, i.direccion direccion,lu.nombre barrio,o.nombre operacion,p.fecha_inicio inicio,p.fecha_fin fin,p.estado_pustulacion estado,p.precio precio FROM lugares lu, postulaciones p, operaciones o,inmuebles i WHERE o.id=p.operacion_id and p.inmueble_id=i.id and i.lugar_id=lu.id");
+
        // dd($publicacion);
         $inmueble=DB::select("SELECT i.id id, i.direccion direccion, l.nombre barrio from inmuebles i, lugares l where l.id=i.`lugar_id`
             ");
@@ -65,6 +63,7 @@ class postulacionController extends Controller
        $arriendo_p=$request->precio_arriendo;
        $venta_p=$request->precio_venta;
        foreach ($fecha as $key) {
+
         $valor=$key->fecha;
     } 
     if ($venta==null && $arriendo!= null) {
@@ -101,19 +100,16 @@ class postulacionController extends Controller
     {
        // 'operacion_id','inmueble_id','fecha_inicio','fecha_fin','precio','estado_pustulacion',
 
-        $inmueble = intval(preg_replace('/[^0-9]+/','', $id), 10);
+        $inmueble = intval(preg_replace('/[^0-9]+/', '', $id), 10);
         if (substr($id, 0,8)=="Arriendo") {
 
-           $busqueda=DB::select("SELECT i.id id, i.direccion direccion,o.nombre operacion,p.fecha_inicio inicio,p.fecha_fin fin,p.estado_pustulacion estado, p.precio precio FROM postulaciones p, operaciones o,inmuebles i WHERE o.id=p.operacion_id and p.inmueble_id=i.id and i.id= $inmueble and o.nombre LIKE 'Arriendo'");
+         $busqueda=DB::select("SELECT i.id id, i.direccion direccion,o.nombre operacion,p.fecha_inicio inicio,p.fecha_fin fin,p.estado_pustulacion estado, p.precio precio FROM postulaciones p, operaciones o,inmuebles i WHERE o.id=p.operacion_id and p.inmueble_id=i.id and i.id= $inmueble and o.nombre LIKE 'Arriendo'");
         //dd($busqueda);
-
-
-           foreach ($busqueda as $buscar ) {
+        
+         foreach ($busqueda as $buscar ) {
             return response()->json($buscar);
-        }
-
-
-    }elseif (substr($id, 0,5)=="Venta") {
+         }
+        }elseif (substr($id, 0,5)=="Venta") {
 
        $busqueda=DB::select("SELECT i.id id, i.direccion direccion,o.nombre operacion,p.fecha_inicio inicio,p.fecha_fin fin,p.estado_pustulacion estado, p.precio precio FROM postulaciones p, operaciones o,inmuebles i WHERE o.id=p.operacion_id and p.inmueble_id=i.id and i.id= $inmueble and o.nombre LIKE 'Venta'");
          //dd($busqueda);
@@ -122,11 +118,10 @@ class postulacionController extends Controller
     }
 }
 
+       
+   }
 
-
-}
-
-public function actualizarPublicacion(Request $request, $id)
+   public function actualizarPublicacion(Request $request, $id)
 {
     $valor="";
     $inmueble_id = intval(preg_replace('/[^0-9]+/', '', $id), 10);
@@ -167,11 +162,10 @@ public function actualizarPublicacion(Request $request, $id)
             ])->update(['fecha_inicio' => $valor, 'fecha_fin'=> $fecha_fin, 'precio'=>$precio_venta, 'estado_pustulacion'=>'activo' ]);
            return Redirect::to('publicaciones');
        }
-
    }
-
-
 }
+
+
     /**
      * Show the form for editing the specified resource.
      *

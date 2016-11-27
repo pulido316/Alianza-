@@ -22,7 +22,13 @@ Route::resource('/tipos','tipos');
 Route::resource('/opciones','opciones');
 Route::resource('/inmueble','inmuebleController');
 Route::resource('/publicaciones','postulacionController');
-
+//servicios
+Route::resource('/informacion','InformacionController@index');
+Route::get('updateAvaluo', 'InformacionController@updateAvaluo');
+Route::get('updateLicencia', 'InformacionController@updateLicencia');
+Route::get('updatePropiedad', 'InformacionController@updatePropiedad');
+Route::get('updateRemodelacion', 'InformacionController@updateRemodelacion');
+Route::get('updateTramite', 'InformacionController@updateTramite');
 
 Route::get('/', 'InicioController@indexInicio');
 //rutas de opciones y configuracion de datos

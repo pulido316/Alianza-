@@ -79,7 +79,6 @@
                         <table id="example"  class="table table-hover table-striped  table-striped table-borderedSeen">
                             <thead>
                                 <tr>
-                                    <th>Direccion</th>
                                     <th>Detalles de la publicacion</th>
                                     <th>Estado publicacion</th>
                                     <th>Editar</th>
@@ -89,7 +88,7 @@
                             <tbody>
                              @foreach ($valores as $valor)
                              <tr>
-                                 <td>
+                                                                 <td>
                                  {!! $valor->direccion !!}
                                  <br>
                                  <strong>Barrio:</strong>
@@ -123,20 +122,21 @@
                                    <button class="btn btn-success activar" id="{!!$valor->operacion !!}{!! $valor->id !!}">Activar</button>
                                    </center>
                                  </td> -->
+
                                  @if ($valor->estado === "activo")
                                  <td> <center>
-                                                                    
+                                                                                                       
                                     <button class="btn btn-warning desactivar" id="{!!$valor->operacion !!}{!! $valor->id !!}" >Desactivar</button>
                                      </center>
                                  </td>
                                  @elseif($valor->estado === "inactivo")
                                  <td>
                                      <center> 
-                                       <button class="btn btn-success activar" id="{!!$valor->operacion !!}{!! $valor->id !!}">Activar</button>
-                                   </center>
+                                      <button class="btn btn-success activar" id="{!!$valor->operacion !!}{!! $valor->id !!}">Activar</button>
+                                      </center>
                                </td>
-                               @endif 
- 
+                               @endif
+
 
                                <td>
                                 <button class="btn btn-primary editar_boton" id="{!!$valor->operacion !!}{!! $valor->id !!}">editar</button>
@@ -189,6 +189,7 @@
          <div id="editar_publicacion" class="col-lg-6 " style="display: none;">
              <legend>Editar Publicacion</legend>
              <form role="form"  id="editar_publaciones" method="POST">
+
                 {{csrf_field()}}
                 <div class="form-group has-success">
                     <label class="control-label" for="inputSuccess">Seleccione direccion del inmueble</label><br>
@@ -200,6 +201,7 @@
                         </select><br>
                         <label class="control-label" for="inputSuccess">Seleccione fecha de cierre</label><br>
                         <input type="date" name="edi_fecha_fin"  id="edi_fecha_fin" >
+
                         <br>
                         <br>
                         <label class="control-label" for="inputSuccess">
@@ -217,7 +219,8 @@
                         <br>
                         <center>
 
-                         <button type="submit" class="btn btn-primary button_update" id="checkBtnEdi">Actualizar</button>
+                        <button type="submit" class="btn btn-primary button_update" id="checkBtnEdi">Actualizar</button>
+
                          <button id="cancelar" type="reset" class="btn btn-warning">Cancelar</button>
                      </center>
                  </div>
@@ -330,7 +333,7 @@
             url: '/buscarPublicacion/'+dataId, 
             dataType: 'json',
             success: function (data) {
-               if (data.operacion==="Arriendo" ) {
+                if (data.operacion==="Arriendo" ) {
                 $("#edi_venta").hide()
                 $("#lable_venta").hide()
                 $("#edi_arriendo").prop("checked",true);

@@ -17,15 +17,15 @@
         <div class="row service-v1 margin-bottom-40">
             <div class="col-md-4 md-margin-bottom-40">
                 <h2>Avaluos</h2>
-                <p>Servicio profesional de Avalúos comerciales urbanos y rurales, prestado por Arquitecto Especialista en Gestión Territorial y avalúos con experiencia de más de 11 años en este campo.</p>        
+                <p id="infoAvaluo"></p>        
             </div>
             <div class="col-md-4">            
                 <h2>Licencias y Diseños Arquitectónicos y Estructurales</h2>
-                <p>Elaboración de diseños arquitectónicos y estructurales dentro del trámite requerido para solicitud de licencias de construcción, ampliación y reconocimiento, servicio prestado por un equipo de trabajo integrado por Arquitecto Especialista en Diseño arquitectónico e Ingeniero Civil Especialista en Estructuras.</p>        
+                <p id="infoLicencia"></p>        
             </div>
             <div class="col-md-4 md-margin-bottom-40">  
                 <h2>Propiedad Horizontal</h2>
-                <p>Elaboración de planos de alinderamiento y minutas de propiedad horizontal, servicio prestado por Arquitecto Especialista en Gestión Inmobiliaria. </p>        
+                <p id="infoPropiedad"> </p>        
             </div>          
         </div>
 
@@ -34,11 +34,11 @@
         <div class="row service-v1 margin-bottom-40">
             <div class="col-md-4 md-margin-bottom-40">   
                 <h2>Remodelaciones</h2>
-                <p>Contratación de obras civiles tendientes a la remodelación de espacios en viviendas, locales, oficinas, bodegas; servicio prestado por Arquitecto Especialista en diseño de interiores.</p>        
+                <p id="infoRemodelacion"></p>        
             </div>
             <div class="col-md-4">           
                 <h2>Trámites Inmobiliarios</h2>
-                <p>Elaboración de documentos inmobiliarios como promesas de compraventa, poderes, autorizaciones, contratos de arrendamiento, entre otros; servicio prestado por Abogada Especialista en Gestión Inmobiliaria.   </p>        
+                <p id="infoTramite"></p>        
             </div>      
         </div>
         <!-- End Service Blcoks -->
@@ -57,6 +57,69 @@
 <!-- Placed at the end of the document so the pages load faster -->
 <script type="text/javascript">
   $("#servicio").addClass('active');
+
+
+    $.ajax({ 
+            type: 'GET', 
+            url: 'js/avaluo.txt',
+            success: function (data) {
+                $("#infoAvaluo").text(data);
+            },
+            error:function(msg) {
+                // body...
+                console.log(msg);
+            }
+        });
+
+     $.ajax({ 
+            type: 'GET', 
+            url: 'js/licencia.txt',
+            success: function (data) {
+                $("#infoLicencia").text(data);
+            },
+            error:function(msg) {
+                // body...
+                console.log(msg);
+            }
+        });
+
+     $.ajax({ 
+            type: 'GET', 
+            url: 'js/propiedad.txt',
+            success: function (data) {
+                $("#infoPropiedad").text(data);
+            },
+            error:function(msg) {
+                // body...
+                console.log(msg);
+            }
+        });
+
+      $.ajax({ 
+            type: 'GET', 
+            url: 'js/remodelacion.txt',
+            success: function (data) {
+                $("#infoRemodelacion").text(data);
+            },
+            error:function(msg) {
+                // body...
+                console.log(msg);
+            }
+        });
+
+      $.ajax({ 
+            type: 'GET', 
+            url: 'js/tramite.txt',
+            success: function (data) {
+                $("#infoTramite").text(data);
+            },
+            error:function(msg) {
+                // body...
+                console.log(msg);
+            }
+        });
+
+      
 </script>
 
 @stop
