@@ -38,7 +38,7 @@
     <div class="col-md-12 col-sm-12">
     <div class="quick-search">
 
-            <form role="form" action="{{url('buscarInmueble')}}">
+            <form role="form" method="GET" action="{{url('buscarInmueble')}}">
               
               <div class="form-group col-md-4">
                 <label for="inputSuccess">Lugar</label>   
@@ -58,6 +58,8 @@
               </div>
               <div class="form-group col-md-4">
                 <label for="inputSuccess">Habitaciones</label>
+                <input type="number" class="form-control" id="habitacion" name="habitacion" >
+                <!--
                 <select class="form-control" id="habitacion" name="habitacion" >
                   <option >1</option>
                   <option >2</option>
@@ -65,16 +67,11 @@
                   <option >4</option>
                   <option >5</option>
                  </select>
+                 -->
               </div>
               <div class="form-group col-md-4">
                 <label for="inputSuccess">Baños</label>
-                <select class="form-control" id="baño" name="baño" >
-                  <option >1</option>
-                  <option >2</option>
-                  <option >3</option>
-                  <option >4</option>
-                </select>
-                </select>
+                <input type="number" class="form-control" id="baño" name="baño" >
               </div>
               
               <div class="form-group col-md-4">
@@ -88,11 +85,7 @@
 
                <div class="form-group col-md-4">
                 <label for="inputSuccess">Precio menor a</label>       
-                <select class="form-control" id="precio" name="precio" >
-                @foreach( $postulaciones as $postulacion)
-                       <option>{!!$postulacion->precio!!}</option>
-                       @endforeach
-                </select>
+                <input type="number" class="form-control" id="precio" name="precio" >
               </div>
              
               <div class="form-group col-md-4">
@@ -178,13 +171,10 @@
   <!-- javascript
       ================================================== -->
   <!-- Placed at the end of the document so the pages load faster -->
-<script type="text/javascript">
-  $("#inicio").addClass('active');
-</script>
-
   <script type="text/javascript">
-
+    $("#lugar").select2(),
+    $("#tipo").select2(),
     $("#inicio").addClass('active');
-    $("#lugar_select").select2(),
+    
   </script>
   @stop

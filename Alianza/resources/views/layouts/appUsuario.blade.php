@@ -16,7 +16,8 @@
 {{ Html::style('css/style.css') }}
 {{ Html::style('css/css.css') }}
 
-
+ <link rel="stylesheet" type="text/css" href="css/select2.min.css">
+<script type="text/javascript" src="js/select2.min.js"></script>  
 
 {{ Html::script('js/jquery.js') }}
 {{ Html::script('js/jquery.easing.1.3.js') }}
