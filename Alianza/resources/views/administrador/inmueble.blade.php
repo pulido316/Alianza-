@@ -149,60 +149,41 @@
        <h3>Agregar Tipo de Inmueble</h3>
        <form files=true role="form"  method="POST" action="{{url('inmueble')}}" enctype="multipart/form-data">
          {{csrf_field()}}
-         <div class="form-group has-success">
+         <div class="form-group ">
 
-           <label class="control-label" for="inputSuccess">Seleccione propietario del inmueble</label>
+           <label class="form-control-static" for="inputSuccess">Seleccione propietario del inmueble</label>
            <select id="persona_select" name="persona_select" required style="width: 29em">
              @foreach( $personas as $persona)
              <option value="{!!$persona->id!!}">CC: {!!$persona->documento_id!!} Nombres:  {!!$persona->nombre!!} {!!$persona->apellido!!}</option>
              @endforeach
            </select>
 
-           <label class="control-label" for="inputSuccess">Seleccione los servicios del inmueble</label><br>
+           <label class="form-control-static" for="inputSuccess">Seleccione los servicios del inmueble</label><br>
            <select id="select_servicio" name="select_servicio[]" class="js-example-basic-multiple" multiple="multiple" style="width: 29em">
              @foreach( $servicios as $servicio)
              <option value="{!!$servicio->id!!}">{!!$servicio->nombre!!}</option>
              @endforeach
            </select>
 
-           <label class="control-label" for="inputSuccess">Seleccione Detalles del inmueble</label><br>
+           <label class="form-control-static" for="inputSuccess">Seleccione Detalles del inmueble</label><br>
            <!-- <select class="js-example-basic-multiple" name="select_detalle[]" multiple="multiple" style="width: 29em" >
              @foreach( $detalles as $detalle)
              <option value="{!!$detalle->id!!}">{!!$detalle->nombre!!}
              </option>
              @endforeach
            </select> -->
-           <div>
-             <div style="width: 200px; height: 100px; overflow-y: scroll;">
-              test
-              <br>
-              dos test<br />
-              test<br />
-              test<br />
-              test<br />
-              test<br />
-              test<br />
-              test<br />
-              test<br />
-              test<br />
-              test<br />
+           <div class="form-group">
+             <div style="width: 400px; height: 100px; overflow-y: scroll;">
+               @foreach( $detalles as $detalle)
+               <label class="form-control-static" for="inputSuccess">{!!$detalle->nombre!!}</label><br>
+               <input type="number" class="form-control" id="{!!$detalle->id!!}" name="{!!$detalle->nombre!!}">
+               <br>
+             @endforeach
             </div>
-            <!-- Scroll bar present and enabled -->        
-            <div style="width: 200px; height: 100px; overflow-y: scroll;">
-              test<br />
-              test<br />
-              test<br />
-              test<br />
-              test<br />
-              test<br />
-              test<br />
-              test<br />
-              test<br />
-              test<br />
-            </div>
+
           </div>
 
-          <label class="control-label" for="inputSuccess">Seleccione el barrio del inmueble</label><br>
+          <label class="form-control-static" for="inputSuccess">Seleccione el barrio del inmueble</label><br>
           <br>
           <br>
 
@@ -211,27 +192,27 @@
            <option value="{!!$barrio->id!!}">{!!$barrio->nombre!!}</option>
            @endforeach
          </select><br>
-         <label class="control-label" for="inputSuccess">Tipo de Inmueble</label>
+         <label class="form-control-static" for="inputSuccess">Tipo de Inmueble</label>
          <select id="tipo_select" name="tipo_select" style="width: 29em" required>
            @foreach( $tipos as $tipo)
            <option value="{!!$tipo->id!!}">{!!$tipo->nombre!!}</option>
            @endforeach
          </select>
          <br>
-         <label class="control-label" for="inputSuccess">Direccion</label>
+         <label class="form-control-static" for="inputSuccess">Direccion</label>
          <input type="text" class="form-control" id="direccion" name="direccion" required>
 
-         <label class="control-label" for="inputSuccess">Area de Inmueble</label>
+         <label class="form-control-static" for="inputSuccess">Area de Inmueble (m<sup>2</sup>)</label>
          <input type="number" class="form-control" id="are_inmueble" name="are_inmueble" required>
 
-         <label class="control-label" for="inputSuccess">Area construccion Inmueble</label>
+         <label class="form-control-static" for="inputSuccess">Area construccion Inmueble (m<sup>2</sup>)</label>
          <input type="number" class="form-control" id="cons_inmueble" name="cons_inmueble" required>
 
-         <label class="control-label" for="inputSuccess">Observaciones</label>
+         <label class="form-control-static" for="inputSuccess">Observaciones</label>
          <textarea class="form-control" rows="5" id="observacion" name="observacion"></textarea>
          <br>
-
-         <input type="file" id="img_url" name="img_url[]" multiple="multiple class="form-control" required>
+         <label class="form-control-static" for="inputSuccess">Cargar imagenes</label>
+         <input type="file" id="img_url" name="img_url[]" multiple="multiple" class="form-control" required>
 
 
 
