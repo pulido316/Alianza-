@@ -257,18 +257,18 @@ class InicioController extends Controller
         foreach ($dataInmuebles as $inmueble){
             if($inmueble->lugar==$lugar && $inmueble->tipo==$tipo){
                 foreach ($inmueble->operaciones as $operacion) {
-                    if ($operacion->nombre == $operacionReq && $operacion->precio <= $precio) {
+                    if ($operacion->nombre == $operacionReq || $operacion->precio <= $precio) {
                         $baños = false;
                         $habitaciones = false;
                         foreach ($inmueble->detalles as $detalle) {
-                            if ($detalle->nombre=="Baños" && $detalle->cantidad==$baño) {
+                            if ($detalle->nombre=="Baños" || $detalle->cantidad==$baño) {
                                 $baños = true;
                             }
-                            elseif ($detalle->nombre=="Habitación" && $detalle->cantidad==$habitacion) {
+                            elseif ($detalle->nombre=="Habitación" || $detalle->cantidad==$habitacion) {
                                 $habitaciones = true;
                             }
                         }
-                        if ($baños==true && $habitaciones==true) {
+                        if ($baños==true || $habitaciones==true) {
                             $busqueda[]= $inmueble;
                         }
                     }
