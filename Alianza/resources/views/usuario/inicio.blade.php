@@ -59,15 +59,6 @@
               <div class="form-group col-md-4">
                 <label for="inputSuccess">Habitaciones</label>
                 <input type="number" class="form-control" id="habitacion" name="habitacion" >
-                <!--
-                <select class="form-control" id="habitacion" name="habitacion" >
-                  <option >1</option>
-                  <option >2</option>
-                  <option >3</option>
-                  <option >4</option>
-                  <option >5</option>
-                 </select>
-                 -->
               </div>
               <div class="form-group col-md-4">
                 <label for="inputSuccess">Baños</label>
