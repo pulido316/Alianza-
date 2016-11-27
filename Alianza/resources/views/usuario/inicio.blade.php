@@ -79,8 +79,10 @@
                 <input type="number" class="form-control" id="precio" name="precio" >
               </div>
              
-              <div class="form-group col-md-4">
-              <input  value="Buscar" class="btn btn-success btn-lg btn-block" type="submit">
+              <div >
+              <center>
+              <input  value="Buscar" style="width: 150px" class="btn btn-success btn-lg btn-block" type="submit">
+          </center>
               </div>
               
               </form>

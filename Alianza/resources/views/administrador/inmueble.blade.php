@@ -166,70 +166,94 @@
            </select>
 
            <label class="control-label" for="inputSuccess">Seleccione Detalles del inmueble</label><br>
-           <select class="js-example-basic-multiple" name="select_detalle[]" multiple="multiple" style="width: 29em" >
+           <!-- <select class="js-example-basic-multiple" name="select_detalle[]" multiple="multiple" style="width: 29em" >
              @foreach( $detalles as $detalle)
              <option value="{!!$detalle->id!!}">{!!$detalle->nombre!!}
              </option>
              @endforeach
-           </select>
-           <label class="control-label" for="inputSuccess">Seleccione el barrio del inmueble</label><br>
-                <!-- 
-                 <select id="zona_select" style="width: 29em">
-                     @foreach( $zonas as $zona)
-                     <option value="{!!$zona->id!!}">{!!$zona->nombre!!}</option>
-                     @endforeach
-                   </select>-->
-                   <br>
-                   <br>
-                   
-                   <select id="lugar_select" name="lugar_select"  style="width: 29em" required>
-                     @foreach( $barrios as $barrio)
-                     <option value="{!!$barrio->id!!}">{!!$barrio->nombre!!}</option>
-                     @endforeach
-                   </select><br>
-                   <label class="control-label" for="inputSuccess">Tipo de Inmueble</label>
-                   <select id="tipo_select" name="tipo_select" style="width: 29em" required>
-                     @foreach( $tipos as $tipo)
-                     <option value="{!!$tipo->id!!}">{!!$tipo->nombre!!}</option>
-                     @endforeach
-                   </select>
-                   <br>
-                   <label class="control-label" for="inputSuccess">Direccion</label>
-                   <input type="text" class="form-control" id="direccion" name="direccion" required>
-
-                   <label class="control-label" for="inputSuccess">Area de Inmueble</label>
-                   <input type="number" class="form-control" id="are_inmueble" name="are_inmueble" required>
-
-                   <label class="control-label" for="inputSuccess">Area construccion Inmueble</label>
-                   <input type="number" class="form-control" id="cons_inmueble" name="cons_inmueble" required>
-
-                   <label class="control-label" for="inputSuccess">Observaciones</label>
-                   <textarea class="form-control" rows="5" id="observacion" name="observacion"></textarea>
-                   <br>
-
-                   <input type="file" id="img_url" name="img_url[]" multiple="multiple class="form-control" required>
-
-
-                   
-                   <br>
-                   <center>
-                    <button type="submit" class="btn btn-primary">Guardar</button>
-                    <button id="cancelar" type="reset" class="btn btn-warning">Cancelar</button>
-                    <button id="limpiar" type="reset" class="btn btn-success">Limpiar</button>
-                  </center>
-
-                </div>
-              </form>
+           </select> -->
+           <div>
+             <div style="width: 200px; height: 100px; overflow-y: scroll;">
+              test
+              <br>
+              dos test<br />
+              test<br />
+              test<br />
+              test<br />
+              test<br />
+              test<br />
+              test<br />
+              test<br />
+              test<br />
+              test<br />
+            </div>
+            <!-- Scroll bar present and enabled -->        
+            <div style="width: 200px; height: 100px; overflow-y: scroll;">
+              test<br />
+              test<br />
+              test<br />
+              test<br />
+              test<br />
+              test<br />
+              test<br />
+              test<br />
+              test<br />
+              test<br />
             </div>
           </div>
-        </div>
+
+          <label class="control-label" for="inputSuccess">Seleccione el barrio del inmueble</label><br>
+          <br>
+          <br>
+
+          <select id="lugar_select" name="lugar_select"  style="width: 29em" required>
+           @foreach( $barrios as $barrio)
+           <option value="{!!$barrio->id!!}">{!!$barrio->nombre!!}</option>
+           @endforeach
+         </select><br>
+         <label class="control-label" for="inputSuccess">Tipo de Inmueble</label>
+         <select id="tipo_select" name="tipo_select" style="width: 29em" required>
+           @foreach( $tipos as $tipo)
+           <option value="{!!$tipo->id!!}">{!!$tipo->nombre!!}</option>
+           @endforeach
+         </select>
+         <br>
+         <label class="control-label" for="inputSuccess">Direccion</label>
+         <input type="text" class="form-control" id="direccion" name="direccion" required>
+
+         <label class="control-label" for="inputSuccess">Area de Inmueble</label>
+         <input type="number" class="form-control" id="are_inmueble" name="are_inmueble" required>
+
+         <label class="control-label" for="inputSuccess">Area construccion Inmueble</label>
+         <input type="number" class="form-control" id="cons_inmueble" name="cons_inmueble" required>
+
+         <label class="control-label" for="inputSuccess">Observaciones</label>
+         <textarea class="form-control" rows="5" id="observacion" name="observacion"></textarea>
+         <br>
+
+         <input type="file" id="img_url" name="img_url[]" multiple="multiple class="form-control" required>
+
+
+
+         <br>
+         <center>
+          <button type="submit" class="btn btn-primary">Guardar</button>
+          <button id="cancelar" type="reset" class="btn btn-warning">Cancelar</button>
+          <button id="limpiar" type="reset" class="btn btn-success">Limpiar</button>
+        </center>
+
       </div>
-    </div>
+    </form>
   </div>
+</div>
+</div>
+</div>
+</div>
+</div>
 
-  <script type="text/javascript">
+<script type="text/javascript">
 
-    $("#persona_select").select2(),
+  $("#persona_select").select2(),
     //$("#zona_select").select2(),
     $("#lugar_select").select2(),
     $("#tipo_select").select2(),
