@@ -79,6 +79,7 @@
                         <table id="example"  class="table table-hover table-striped  table-striped table-borderedSeen">
                             <thead>
                                 <tr>
+                                    <th>Direccion</th>
                                     <th>Detalles de la publicacion</th>
                                     <th>Estado publicacion</th>
                                     <th>Editar</th>
