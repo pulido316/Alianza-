@@ -57,7 +57,7 @@
                 </div>
                 <div class="col-xs-9 text-right">
                   <div class="huge"><br></div>
-                  <div>Nueva Publicacion</div>
+                  <div>Nueva Publicación</div>
                 </div>
               </div>
             </div>
@@ -79,9 +79,9 @@
             <table id="example"  class="table table-hover table-striped  table-striped table-borderedSeen">
               <thead>
                 <tr>
-                  <th>Direccion</th>
-                  <th>Detalles de la publicacion</th>
-                  <th>Estado publicacion</th>
+                  <th>Dirección</th>
+                  <th>Detalles de la publicación</th>
+                  <th>Estado publicación</th>
                   <th>Editar</th>
 
                 </tr>
@@ -96,7 +96,7 @@
                    <li>{!! $valor->barrio !!}</li>
                  </td>
                  <td>
-                   <strong>Operacion: </strong>
+                   <strong>Operación: </strong>
                    <br>
                    {!! $valor->operacion !!}
                    <br>
@@ -112,7 +112,7 @@
                    @endif
                    <br>
 
-                   <strong>Precio de la publicacion: </strong>
+                   <strong>Precio de la publicación: </strong>
                    <br>
                    {!! $valor->precio !!}
                  </td>
@@ -150,7 +150,7 @@
         <form role="form"  method="POST" action="{{url('publicaciones')}}">
           {{csrf_field()}}
           <div class="form-group has-success">
-            <label class="control-label" for="inputSuccess">Seleccione direccion del inmueble</label><br>
+            <label class="control-label" for="inputSuccess">Seleccione dirección del inmueble</label><br>
             <select id="direccion_inmueble" name="direccion_inmueble" required style="width: 29em">
               @foreach( $inmuebles as $inmueble)
               <option value="{!!$inmueble->id!!}"> {!!$inmueble->direccion!!}  Barrio: 
@@ -162,7 +162,7 @@
               <br>
               <br>
               <label class="control-label" for="inputSuccess">
-                Tipo de publicacion:
+                Tipo de publicación:
               </label>
               <br>
 
@@ -186,12 +186,12 @@
 
        </div>
        <div id="editar_publicacion" class="col-lg-6 " style="display: none;">
-         <legend>Editar Publicacion</legend>
+         <legend>Editar Publicación</legend>
          <form role="form"  id="editar_publaciones" method="POST">
 
           {{csrf_field()}}
           <div class="form-group has-success">
-            <label class="control-label" for="inputSuccess">Seleccione direccion del inmueble</label><br>
+            <label class="control-label" for="inputSuccess">Seleccione dirección del inmueble</label><br>
             <select id="edi_direccion_inmueble" name="edi_direccion_inmueble" required style="width: 29em">
               @foreach( $inmuebles as $inmueble)
               <option value="{!!$inmueble->id!!}"> {!!$inmueble->direccion!!}  Barrio: 
@@ -204,7 +204,7 @@
               <br>
               <br>
               <label class="control-label" for="inputSuccess">
-                Tipo de publicacion:
+                Tipo de publicación:
               </label>
               <br>
               <input name="edi_venta" type="checkbox" id="edi_venta" value="1" ><label id="lable_venta">Venta</label><br>
