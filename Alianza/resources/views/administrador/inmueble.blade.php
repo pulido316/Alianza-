@@ -114,9 +114,10 @@
                 </td>
                 <td>
                   <strong>area total:</strong><br>
-                  {!! $inmueble->area_total!!} m<sup>2</sup><br>
+                  
+                  {!! number_format($inmueble->area_total)!!} m<sup>2</sup><br>
                   <strong>area construccion:</strong><br>
-                  {!! $inmueble->area_construccion!!} m<sup>2</sup>
+                  {!! number_format($inmueble->area_construccion)!!} m<sup>2</sup>
                 </td>
                 <td>
                  {!! $inmueble->observacion!!}

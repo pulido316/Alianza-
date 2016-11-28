@@ -40,12 +40,12 @@
 								<p>Tipo de inmueble: <strong>{!! $inactivo->tipo!!}</strong>
 									<br>
 									<strong>area total:</strong><br>
-									{!! $inactivo->total!!} m<sup>2</sup><br>
+									{!! number_format($inactivo->total)!!} m<sup>2</sup><br>
 									<strong>area construccion:</strong><br>
-									{!! $inactivo->construccion!!} m<sup>2</sup>
+									{!! number_format($inactivo->construccion)!!} m<sup>2</sup>
 									<br>
 									<strong>Precio de venta</strong>
-									{!! $inactivo->precio!!}
+									${!! number_format($inactivo->precio)!!}
 								</p>
 
 							</td>

@@ -114,7 +114,8 @@
 
                    <strong>Precio de la publicación: </strong>
                    <br>
-                   {!! $valor->precio !!}
+
+                   ${!! number_format($valor->precio)!!}
                  </td>
                  <td> 
                    @if ($valor->estado === "activo")

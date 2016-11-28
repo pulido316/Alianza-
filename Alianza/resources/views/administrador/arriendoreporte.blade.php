@@ -45,7 +45,7 @@
 										{!! $arriendo->construccion!!} m<sup>2</sup>
 										<br>
 										<strong>Precio de venta</strong>
-										{!! $arriendo->precio!!}
+										${!! number_format($arriendo->precio)!!}
 									</p>
 
 								</td>

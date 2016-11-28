@@ -140,7 +140,8 @@
                                           @foreach($inmueble->operaciones as $operacion)
                                           <?php 
                                             $nombreOperacion = $nombreOperacion. '  ' .$operacion->nombre;
-                                            $nombrePrecio = $nombrePrecio. ' $ ' .$operacion->precio;
+                                            $nombrePrecio = $nombrePrecio. ' $ ' .number_format($operacion->precio);
+
                                           ?>
                                           @endforeach
                                           <li ><strong>Operación :</strong> {!! $nombreOperacion !!}</li>

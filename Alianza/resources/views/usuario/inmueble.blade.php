@@ -76,7 +76,8 @@
         @foreach($inmueble->operaciones as $operacion)
         <?php 
         $nombreOperacion = $nombreOperacion. '  ' .$operacion->nombre;
-        $nombrePrecio = $nombrePrecio. ' $ ' .$operacion->precio;
+        $nombrePrecio = $nombrePrecio. ' $ ' .number_format($operacion->precio);
+
         ?>
         @endforeach
         <div class="form-group col-md-4">
