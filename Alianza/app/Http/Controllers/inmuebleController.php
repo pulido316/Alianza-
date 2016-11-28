@@ -243,6 +243,16 @@ public function edit($id)
 {
     //
 }
+public function buscarInmueble($id)
+{/*
+    $buscar= DB::select("SELECT id,documento_id CC, concat(nombre ,' ' , apellido )as nombres, email correo, telefono telefono, observacion observacion FROM `personas` WHERE id = '".$id."'");
+    foreach ($buscar as $busqueda) {
+       // $busqueda->first();
+      return response()->json($busqueda);
+    }
+    */
+   
+}
 
 /**
  * Update the specified resource in storage.

@@ -36,9 +36,11 @@ Route::get('updatePropiedad', 'InformacionController@updatePropiedad');
 Route::get('updateRemodelacion', 'InformacionController@updateRemodelacion');
 Route::get('updateTramite', 'InformacionController@updateTramite');
 
+
 Route::get('/', 'InicioController@indexInicio');
 //rutas de opciones y configuracion de datos
 Route::get('buscar/{id}', 'lugares@buscar');
+Route::get('buscarInmueble/{id}', 'inmuebleController@buscarInmueble');
 Route::post('actualizar/{id}', 'lugares@actualizar');
 Route::get('buscarpersona/{id}', 'personas@buscar');
 Route::post('actualizarpersona/{id}', 'personas@actualizar');
