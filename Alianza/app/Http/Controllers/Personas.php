@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use App\Http\Requests;
+//use App\Http\Requests\personaRequest;
 use App\Persona; 
 use Redirect;
 
@@ -46,14 +47,25 @@ class Personas extends Controller
      */
     public function store(Request $request)
     {
+
+        $this->validate($request, [
+        'nombre'=> 'min:4|max:40|required',
+            'apellido'=> 'min:4|max:40|required',
+            'documento_id'=>'numeric|min:6|required|unique:personas',
+            'email'=>'min:8|max:60|required|unique:personas',
+            'telefono'=>'numeric|min:6|required',
+            'observacion'=> 'min:4|max:300',
+    ]);
+      
+
        $nombre= $request->nombre;
        $apellido=$request->apellido;
-       $cc=$request->cc;
-       $correo=$request->correo;
+       $documento_id=$request->documento_id;
+       $email=$request->email;
        $telefono=$request->telefono;
        $observacion=$request->observacion;
       // dd($nombre,$apellido,$cc,$correo,$telefono,$observacion);
-       Persona::insert(['nombre' => $nombre, 'apellido'=> $apellido, 'email' => $correo,'documento_id'=>$cc,'telefono'=>$telefono,'observacion'=>$observacion]);
+       Persona::insert(['nombre' => $nombre, 'apellido'=> $apellido, 'email' => $email,'documento_id'=>$documento_id,'telefono'=>$telefono,'observacion'=>$observacion]);
        return Redirect::to('personas');
    }
 

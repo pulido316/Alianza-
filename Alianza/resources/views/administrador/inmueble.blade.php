@@ -173,7 +173,7 @@
              @endforeach
            </select> -->
            <div class="form-group">
-             <div style="width: 400px; height: 100px; overflow-y: scroll;">
+             <div style="width: 400px; height: 200px; overflow-y: scroll;">
                @foreach( $detalles as $detalle)
                <label class="form-control-static" for="inputSuccess">{!!$detalle->nombre!!}</label><br>
                <input type="number" class="form-control" id="{!!$detalle->id!!}" name="{!!$detalle->nombre!!}">
