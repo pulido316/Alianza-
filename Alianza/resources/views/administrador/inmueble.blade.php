@@ -75,7 +75,16 @@
         </div>
         <br>
       </div>
-
+@if(count($errors)>0)
+            <div class="alert alert-danger" role="alert">
+            <ul>
+             <li>Error al guardar</li>
+              <script type="text/javascript">
+              history.back()
+          </script>
+              </ul>
+             </div>
+       @endif
 
       <div class="row">
         <div class="col-lg-12">
@@ -202,21 +211,39 @@
          <br>
          <label class="form-control-static" for="inputSuccess">Direccion</label>
          <input type="text" class="form-control" id="direccion" name="direccion" required>
-
+         @if($errors->has('direccion'))
+                <br>
+                <div class="alert alert-danger" role="alert">
+                  <li>{{$errors->first('direccion')}}</li>
+                </div>
+                   @endif
          <label class="form-control-static" for="inputSuccess">Area de Inmueble (m<sup>2</sup>)</label>
          <input type="number" class="form-control" id="are_inmueble" name="are_inmueble" required>
-
+         @if($errors->has('are_inmueble'))
+                <br>
+                <div class="alert alert-danger" role="alert">
+                  <li>{{$errors->first('are_inmueble')}}</li>
+                </div>
+                   @endif
          <label class="form-control-static" for="inputSuccess">Area construccion Inmueble (m<sup>2</sup>)</label>
          <input type="number" class="form-control" id="cons_inmueble" name="cons_inmueble" required>
-
+         @if($errors->has('cons_inmueble'))
+                <br>
+                <div class="alert alert-danger" role="alert">
+                  <li>{{$errors->first('cons_inmueble')}}</li>
+                </div>
+                   @endif
          <label class="form-control-static" for="inputSuccess">Observaciones</label>
          <textarea class="form-control" rows="5" id="observacion" name="observacion"></textarea>
+           @if($errors->has('observacion'))
+                <br>
+                <div class="alert alert-danger" role="alert">
+                  <li>{{$errors->first('observacion')}}</li>
+                </div>
+                   @endif
          <br>
          <label class="form-control-static" for="inputSuccess">Cargar imagenes</label>
-         <input type="file" id="img_url" name="img_url[]" multiple="multiple" class="form-control" required>
-
-
-
+         <input type="file" accept="image/jpg,image/png" id="img_url" name="img_url[]" multiple="multiple" class="form-control" required>
          <br>
          <center>
           <button type="submit" class="btn btn-primary">Guardar</button>

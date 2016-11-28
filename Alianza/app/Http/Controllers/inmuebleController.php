@@ -162,6 +162,13 @@ public function create()
 public function store(Request $request)
 {
 
+$this->validate($request, [
+            'direccion'=>'min:8|max:255|required|unique:inmuebles',
+            'are_inmueble'=>'numeric',
+            'cons_inmueble'=>'numeric',
+            'observacion'=> 'min:4|max:300',
+
+    ]);
 
 
 $detalles="";

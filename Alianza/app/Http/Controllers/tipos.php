@@ -45,6 +45,9 @@ class tipos extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+        'nombre'=> 'min:4|max:30|required',
+    ]);
         $nombre= $request->nombre;
        // dd($nombre);
         Tipo::insert(['nombre' => $nombre]);

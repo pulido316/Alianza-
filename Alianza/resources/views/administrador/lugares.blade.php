@@ -69,7 +69,16 @@
 					</div>
 				</div>
 			</div>
-
+			@if(count($errors)>0)
+			<div class="alert alert-danger" role="alert">
+				<ul>
+					<li>Error al guardar</li>
+					<script type="text/javascript">
+						history.back()
+					</script>
+				</ul>
+			</div>
+			@endif
 
 			<div class="row">
 				<div class="col-lg-12">
@@ -129,6 +138,12 @@
 							<div class="form-group has-success">
 								<label class="control-label" for="inputSuccess">Nombre del barrio</label>
 								<input type="text" class="form-control" id="nombre" name="nombre" required>
+								@if($errors->has('nombre'))
+								<br>
+								<div class="alert alert-danger" role="alert">
+									<li>{{$errors->first('nombre')}}</li>
+								</div>
+								@endif
 								<label class="control-label" for="inputSuccess">Seleccione zona</label>
 								<select name="zona" class="form-control" id="zona">
 

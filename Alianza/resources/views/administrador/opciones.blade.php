@@ -1,6 +1,6 @@
 
 @extends('layouts.app_index')
-
+ 
 @section('content')
 
 <link rel="stylesheet" href="http://cdn.datatables.net/1.10.2/css/jquery.dataTables.css">

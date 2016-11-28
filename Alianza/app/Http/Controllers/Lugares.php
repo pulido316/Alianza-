@@ -51,7 +51,10 @@ class Lugares extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {   
+        $this->validate($request, [
+        'nombre'=> 'min:4|max:30|required',
+    ]);
                      
            $nombre= $request->nombre;
            $zona= $request->zona;

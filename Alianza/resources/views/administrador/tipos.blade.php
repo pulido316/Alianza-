@@ -68,7 +68,16 @@
 				</div>
 				<br>
 			</div>
-
+			@if(count($errors)>0)
+			<div class="alert alert-danger" role="alert">
+				<ul>
+					<li>Error al guardar</li>
+					<script type="text/javascript">
+							history.back()
+					</script>
+				</ul>
+			</div>
+			@endif
 
 			<div class="row">
 				<div class="col-lg-8">
@@ -117,6 +126,12 @@
 							<div class="form-group has-success">
 								<label class="control-label" for="inputSuccess">Nombre del tipo</label>
 								<input type="text" class="form-control" id="nombre" name="nombre" required>
+								@if($errors->has('nombre'))
+								<br>
+								<div class="alert alert-danger" role="alert">
+									<li>{{$errors->first('nombre')}}</li>
+								</div>
+								@endif
 								<center>
 									<br>
 									<button type="submit" class="btn btn-primary">Guardar</button>
@@ -127,9 +142,9 @@
 						</form>
 					</div>
 
-						<div id="editar-tipo" class="col-lg-6" style="display: none;">
-							<h3>Editar Inmubele</h3>
-							<form role="form"  id="editar_tipo" method="POST">
+					<div id="editar-tipo" class="col-lg-6" style="display: none;">
+						<h3>Editar Inmubele</h3>
+						<form role="form"  id="editar_tipo" method="POST">
 							{{csrf_field()}}
 							<div class="form-group has-success">
 								<label class="control-label" for="inputSuccess">Nombre del tipo de Inmueble</label>
@@ -191,9 +206,9 @@
 		$(".table").hide()
 		$("#add-tipo").hide()
 		$("#editar-tipo").show()
-			var dataId = this.id;
+		var dataId = this.id;
 		$("#button_update").attr("id", dataId);
-	
+
 		$('#editar_tipo').attr("action", '{{url('actualizartipo')}}/'+dataId);
 		$.ajax({ 
 			type: 'GET', 

@@ -71,7 +71,9 @@
 						<div class="alert alert-danger" role="alert">
 						<ul>
 						 <li>Error al guardar</li>
-						  
+						  <script type="text/javascript">
+							history.back()
+					</script>
 						  </ul>
 						 </div>
 			 @endif

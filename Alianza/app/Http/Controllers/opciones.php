@@ -54,6 +54,7 @@ public function create()
  */
 public function store(Request $request)
 {
+    
    $nombre_servicio= $request->nombre_servicio;
    $nombre_detalle=  $request->nombre_detalle;
    $nombre_operacion= $request->nombre_operacion;
