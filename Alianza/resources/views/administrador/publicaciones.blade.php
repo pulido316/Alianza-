@@ -72,7 +72,16 @@
         </div>
         <br>
       </div>
-
+@if(count($errors)>0)
+            <div class="alert alert-danger" role="alert">
+            <ul>
+             <li>Error al guardar</li>
+              <script type="text/javascript">
+              history.back()
+          </script>
+              </ul>
+             </div>
+       @endif
       <div class="row">
         <div class="col-lg-12">
           <div id="tabla_lista" class="table-responsive table tabla_lista" style="display: none;">
@@ -152,14 +161,20 @@
           {{csrf_field()}}
           <div class="form-group has-success">
             <label class="control-label" for="inputSuccess">Seleccione dirección del inmueble</label><br>
-            <select id="direccion_inmueble" name="direccion_inmueble" required style="width: 29em">
+            <select id="inmueble_id" name="inmueble_id" required style="width: 29em">
               @foreach( $inmuebles as $inmueble)
               <option value="{!!$inmueble->id!!}"> {!!$inmueble->direccion!!}  Barrio: 
                 {!!$inmueble->barrio!!} </option>
                 @endforeach
               </select><br>
+              @if($errors->has('inmueble_id'))
+                <br>
+                <div class="alert alert-danger" role="alert">
+                  <li>{{$errors->first('inmueble_id')}}</li>
+                </div>
+                   @endif
               <label class="control-label" for="inputSuccess">Seleccione fecha de cierre</label><br>
-              <input type="date" name="fecha_fin" required="">
+              <input type="date" name="fecha_fin" >
               <br>
               <br>
               <label class="control-label" for="inputSuccess">
@@ -300,7 +315,7 @@
    }
  });
 
-  $("#direccion_inmueble").select2(),
+  $("#inmueble_id").select2(),
   $("#edi_direccion_inmueble").select2(),
   $('#example').dataTable();
 

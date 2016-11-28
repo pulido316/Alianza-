@@ -54,7 +54,8 @@
 							<textarea name="Message" rows="10" cols="20" id="Message" class="form-control input-message wow fadeInUp"  placeholder="Mensaje" required></textarea>
 							</div>
 							<div class="form-group">
-							<input type="submit" name="submit" value="Enviar" class="btn btn-success wow fadeInUp" />
+							<!-- <input type="submit" name="submit" value="Enviar" class="btn btn-success wow fadeInUp" /> -->
+							<button id="limpiar" type="reset" class="btn btn-success">Enviar</button>
 							</div>
 							</div>
 						</form>		

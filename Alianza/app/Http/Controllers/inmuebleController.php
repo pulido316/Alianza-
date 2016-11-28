@@ -167,7 +167,7 @@ $this->validate($request, [
             'are_inmueble'=>'numeric',
             'cons_inmueble'=>'numeric',
             'observacion'=> 'min:4|max:300',
-
+            
     ]);
 
 
